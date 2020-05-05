@@ -6,6 +6,8 @@ DNS2="208.67.222.222"
 OUTFILE="dsl_analyzer_$(date +"%Y-%m-%d").log"
 PCOUNT=3
 
+rm -f ${OUTFILE}
+
 function me() {
     echo -e "${1}" >> ${OUTFILE}
 }
@@ -34,9 +36,11 @@ do
     me "-- DNS-Test ueber ${DNS2}"
     nslookup ${host} ${DNS2} >> ${OUTFILE}  2>&1
     me " -- MTR/Tracert ${host} mit IPv4"
-    mtr -4 -r -c2 ${host} >> ${OUTFILE}  2>&1
+    me "mtr -n -4 -r -c5 ${host}"
+    mtr -n -4 -r -c5 ${host} >> ${OUTFILE}  2>&1
     me "------------"
     me "-- MTR/Tracert ${host} mit IPv6"
+    me "mtr -6 -r -c2 ${host}"
     mtr -6 -r -c2 ${host} >> ${OUTFILE} 2>&1
     me "------------\n\n"
 
