@@ -107,17 +107,17 @@ default            192.168.178.1      UGSc           en0
 169.254            link#7             UCS            en0      !
 192.168.178        link#7             UCS            en0      !
 192.168.178.1/32   link#7             UCS            en0      !
-192.168.178.1      c8:e:14:3a:de:13   UHLWIir        en0   1181
-192.168.178.21     9c:f4:8e:a8:db:7d  UHLWI          en0     24
-192.168.178.23     f0:79:60:95:4c:47  UHLWI          en0      !
-192.168.178.24     0:1d:ec:10:73:d4   UHLWI          en0    653
-192.168.178.27     3c:15:c2:cc:74:88  UHLWI          en0    235
-192.168.178.29     6c:ad:f8:b8:5e:12  UHLWIi         en0    140
-192.168.178.30     54:60:9:fc:fc:2    UHLWIi         en0   1140
-192.168.178.31     54:60:9:fd:35:42   UHLWIi         en0   1181
-192.168.178.34     30:d3:2d:79:d6:86  UHLWI          en0   1149
-192.168.178.35     0:11:32:32:c4:5d   UHLWIi         en0   1001
+192.168.178.1      c8:e:14:3a:de:13   UHLWIir        en0   1196
+192.168.178.23     f0:79:60:95:4c:47  UHLWI          en0    706
+192.168.178.24     0:1d:ec:10:73:d4   UHLWI          en0    675
+192.168.178.27     3c:15:c2:cc:74:88  UHLWI          en0    493
+192.168.178.29     6c:ad:f8:b8:5e:12  UHLWIi         en0    782
+192.168.178.30     54:60:9:fc:fc:2    UHLWIi         en0    920
+192.168.178.31     54:60:9:fd:35:42   UHLWIi         en0   1173
+192.168.178.34     30:d3:2d:79:d6:86  UHLWI          en0    481
+192.168.178.35     0:11:32:32:c4:5d   UHLWIi         en0     74
 192.168.178.45/32  link#7             UCS            en0      !
+192.168.178.45     f0:18:98:26:d2:71  UHLWI          lo0       
 224.0.0/4          link#7             UmCS           en0      !
 224.0.0.251        1:0:5e:0:0:fb      UHmLWI         en0       
 239.255.255.250    1:0:5e:7f:ff:fa    UHmLWI         en0       
@@ -167,7 +167,7 @@ ff02::%utun1/32                         fe80::cd72:d050:587c:e97a%utun1 UmCI    
 
 Starte Test www.heise.de
 ####################################################
-### Start 2020-05-05_210512
+### Start 2020-05-05_220534
 -- DNS-Test mit Kundeneinstellungen
 Server:		192.168.178.1
 Address:	192.168.178.1#53
@@ -193,77 +193,84 @@ Name:	www.heise.de
 Address: 193.99.144.85
 
  -- MTR/Tracert www.heise.de mit IPv4
-Start: 2020-05-05T21:13:12+0200
+mtr -n -4 -r -c5 www.heise.de
+Start: 2020-05-05T22:00:35+0200
 HOST: Volkers-MBP.fritz.box       Loss%   Snt   Last   Avg  Best  Wrst StDev
-  1.|-- fritz.box                  0.0%     2   17.5   9.6   1.7  17.5  11.1
-  2.|-- dslb-092-073-160-001.092.  0.0%     2   85.1  51.8  18.5  85.1  47.0
-  3.|-- ???                       100.0     2    0.0   0.0   0.0   0.0   0.0
-  4.|-- 92.79.214.238              0.0%     2   19.6  19.7  19.6  19.7   0.1
-  5.|-- 145.254.2.195             50.0%     2   24.8  24.8  24.8  24.8   0.0
-  6.|-- 145.254.2.195             50.0%     2   24.3  24.3  24.3  24.3   0.0
-  7.|-- te0-0-2-3.c350.f.de.plusl  0.0%     2   25.2  25.3  25.2  25.4   0.1
-  8.|-- 82.98.102.1                0.0%     2   25.3  25.1  25.0  25.3   0.2
-  9.|-- 82.98.102.132              0.0%     2   25.4  25.4  25.4  25.4   0.0
- 10.|-- 82.98.102.23               0.0%     2   25.1  24.9  24.6  25.1   0.4
- 11.|-- 212.19.61.13               0.0%     2   25.2  25.2  25.2  25.2   0.0
- 12.|-- www.heise.de               0.0%     2   24.9  24.8  24.6  24.9   0.2
+  1.|-- 192.168.178.1              0.0%     5   99.3  31.5   1.5  99.3  38.6
+  2.|-- 92.73.160.1                0.0%     5  117.8  38.0  17.7 117.8  44.6
+  3.|-- 188.111.218.164           40.0%     5   17.3  21.1  17.3  28.6   6.5
+  4.|-- 92.79.214.238              0.0%     5   19.7  20.0  19.6  20.3   0.3
+  5.|-- 145.254.2.195             60.0%     5   25.6  25.4  25.2  25.6   0.2
+  6.|-- 145.254.2.195             40.0%     5   25.1  24.8  24.4  25.1   0.4
+  7.|-- 80.81.193.132              0.0%     5   24.9  25.8  24.6  27.9   1.3
+  8.|-- 82.98.102.1                0.0%     5   24.7  24.8  24.5  25.1   0.2
+  9.|-- 82.98.102.132              0.0%     5   26.5  25.6  24.6  26.5   0.7
+ 10.|-- 82.98.102.23               0.0%     5   25.7  25.5  24.9  26.1   0.5
+ 11.|-- 212.19.61.13               0.0%     5   25.0  25.0  24.6  25.4   0.3
+ 12.|-- 193.99.144.85              0.0%     5   25.4  25.3  25.0  26.0   0.4
 ------------
 -- MTR/Tracert www.heise.de mit IPv6
-Start: 2020-05-05T21:13:19+0200
+mtr -6 -r -c2 www.heise.de
+mtr: Address not available
+Start: 2020-05-05T22:00:45+0200
 HOST: Volkers-MBP.fritz.box       Loss%   Snt   Last   Avg  Best  Wrst StDev
 ------------
 
 
-### Ping Tests
+### Ping Tests IPv4
 PING www.heise.de (193.99.144.85): 56 data bytes
-64 bytes from 193.99.144.85: icmp_seq=0 ttl=247 time=26.221 ms
-64 bytes from 193.99.144.85: icmp_seq=1 ttl=247 time=25.372 ms
-64 bytes from 193.99.144.85: icmp_seq=2 ttl=247 time=31.361 ms
+64 bytes from 193.99.144.85: icmp_seq=0 ttl=247 time=30.787 ms
+64 bytes from 193.99.144.85: icmp_seq=1 ttl=247 time=24.657 ms
+64 bytes from 193.99.144.85: icmp_seq=2 ttl=247 time=25.555 ms
 
 --- www.heise.de ping statistics ---
 3 packets transmitted, 3 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 25.372/27.651/31.361/2.646 ms
+round-trip min/avg/max/stddev = 24.657/27.000/30.787/2.703 ms
 PING www.heise.de (193.99.144.85): 512 data bytes
-520 bytes from 193.99.144.85: icmp_seq=0 ttl=247 time=32.245 ms
-520 bytes from 193.99.144.85: icmp_seq=1 ttl=247 time=32.610 ms
-520 bytes from 193.99.144.85: icmp_seq=2 ttl=247 time=32.670 ms
+520 bytes from 193.99.144.85: icmp_seq=0 ttl=247 time=32.377 ms
+520 bytes from 193.99.144.85: icmp_seq=1 ttl=247 time=38.644 ms
+520 bytes from 193.99.144.85: icmp_seq=2 ttl=247 time=38.676 ms
 
 --- www.heise.de ping statistics ---
 3 packets transmitted, 3 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 32.245/32.508/32.670/0.188 ms
+round-trip min/avg/max/stddev = 32.377/36.566/38.676/2.962 ms
 PING www.heise.de (193.99.144.85): 1024 data bytes
-1032 bytes from 193.99.144.85: icmp_seq=0 ttl=247 time=39.804 ms
-1032 bytes from 193.99.144.85: icmp_seq=1 ttl=247 time=38.646 ms
-1032 bytes from 193.99.144.85: icmp_seq=2 ttl=247 time=46.226 ms
+1032 bytes from 193.99.144.85: icmp_seq=0 ttl=247 time=40.200 ms
+1032 bytes from 193.99.144.85: icmp_seq=1 ttl=247 time=39.459 ms
+1032 bytes from 193.99.144.85: icmp_seq=2 ttl=247 time=39.129 ms
 
 --- www.heise.de ping statistics ---
 3 packets transmitted, 3 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 38.646/41.559/46.226/3.334 ms
+round-trip min/avg/max/stddev = 39.129/39.596/40.200/0.448 ms
 PING www.heise.de (193.99.144.85): 1452 data bytes
-1460 bytes from 193.99.144.85: icmp_seq=0 ttl=247 time=45.825 ms
-1460 bytes from 193.99.144.85: icmp_seq=1 ttl=247 time=51.997 ms
-1460 bytes from 193.99.144.85: icmp_seq=2 ttl=247 time=52.051 ms
+1460 bytes from 193.99.144.85: icmp_seq=0 ttl=247 time=46.161 ms
+1460 bytes from 193.99.144.85: icmp_seq=1 ttl=247 time=52.170 ms
+1460 bytes from 193.99.144.85: icmp_seq=2 ttl=247 time=52.459 ms
 
 --- www.heise.de ping statistics ---
 3 packets transmitted, 3 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 45.825/49.958/52.051/2.922 ms
+round-trip min/avg/max/stddev = 46.161/50.263/52.459/2.903 ms
 ------------
 
 
-## Ping Tests v6
+## Ping Tests IPv6
+ping6: nodename nor servname provided, or not known
+ping6: nodename nor servname provided, or not known
+ping6: nodename nor servname provided, or not known
+ping6: nodename nor servname provided, or not known
 ####################################################
-.
-.
+
+
 Starte Test www.google.de
 ####################################################
-### Start 2020-05-05_210528
+### Start 2020-05-05_220553
 -- DNS-Test mit Kundeneinstellungen
 Server:		192.168.178.1
 Address:	192.168.178.1#53
 
 Non-authoritative answer:
 Name:	www.google.de
-Address: 172.217.18.163
+Address: 172.217.22.35
 
 -- DNS-Test ueber 8.8.8.8
 Server:		8.8.8.8
@@ -271,7 +278,7 @@ Address:	8.8.8.8#53
 
 Non-authoritative answer:
 Name:	www.google.de
-Address: 172.217.168.195
+Address: 172.217.168.227
 
 -- DNS-Test ueber 208.67.222.222
 Server:		208.67.222.222
@@ -282,3156 +289,102 @@ Name:	www.google.de
 Address: 172.217.20.67
 
  -- MTR/Tracert www.google.de mit IPv4
-Start: 2020-05-05T21:13:28+0200
+mtr -n -4 -r -c5 www.google.de
+Start: 2020-05-05T22:00:54+0200
 HOST: Volkers-MBP.fritz.box       Loss%   Snt   Last   Avg  Best  Wrst StDev
-  1.|-- fritz.box                  0.0%     2   18.8  10.5   2.3  18.8  11.7
-  2.|-- dslb-092-073-160-001.092.  0.0%     2   18.1  18.1  18.1  18.1   0.0
-  3.|-- 188.111.218.164            0.0%     2   18.3  18.2  18.1  18.3   0.2
-  4.|-- 92.79.214.238              0.0%     2   19.9  19.8  19.7  19.9   0.1
-  5.|-- 145.254.2.205              0.0%     2   99.5  64.2  29.0  99.5  49.9
-  6.|-- 145.254.2.205             50.0%     2   31.3  31.3  31.3  31.3   0.0
-  7.|-- 72.14.222.128              0.0%     2   27.8  27.7  27.6  27.8   0.2
-  8.|-- 108.170.241.237            0.0%     2   27.6  27.6  27.6  27.6   0.0
-  9.|-- 209.85.255.214             0.0%     2   28.7  29.1  28.7  29.5   0.5
- 10.|-- 209.85.142.97              0.0%     2   32.8  32.7  32.7  32.8   0.1
- 11.|-- 209.85.242.78              0.0%     2   31.9  32.1  31.9  32.4   0.3
- 12.|-- 108.170.251.129            0.0%     2   35.0  34.9  34.8  35.0   0.1
- 13.|-- 74.125.37.167              0.0%     2   34.7  34.7  34.6  34.7   0.1
- 14.|-- fra15s29-in-f3.1e100.net   0.0%     2   31.7  31.7  31.7  31.8   0.1
+  1.|-- 192.168.178.1              0.0%     5   18.7  18.5   2.1  34.6  11.5
+  2.|-- 92.73.160.1                0.0%     5   18.4  18.5  17.9  19.4   0.6
+  3.|-- 188.111.218.164           40.0%     5   17.4  18.1  17.4  18.9   0.8
+  4.|-- 92.79.214.238              0.0%     5   20.2  20.2  19.8  21.1   0.5
+  5.|-- 145.254.2.205             20.0%     5   29.0  29.7  29.0  30.3   0.6
+  6.|-- 145.254.2.205             20.0%     5   29.0  29.2  29.0  29.4   0.2
+  7.|-- 72.14.222.128              0.0%     5   28.5  28.4  27.8  28.9   0.4
+  8.|-- 108.170.241.236            0.0%     5   26.2  25.9  25.5  26.2   0.3
+  9.|-- 216.239.43.36              0.0%     5   26.7  27.8  26.2  32.9   2.8
+ 10.|-- 209.85.142.97              0.0%     5   32.2  33.0  32.2  34.0   0.7
+ 11.|-- 209.85.242.78              0.0%     5   32.1  41.5  31.4  78.9  20.9
+ 12.|-- 108.170.251.129            0.0%     5   35.0  34.9  33.9  35.6   0.7
+ 13.|-- 66.249.95.29               0.0%     5   34.2  34.4  34.2  34.8   0.3
+ 14.|-- 172.217.22.35              0.0%     5   34.2  34.3  33.9  34.6   0.3
 ------------
 -- MTR/Tracert www.google.de mit IPv6
-Start: 2020-05-05T21:13:36+0200
+mtr -6 -r -c2 www.google.de
+mtr: Address not available
+Start: 2020-05-05T22:01:04+0200
 HOST: Volkers-MBP.fritz.box       Loss%   Snt   Last   Avg  Best  Wrst StDev
 ------------
 
 
-### Ping Tests
-PING www.google.de (172.217.18.163): 56 data bytes
-64 bytes from 172.217.18.163: icmp_seq=0 ttl=52 time=32.039 ms
-64 bytes from 172.217.18.163: icmp_seq=1 ttl=52 time=35.145 ms
-64 bytes from 172.217.18.163: icmp_seq=2 ttl=52 time=31.565 ms
+### Ping Tests IPv4
+PING www.google.de (172.217.22.35): 56 data bytes
+64 bytes from 172.217.22.35: icmp_seq=0 ttl=52 time=49.610 ms
+64 bytes from 172.217.22.35: icmp_seq=1 ttl=52 time=99.148 ms
+64 bytes from 172.217.22.35: icmp_seq=2 ttl=52 time=40.909 ms
 
 --- www.google.de ping statistics ---
 3 packets transmitted, 3 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 31.565/32.916/35.145/1.588 ms
-PING www.google.de (172.217.18.163): 512 data bytes
-76 bytes from 172.217.18.163: icmp_seq=0 ttl=52 time=38.890 ms
+round-trip min/avg/max/stddev = 40.909/63.222/99.148/25.650 ms
+PING www.google.de (172.217.22.35): 512 data bytes
+76 bytes from 172.217.22.35: icmp_seq=0 ttl=52 time=41.528 ms
 wrong total length 96 instead of 540
-76 bytes from 172.217.18.163: icmp_seq=1 ttl=52 time=44.686 ms
+76 bytes from 172.217.22.35: icmp_seq=1 ttl=52 time=40.672 ms
 wrong total length 96 instead of 540
-76 bytes from 172.217.18.163: icmp_seq=2 ttl=52 time=38.844 ms
+76 bytes from 172.217.22.35: icmp_seq=2 ttl=52 time=46.922 ms
 wrong total length 96 instead of 540
 
 --- www.google.de ping statistics ---
 3 packets transmitted, 3 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 38.844/40.807/44.686/2.743 ms
-PING www.google.de (172.217.18.163): 1024 data bytes
-76 bytes from 172.217.18.163: icmp_seq=0 ttl=52 time=45.001 ms
+round-trip min/avg/max/stddev = 40.672/43.041/46.922/2.767 ms
+PING www.google.de (172.217.22.35): 1024 data bytes
+76 bytes from 172.217.22.35: icmp_seq=0 ttl=52 time=47.621 ms
 wrong total length 96 instead of 1052
-76 bytes from 172.217.18.163: icmp_seq=1 ttl=52 time=51.299 ms
+76 bytes from 172.217.22.35: icmp_seq=1 ttl=52 time=54.267 ms
 wrong total length 96 instead of 1052
-76 bytes from 172.217.18.163: icmp_seq=2 ttl=52 time=51.258 ms
+76 bytes from 172.217.22.35: icmp_seq=2 ttl=52 time=54.598 ms
 wrong total length 96 instead of 1052
 
 --- www.google.de ping statistics ---
 3 packets transmitted, 3 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 45.001/49.186/51.299/2.959 ms
-PING www.google.de (172.217.18.163): 1452 data bytes
-76 bytes from 172.217.18.163: icmp_seq=0 ttl=52 time=50.598 ms
+round-trip min/avg/max/stddev = 47.621/52.162/54.598/3.214 ms
+PING www.google.de (172.217.22.35): 1452 data bytes
+76 bytes from 172.217.22.35: icmp_seq=0 ttl=52 time=54.026 ms
 wrong total length 96 instead of 1480
-76 bytes from 172.217.18.163: icmp_seq=1 ttl=52 time=50.416 ms
+76 bytes from 172.217.22.35: icmp_seq=1 ttl=52 time=59.807 ms
 wrong total length 96 instead of 1480
-76 bytes from 172.217.18.163: icmp_seq=2 ttl=52 time=57.217 ms
+76 bytes from 172.217.22.35: icmp_seq=2 ttl=52 time=54.037 ms
 wrong total length 96 instead of 1480
 
 --- www.google.de ping statistics ---
 3 packets transmitted, 3 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 50.416/52.744/57.217/3.164 ms
+round-trip min/avg/max/stddev = 54.026/55.957/59.807/2.723 ms
 ------------
 
 
-## Ping Tests v6
+## Ping Tests IPv6
+ping6: nodename nor servname provided, or not known
+ping6: nodename nor servname provided, or not known
+ping6: nodename nor servname provided, or not known
+ping6: nodename nor servname provided, or not known
 ####################################################
-.
-.
+
+
 Starte Test www.youtube.de
 ####################################################
-### Start 2020-05-05_210544
+### Start 2020-05-05_220513
 -- DNS-Test mit Kundeneinstellungen
 Server:		192.168.178.1
 Address:	192.168.178.1#53
 
 Non-authoritative answer:
 www.youtube.de	canonical name = youtube-ui.l.google.com.
-Name:	youtube-ui.l.google.com
-Address: 172.217.21.238
-Name:	youtube-ui.l.google.com
-Address: 172.217.21.206
-Name:	youtube-ui.l.google.com
-Address: 172.217.23.142
-Name:	youtube-ui.l.google.com
-Address: 172.217.22.14
-Name:	youtube-ui.l.google.com
-Address: 216.58.206.14
-Name:	youtube-ui.l.google.com
-Address: 172.217.18.174
-Name:	youtube-ui.l.google.com
-Address: 216.58.210.14
-Name:	youtube-ui.l.google.com
-Address: 172.217.16.142
-Name:	youtube-ui.l.google.com
-Address: 172.217.18.110
-Name:	youtube-ui.l.google.com
-Address: 172.217.23.110
-Name:	youtube-ui.l.google.com
-Address: 216.58.212.142
 Name:	youtube-ui.l.google.com
 Address: 172.217.22.46
-
--- DNS-Test ueber 8.8.8.8
-Server:		8.8.8.8
-Address:	8.8.8.8#53
-
-Non-authoritative answer:
-www.youtube.de	canonical name = youtube-ui.l.google.com.
-Name:	youtube-ui.l.google.com
-Address: 172.217.168.206
-Name:	youtube-ui.l.google.com
-Address: 216.58.208.110
-Name:	youtube-ui.l.google.com
-Address: 172.217.17.142
-Name:	youtube-ui.l.google.com
-Address: 216.58.211.110
-Name:	youtube-ui.l.google.com
-Address: 172.217.20.78
-Name:	youtube-ui.l.google.com
-Address: 172.217.168.238
-Name:	youtube-ui.l.google.com
-Address: 172.217.17.46
-Name:	youtube-ui.l.google.com
-Address: 172.217.17.78
-
--- DNS-Test ueber 208.67.222.222
-Server:		208.67.222.222
-Address:	208.67.222.222#53
-
-Non-authoritative answer:
-www.youtube.de	canonical name = youtube-ui.l.google.com.
-Name:	youtube-ui.l.google.com
-Address: 172.217.20.110
-Name:	youtube-ui.l.google.com
-Address: 172.217.168.206
-Name:	youtube-ui.l.google.com
-Address: 172.217.168.238
-Name:	youtube-ui.l.google.com
-Address: 172.217.17.46
-Name:	youtube-ui.l.google.com
-Address: 172.217.17.78
-Name:	youtube-ui.l.google.com
-Address: 172.217.19.206
-Name:	youtube-ui.l.google.com
-Address: 172.217.20.78
-
- -- MTR/Tracert www.youtube.de mit IPv4
-Start: 2020-05-05T21:13:44+0200
-HOST: Volkers-MBP.fritz.box       Loss%   Snt   Last   Avg  Best  Wrst StDev
-  1.|-- fritz.box                  0.0%     2   17.7   9.8   2.0  17.7  11.1
-  2.|-- dslb-092-073-160-001.092.  0.0%     2   29.6  24.1  18.6  29.6   7.8
-  3.|-- ???                       100.0     2    0.0   0.0   0.0   0.0   0.0
-  4.|-- 92.79.214.238              0.0%     2   20.7  20.4  20.1  20.7   0.4
-  5.|-- 145.254.2.205              0.0%     2   28.6  29.1  28.6  29.6   0.6
-  6.|-- 145.254.2.205             50.0%     2   28.9  28.9  28.9  28.9   0.0
-  7.|-- 72.14.222.128              0.0%     2   27.8  28.0  27.8  28.1   0.2
-  8.|-- 108.170.241.173            0.0%     2   28.5  28.6  28.5  28.8   0.2
-  9.|-- 209.85.253.113             0.0%     2   26.0  34.9  26.0  43.7  12.5
- 10.|-- 108.170.234.11             0.0%     2   32.0  31.9  31.9  32.0   0.1
- 11.|-- 209.85.245.31              0.0%     2   34.7  39.1  34.7  43.6   6.3
- 12.|-- 108.170.252.65             0.0%     2   40.2  38.0  35.8  40.2   3.1
- 13.|-- 172.253.73.155             0.0%     2   32.0  32.2  32.0  32.5   0.4
- 14.|-- mil04s23-in-f110.1e100.ne  0.0%     2   31.9  32.0  31.9  32.1   0.1
-------------
--- MTR/Tracert www.youtube.de mit IPv6
-Start: 2020-05-05T21:13:54+0200
-HOST: Volkers-MBP.fritz.box       Loss%   Snt   Last   Avg  Best  Wrst StDev
-------------
-
-
-### Ping Tests
-PING youtube-ui.l.google.com (216.58.212.142): 56 data bytes
-64 bytes from 216.58.212.142: icmp_seq=0 ttl=51 time=32.340 ms
-64 bytes from 216.58.212.142: icmp_seq=1 ttl=51 time=32.669 ms
-64 bytes from 216.58.212.142: icmp_seq=2 ttl=51 time=33.973 ms
-
---- youtube-ui.l.google.com ping statistics ---
-3 packets transmitted, 3 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 32.340/32.994/33.973/0.705 ms
-PING youtube-ui.l.google.com (216.58.212.142): 512 data bytes
-76 bytes from 216.58.212.142: icmp_seq=0 ttl=51 time=38.345 ms
-wrong total length 96 instead of 540
-76 bytes from 216.58.212.142: icmp_seq=1 ttl=51 time=44.255 ms
-wrong total length 96 instead of 540
-76 bytes from 216.58.212.142: icmp_seq=2 ttl=51 time=42.062 ms
-wrong total length 96 instead of 540
-
---- youtube-ui.l.google.com ping statistics ---
-3 packets transmitted, 3 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 38.345/41.554/44.255/2.439 ms
-PING youtube-ui.l.google.com (216.58.212.142): 1024 data bytes
-76 bytes from 216.58.212.142: icmp_seq=0 ttl=51 time=46.985 ms
-wrong total length 96 instead of 1052
-76 bytes from 216.58.212.142: icmp_seq=1 ttl=51 time=51.526 ms
-wrong total length 96 instead of 1052
-76 bytes from 216.58.212.142: icmp_seq=2 ttl=51 time=45.032 ms
-wrong total length 96 instead of 1052
-
---- youtube-ui.l.google.com ping statistics ---
-3 packets transmitted, 3 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 45.032/47.848/51.526/2.720 ms
-PING youtube-ui.l.google.com (216.58.212.142): 1452 data bytes
-76 bytes from 216.58.212.142: icmp_seq=0 ttl=51 time=51.328 ms
-wrong total length 96 instead of 1480
-76 bytes from 216.58.212.142: icmp_seq=1 ttl=51 time=57.670 ms
-wrong total length 96 instead of 1480
-76 bytes from 216.58.212.142: icmp_seq=2 ttl=51 time=57.402 ms
-wrong total length 96 instead of 1480
-
---- youtube-ui.l.google.com ping statistics ---
-3 packets transmitted, 3 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 51.328/55.467/57.670/2.929 ms
-------------
-
-
-## Ping Tests v6
-####################################################
-.
-.
-Starte Test www.1und1.de
-####################################################
-### Start 2020-05-05_210503
--- DNS-Test mit Kundeneinstellungen
-Server:		192.168.178.1
-Address:	192.168.178.1#53
-
-Non-authoritative answer:
-Name:	www.1und1.de
-Address: 217.160.72.6
-
--- DNS-Test ueber 8.8.8.8
-Server:		8.8.8.8
-Address:	8.8.8.8#53
-
-Non-authoritative answer:
-Name:	www.1und1.de
-Address: 217.160.72.6
-
--- DNS-Test ueber 208.67.222.222
-Server:		208.67.222.222
-Address:	208.67.222.222#53
-
-Non-authoritative answer:
-Name:	www.1und1.de
-Address: 217.160.72.6
-
- -- MTR/Tracert www.1und1.de mit IPv4
-Start: 2020-05-05T21:14:03+0200
-HOST: Volkers-MBP.fritz.box       Loss%   Snt   Last   Avg  Best  Wrst StDev
-  1.|-- fritz.box                  0.0%     2   18.1   9.9   1.7  18.1  11.6
-  2.|-- dslb-092-073-160-001.092.  0.0%     2   18.3  18.6  18.3  18.9   0.4
-  3.|-- ???                       100.0     2    0.0   0.0   0.0   0.0   0.0
-  4.|-- 92.79.214.98               0.0%     2   19.5  19.0  18.5  19.5   0.7
-  5.|-- 145.254.2.207              0.0%     2   25.9  25.8  25.8  25.9   0.1
-  6.|-- 145.254.2.207             50.0%     2   25.8  25.8  25.8  25.8   0.0
-  7.|-- vodafone-p.bb-a.fra3.fra.  0.0%     2   24.6  24.6  24.6  24.6   0.0
-  8.|-- www.1und1.de               0.0%     2   24.1  24.3  24.1  24.6   0.3
-------------
--- MTR/Tracert www.1und1.de mit IPv6
-Start: 2020-05-05T21:14:10+0200
-HOST: Volkers-MBP.fritz.box       Loss%   Snt   Last   Avg  Best  Wrst StDev
-------------
-
-
-### Ping Tests
-PING www.1und1.de (217.160.72.6): 56 data bytes
-Request timeout for icmp_seq 0
-Request timeout for icmp_seq 1
-
---- www.1und1.de ping statistics ---
-3 packets transmitted, 0 packets received, 100.0% packet loss
-PING www.1und1.de (217.160.72.6): 512 data bytes
-520 bytes from 217.160.72.6: icmp_seq=0 ttl=59 time=31.993 ms
-520 bytes from 217.160.72.6: icmp_seq=1 ttl=59 time=37.549 ms
-520 bytes from 217.160.72.6: icmp_seq=2 ttl=59 time=37.242 ms
-
---- www.1und1.de ping statistics ---
-3 packets transmitted, 3 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 31.993/35.595/37.549/2.550 ms
-PING www.1und1.de (217.160.72.6): 1024 data bytes
-1032 bytes from 217.160.72.6: icmp_seq=0 ttl=59 time=38.994 ms
-1032 bytes from 217.160.72.6: icmp_seq=1 ttl=59 time=38.945 ms
-1032 bytes from 217.160.72.6: icmp_seq=2 ttl=59 time=38.593 ms
-
---- www.1und1.de ping statistics ---
-3 packets transmitted, 3 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 38.593/38.844/38.994/0.179 ms
-PING www.1und1.de (217.160.72.6): 1452 data bytes
-1460 bytes from 217.160.72.6: icmp_seq=0 ttl=59 time=45.495 ms
-1460 bytes from 217.160.72.6: icmp_seq=1 ttl=59 time=45.408 ms
-1460 bytes from 217.160.72.6: icmp_seq=2 ttl=59 time=45.399 ms
-
---- www.1und1.de ping statistics ---
-3 packets transmitted, 3 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 45.399/45.434/45.495/0.043 ms
-------------
-
-
-## Ping Tests v6
-####################################################
-.
-.
-Starte Test sip.1und1.de
-####################################################
-### Start 2020-05-05_210529
--- DNS-Test mit Kundeneinstellungen
-Server:		192.168.178.1
-Address:	192.168.178.1#53
-
-Non-authoritative answer:
-Name:	sip.1und1.de
-Address: 212.227.124.129
-Name:	sip.1und1.de
-Address: 212.227.124.130
-
--- DNS-Test ueber 8.8.8.8
-Server:		8.8.8.8
-Address:	8.8.8.8#53
-
-Non-authoritative answer:
-Name:	sip.1und1.de
-Address: 212.227.124.130
-Name:	sip.1und1.de
-Address: 212.227.124.129
-
--- DNS-Test ueber 208.67.222.222
-Server:		208.67.222.222
-Address:	208.67.222.222#53
-
-Non-authoritative answer:
-Name:	sip.1und1.de
-Address: 212.227.124.129
-Name:	sip.1und1.de
-Address: 212.227.124.130
-
- -- MTR/Tracert sip.1und1.de mit IPv4
-Start: 2020-05-05T21:14:29+0200
-HOST: Volkers-MBP.fritz.box       Loss%   Snt   Last   Avg  Best  Wrst StDev
-  1.|-- fritz.box                  0.0%     2   20.0  10.9   1.8  20.0  12.9
-  2.|-- dslb-092-073-160-001.092.  0.0%     2   30.0  29.0  28.0  30.0   1.4
-  3.|-- 188.111.218.164            0.0%     2   18.3  19.7  18.3  21.1   1.9
-  4.|-- 92.79.214.238              0.0%     2   20.1  19.9  19.8  20.1   0.2
-  5.|-- 145.254.2.209             50.0%     2   25.7  25.7  25.7  25.7   0.0
-  6.|-- ???                       100.0     2    0.0   0.0   0.0   0.0   0.0
-  7.|-- vodafone-p.bb-a.fra3.fra.  0.0%     2   24.6  24.6  24.6  24.7   0.1
-  8.|-- ae-10-0.bb-a.bap.rhr.de.o  0.0%     2   32.6  32.8  32.6  33.0   0.3
-  9.|-- ae-2-0.bb-a.tp.kae.de.one  0.0%     2   31.5  31.1  30.8  31.5   0.5
- 10.|-- ae-0-0.gw-diste2-a.bs.kae  0.0%     2   29.2  28.9  28.7  29.2   0.4
- 11.|-- sipbalance-c-bs.1und1.de   0.0%     2   28.8  29.0  28.8  29.1   0.2
-------------
--- MTR/Tracert sip.1und1.de mit IPv6
-Start: 2020-05-05T21:14:37+0200
-HOST: Volkers-MBP.fritz.box       Loss%   Snt   Last   Avg  Best  Wrst StDev
-------------
-
-
-### Ping Tests
-PING sip.1und1.de (212.227.124.129): 56 data bytes
-64 bytes from 212.227.124.129: icmp_seq=0 ttl=56 time=30.063 ms
-64 bytes from 212.227.124.129: icmp_seq=1 ttl=56 time=28.304 ms
-64 bytes from 212.227.124.129: icmp_seq=2 ttl=56 time=28.457 ms
-
---- sip.1und1.de ping statistics ---
-3 packets transmitted, 3 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 28.304/28.941/30.063/0.796 ms
-PING sip.1und1.de (212.227.124.129): 512 data bytes
-520 bytes from 212.227.124.129: icmp_seq=0 ttl=56 time=35.911 ms
-520 bytes from 212.227.124.129: icmp_seq=1 ttl=56 time=36.017 ms
-520 bytes from 212.227.124.129: icmp_seq=2 ttl=56 time=36.117 ms
-
---- sip.1und1.de ping statistics ---
-3 packets transmitted, 3 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 35.911/36.015/36.117/0.084 ms
-PING sip.1und1.de (212.227.124.129): 1024 data bytes
-1032 bytes from 212.227.124.129: icmp_seq=0 ttl=56 time=42.740 ms
-1032 bytes from 212.227.124.129: icmp_seq=1 ttl=56 time=48.858 ms
-1032 bytes from 212.227.124.129: icmp_seq=2 ttl=56 time=42.632 ms
-
---- sip.1und1.de ping statistics ---
-3 packets transmitted, 3 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 42.632/44.743/48.858/2.910 ms
-PING sip.1und1.de (212.227.124.129): 1452 data bytes
-1460 bytes from 212.227.124.129: icmp_seq=0 ttl=56 time=50.040 ms
-1460 bytes from 212.227.124.129: icmp_seq=1 ttl=56 time=55.791 ms
-1460 bytes from 212.227.124.129: icmp_seq=2 ttl=56 time=49.485 ms
-
---- sip.1und1.de ping statistics ---
-3 packets transmitted, 3 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 49.485/51.772/55.791/2.851 ms
-------------
-
-
-## Ping Tests v6
-####################################################
-.
-.
-Starte Test www.gmx.de
-####################################################
-### Start 2020-05-05_210545
--- DNS-Test mit Kundeneinstellungen
-Server:		192.168.178.1
-Address:	192.168.178.1#53
-
-Non-authoritative answer:
-www.gmx.de	canonical name = redir.g-ha-web.de.
-Name:	redir.g-ha-web.de
-Address: 82.165.229.87
-
--- DNS-Test ueber 8.8.8.8
-Server:		8.8.8.8
-Address:	8.8.8.8#53
-
-Non-authoritative answer:
-www.gmx.de	canonical name = redir.g-ha-web.de.
-Name:	redir.g-ha-web.de
-Address: 82.165.229.87
-
--- DNS-Test ueber 208.67.222.222
-Server:		208.67.222.222
-Address:	208.67.222.222#53
-
-Non-authoritative answer:
-www.gmx.de	canonical name = redir.g-ha-web.de.
-Name:	redir.g-ha-web.de
-Address: 82.165.229.87
-
- -- MTR/Tracert www.gmx.de mit IPv4
-Start: 2020-05-05T21:14:45+0200
-HOST: Volkers-MBP.fritz.box       Loss%   Snt   Last   Avg  Best  Wrst StDev
-  1.|-- fritz.box                  0.0%     2   18.5  10.3   2.0  18.5  11.6
-  2.|-- dslb-092-073-160-001.092.  0.0%     2   18.6  18.3  18.0  18.6   0.4
-  3.|-- ???                       100.0     2    0.0   0.0   0.0   0.0   0.0
-  4.|-- 92.79.214.238              0.0%     2   19.4  19.8  19.4  20.2   0.6
-  5.|-- 145.254.2.209              0.0%     2   25.0  25.4  25.0  25.7   0.5
-  6.|-- 145.254.2.209              0.0%     2   25.2  25.2  25.2  25.2   0.0
-  7.|-- vodafone-p.bb-a.fra3.fra.  0.0%     2   25.1  25.2  25.1  25.3   0.1
-  8.|-- ae-14.bb-b.fr7.fra.de.one  0.0%     2   30.2  28.8  27.5  30.2   1.9
-  9.|-- ae-9.bb-b.bs.kae.de.onean  0.0%     2   27.1  26.8  26.5  27.1   0.4
- 10.|-- ae-0-0.gw-diste2-a.bs.kae  0.0%     2   29.3  29.8  29.3  30.3   0.7
- 11.|-- redir-bs.web.de            0.0%     2   26.5  27.8  26.5  29.1   1.8
-------------
--- MTR/Tracert www.gmx.de mit IPv6
-Start: 2020-05-05T21:14:53+0200
-HOST: Volkers-MBP.fritz.box       Loss%   Snt   Last   Avg  Best  Wrst StDev
-------------
-
-
-### Ping Tests
-PING redir.g-ha-web.de (82.165.229.87): 56 data bytes
-64 bytes from 82.165.229.87: icmp_seq=0 ttl=247 time=26.888 ms
-64 bytes from 82.165.229.87: icmp_seq=1 ttl=247 time=29.517 ms
-64 bytes from 82.165.229.87: icmp_seq=2 ttl=247 time=32.549 ms
-
---- redir.g-ha-web.de ping statistics ---
-3 packets transmitted, 3 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 26.888/29.651/32.549/2.313 ms
-PING redir.g-ha-web.de (82.165.229.87): 512 data bytes
-520 bytes from 82.165.229.87: icmp_seq=0 ttl=247 time=33.576 ms
-520 bytes from 82.165.229.87: icmp_seq=1 ttl=247 time=34.405 ms
-520 bytes from 82.165.229.87: icmp_seq=2 ttl=247 time=40.005 ms
-
---- redir.g-ha-web.de ping statistics ---
-3 packets transmitted, 3 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 33.576/35.995/40.005/2.855 ms
-PING redir.g-ha-web.de (82.165.229.87): 1024 data bytes
-1032 bytes from 82.165.229.87: icmp_seq=0 ttl=247 time=41.275 ms
-1032 bytes from 82.165.229.87: icmp_seq=1 ttl=247 time=47.392 ms
-1032 bytes from 82.165.229.87: icmp_seq=2 ttl=247 time=40.734 ms
-
---- redir.g-ha-web.de ping statistics ---
-3 packets transmitted, 3 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 40.734/43.134/47.392/3.019 ms
-PING redir.g-ha-web.de (82.165.229.87): 1452 data bytes
-1460 bytes from 82.165.229.87: icmp_seq=0 ttl=247 time=47.522 ms
-1460 bytes from 82.165.229.87: icmp_seq=1 ttl=247 time=47.011 ms
-1460 bytes from 82.165.229.87: icmp_seq=2 ttl=247 time=47.882 ms
-
---- redir.g-ha-web.de ping statistics ---
-3 packets transmitted, 3 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 47.011/47.472/47.882/0.357 ms
-------------
-
-
-## Ping Tests v6
-####################################################
-.
-.
-### START MacOS IP Configuration ###
-lo0: flags=8049<UP,LOOPBACK,RUNNING,MULTICAST> mtu 16384
-	options=1203<RXCSUM,TXCSUM,TXSTATUS,SW_TIMESTAMP>
-	inet 127.0.0.1 netmask 0xff000000 
-	inet6 ::1 prefixlen 128 
-	inet6 fe80::1%lo0 prefixlen 64 scopeid 0x1 
-	nd6 options=201<PERFORMNUD,DAD>
-gif0: flags=8010<POINTOPOINT,MULTICAST> mtu 1280
-stf0: flags=0<> mtu 1280
-en5: flags=8863<UP,BROADCAST,SMART,RUNNING,SIMPLEX,MULTICAST> mtu 1500
-	ether ac:de:48:00:11:22 
-	inet6 fe80::aede:48ff:fe00:1122%en5 prefixlen 64 scopeid 0x4 
-	nd6 options=201<PERFORMNUD,DAD>
-	media: autoselect (100baseTX <full-duplex>)
-	status: active
-bridge0: flags=8863<UP,BROADCAST,SMART,RUNNING,SIMPLEX,MULTICAST> mtu 1500
-	options=63<RXCSUM,TXCSUM,TSO4,TSO6>
-	ether 82:22:7e:83:9c:01 
-	Configuration:
-		id 0:0:0:0:0:0 priority 0 hellotime 0 fwddelay 0
-		maxage 0 holdcnt 0 proto stp maxaddr 100 timeout 1200
-		root id 0:0:0:0:0:0 priority 0 ifcost 0 port 0
-		ipfilter disabled flags 0x2
-	member: en1 flags=3<LEARNING,DISCOVER>
-	        ifmaxaddr 0 port 8 priority 0 path cost 0
-	member: en2 flags=3<LEARNING,DISCOVER>
-	        ifmaxaddr 0 port 9 priority 0 path cost 0
-	member: en3 flags=3<LEARNING,DISCOVER>
-	        ifmaxaddr 0 port 10 priority 0 path cost 0
-	member: en4 flags=3<LEARNING,DISCOVER>
-	        ifmaxaddr 0 port 11 priority 0 path cost 0
-	nd6 options=201<PERFORMNUD,DAD>
-	media: <unknown type>
-	status: inactive
-ap1: flags=8802<BROADCAST,SIMPLEX,MULTICAST> mtu 1500
-	options=400<CHANNEL_IO>
-	ether f2:18:98:26:d2:71 
-	media: autoselect
-	status: inactive
-en0: flags=8863<UP,BROADCAST,SMART,RUNNING,SIMPLEX,MULTICAST> mtu 1500
-	options=400<CHANNEL_IO>
-	ether f0:18:98:26:d2:71 
-	inet 192.168.178.45 netmask 0xffffff00 broadcast 192.168.178.255
-	inet6 fe80::19:9f40:cdb0:800e%en0 prefixlen 64 secured scopeid 0x7 
-	nd6 options=201<PERFORMNUD,DAD>
-	media: autoselect
-	status: active
-en1: flags=8963<UP,BROADCAST,SMART,RUNNING,PROMISC,SIMPLEX,MULTICAST> mtu 1500
-	options=460<TSO4,TSO6,CHANNEL_IO>
-	ether 82:22:7e:83:9c:01 
-	media: autoselect <full-duplex>
-	status: inactive
-en2: flags=8963<UP,BROADCAST,SMART,RUNNING,PROMISC,SIMPLEX,MULTICAST> mtu 1500
-	options=460<TSO4,TSO6,CHANNEL_IO>
-	ether 82:22:7e:83:9c:00 
-	media: autoselect <full-duplex>
-	status: inactive
-en3: flags=8963<UP,BROADCAST,SMART,RUNNING,PROMISC,SIMPLEX,MULTICAST> mtu 1500
-	options=460<TSO4,TSO6,CHANNEL_IO>
-	ether 82:22:7e:83:9c:05 
-	media: autoselect <full-duplex>
-	status: inactive
-en4: flags=8963<UP,BROADCAST,SMART,RUNNING,PROMISC,SIMPLEX,MULTICAST> mtu 1500
-	options=460<TSO4,TSO6,CHANNEL_IO>
-	ether 82:22:7e:83:9c:04 
-	media: autoselect <full-duplex>
-	status: inactive
-p2p0: flags=8843<UP,BROADCAST,RUNNING,SIMPLEX,MULTICAST> mtu 2304
-	options=400<CHANNEL_IO>
-	ether 02:18:98:26:d2:71 
-	media: autoselect
-	status: inactive
-awdl0: flags=8943<UP,BROADCAST,RUNNING,PROMISC,SIMPLEX,MULTICAST> mtu 1484
-	options=400<CHANNEL_IO>
-	ether 3e:f8:44:e1:52:04 
-	inet6 fe80::3cf8:44ff:fee1:5204%awdl0 prefixlen 64 scopeid 0xd 
-	nd6 options=201<PERFORMNUD,DAD>
-	media: autoselect
-	status: active
-llw0: flags=8863<UP,BROADCAST,SMART,RUNNING,SIMPLEX,MULTICAST> mtu 1500
-	options=400<CHANNEL_IO>
-	ether 3e:f8:44:e1:52:04 
-	inet6 fe80::3cf8:44ff:fee1:5204%llw0 prefixlen 64 scopeid 0xe 
-	nd6 options=201<PERFORMNUD,DAD>
-	media: autoselect
-	status: active
-utun0: flags=8051<UP,POINTOPOINT,RUNNING,MULTICAST> mtu 1380
-	inet6 fe80::ddff:2736:5801:2cbf%utun0 prefixlen 64 scopeid 0xf 
-	nd6 options=201<PERFORMNUD,DAD>
-utun1: flags=8051<UP,POINTOPOINT,RUNNING,MULTICAST> mtu 2000
-	inet6 fe80::cd72:d050:587c:e97a%utun1 prefixlen 64 scopeid 0x10 
-	nd6 options=201<PERFORMNUD,DAD>
-gpd0: flags=8862<BROADCAST,SMART,RUNNING,SIMPLEX,MULTICAST> mtu 1400
-	ether 02:50:41:00:01:01 
-	inet 10.39.90.45 netmask 0xffffffff broadcast 10.39.90.45
-### END MACOs IP Configuration ###
-
-
-### START route ip4 ###
-Routing tables
-
-Internet:
-Destination        Gateway            Flags        Netif Expire
-default            192.168.178.1      UGSc           en0       
-127                127.0.0.1          UCS            lo0       
-127.0.0.1          127.0.0.1          UH             lo0       
-169.254            link#7             UCS            en0      !
-192.168.178        link#7             UCS            en0      !
-192.168.178.1/32   link#7             UCS            en0      !
-192.168.178.1      c8:e:14:3a:de:13   UHLWIir        en0   1154
-192.168.178.24     0:1d:ec:10:73:d4   UHLWI          en0   1065
-192.168.178.27     3c:15:c2:cc:74:88  UHLWI          en0     38
-192.168.178.29     6c:ad:f8:b8:5e:12  UHLWIi         en0   1145
-192.168.178.30     54:60:9:fc:fc:2    UHLWIi         en0    943
-192.168.178.31     54:60:9:fd:35:42   UHLWIi         en0   1199
-192.168.178.34     30:d3:2d:79:d6:86  UHLWI          en0    952
-192.168.178.35     0:11:32:32:c4:5d   UHLWIi         en0    804
-192.168.178.45/32  link#7             UCS            en0      !
-192.168.178.255    ff:ff:ff:ff:ff:ff  UHLWbI         en0      !
-224.0.0/4          link#7             UmCS           en0      !
-224.0.0.251        1:0:5e:0:0:fb      UHmLWI         en0       
-239.255.255.250    1:0:5e:7f:ff:fa    UHmLWI         en0       
-255.255.255.255/32 link#7             UCS            en0      !
-### END route ip4 ###
-
-
-### START route ip6 ###
-Routing tables
-
-Internet6:
-Destination                             Gateway                         Flags         Netif Expire
-default                                 fe80::%utun0                    UGcI          utun0       
-default                                 fe80::%utun1                    UGcI          utun1       
-::1                                     ::1                             UHL             lo0       
-fe80::%lo0/64                           fe80::1%lo0                     UcI             lo0       
-fe80::1%lo0                             link#1                          UHLI            lo0       
-fe80::%en5/64                           link#4                          UCI             en5       
-fe80::aede:48ff:fe00:1122%en5           ac:de:48:0:11:22                UHLI            lo0       
-fe80::aede:48ff:fe33:4455%en5           ac:de:48:33:44:55               UHLWIi          en5       
-fe80::%en0/64                           link#7                          UCI             en0       
-fe80::19:9f40:cdb0:800e%en0             f0:18:98:26:d2:71               UHLI            lo0       
-fe80::%awdl0/64                         link#13                         UCI           awdl0       
-fe80::3cf8:44ff:fee1:5204%awdl0         3e:f8:44:e1:52:4                UHLI            lo0       
-fe80::%llw0/64                          link#14                         UCI            llw0       
-fe80::3cf8:44ff:fee1:5204%llw0          3e:f8:44:e1:52:4                UHLI            lo0       
-fe80::%utun0/64                         fe80::ddff:2736:5801:2cbf%utun0 UcI           utun0       
-fe80::ddff:2736:5801:2cbf%utun0         link#15                         UHLI            lo0       
-fe80::%utun1/64                         fe80::cd72:d050:587c:e97a%utun1 UcI           utun1       
-fe80::cd72:d050:587c:e97a%utun1         link#16                         UHLI            lo0       
-ff01::%lo0/32                           ::1                             UmCI            lo0       
-ff01::%en5/32                           link#4                          UmCI            en5       
-ff01::%en0/32                           link#7                          UmCI            en0       
-ff01::%awdl0/32                         link#13                         UmCI          awdl0       
-ff01::%llw0/32                          link#14                         UmCI           llw0       
-ff01::%utun0/32                         fe80::ddff:2736:5801:2cbf%utun0 UmCI          utun0       
-ff01::%utun1/32                         fe80::cd72:d050:587c:e97a%utun1 UmCI          utun1       
-ff02::%lo0/32                           ::1                             UmCI            lo0       
-ff02::%en5/32                           link#4                          UmCI            en5       
-ff02::%en0/32                           link#7                          UmCI            en0       
-ff02::%awdl0/32                         link#13                         UmCI          awdl0       
-ff02::%llw0/32                          link#14                         UmCI           llw0       
-ff02::%utun0/32                         fe80::ddff:2736:5801:2cbf%utun0 UmCI          utun0       
-ff02::%utun1/32                         fe80::cd72:d050:587c:e97a%utun1 UmCI          utun1       
-### END route ip6###
-
-
-Starte Test www.heise.de
-####################################################
-### Start 2020-05-05_210529
--- DNS-Test mit Kundeneinstellungen
-Server:		192.168.178.1
-Address:	192.168.178.1#53
-
-Non-authoritative answer:
-Name:	www.heise.de
-Address: 193.99.144.85
-
--- DNS-Test ueber 8.8.8.8
-Server:		8.8.8.8
-Address:	8.8.8.8#53
-
-Non-authoritative answer:
-Name:	www.heise.de
-Address: 193.99.144.85
-
--- DNS-Test ueber 208.67.222.222
-Server:		208.67.222.222
-Address:	208.67.222.222#53
-
-Non-authoritative answer:
-Name:	www.heise.de
-Address: 193.99.144.85
-
- -- MTR/Tracert www.heise.de mit IPv4
-Start: 2020-05-05T21:16:29+0200
-HOST: Volkers-MBP.fritz.box       Loss%   Snt   Last   Avg  Best  Wrst StDev
-  1.|-- fritz.box                  0.0%     2   18.4  10.0   1.6  18.4  11.9
-  2.|-- dslb-092-073-160-001.092.  0.0%     2   18.6  18.5  18.4  18.6   0.2
-  3.|-- 188.111.218.164            0.0%     2   18.1  17.8  17.5  18.1   0.4
-  4.|-- 92.79.214.238              0.0%     2   19.5  19.5  19.4  19.5   0.1
-  5.|-- 145.254.2.195              0.0%     2   25.5  25.3  25.1  25.5   0.3
-  6.|-- 145.254.2.195             50.0%     2   25.0  25.0  25.0  25.0   0.0
-  7.|-- te0-0-2-3.c350.f.de.plusl  0.0%     2   25.1  26.7  25.1  28.4   2.3
-  8.|-- 82.98.102.1                0.0%     2   25.8  25.3  24.7  25.8   0.8
-  9.|-- 82.98.102.132              0.0%     2   26.8  26.6  26.4  26.8   0.3
- 10.|-- 82.98.102.23               0.0%     2   25.7  25.5  25.3  25.7   0.2
- 11.|-- 212.19.61.13               0.0%     2   25.7  25.2  24.7  25.7   0.7
- 12.|-- www.heise.de               0.0%     2   24.8  25.1  24.8  25.5   0.5
-------------
--- MTR/Tracert www.heise.de mit IPv6
-mtr: Address not available
-Start: 2020-05-05T21:16:37+0200
-HOST: Volkers-MBP.fritz.box       Loss%   Snt   Last   Avg  Best  Wrst StDev
-------------
-
-
-### Ping Tests IPv4
-PING www.heise.de (193.99.144.85): 56 data bytes
-64 bytes from 193.99.144.85: icmp_seq=0 ttl=247 time=25.500 ms
-64 bytes from 193.99.144.85: icmp_seq=1 ttl=247 time=34.322 ms
-64 bytes from 193.99.144.85: icmp_seq=2 ttl=247 time=28.115 ms
-
---- www.heise.de ping statistics ---
-3 packets transmitted, 3 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 25.500/29.312/34.322/3.700 ms
-PING www.heise.de (193.99.144.85): 512 data bytes
-520 bytes from 193.99.144.85: icmp_seq=0 ttl=247 time=33.748 ms
-520 bytes from 193.99.144.85: icmp_seq=1 ttl=247 time=32.672 ms
-520 bytes from 193.99.144.85: icmp_seq=2 ttl=247 time=37.835 ms
-
---- www.heise.de ping statistics ---
-3 packets transmitted, 3 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 32.672/34.752/37.835/2.224 ms
-PING www.heise.de (193.99.144.85): 1024 data bytes
-1032 bytes from 193.99.144.85: icmp_seq=0 ttl=247 time=38.805 ms
-1032 bytes from 193.99.144.85: icmp_seq=1 ttl=247 time=39.782 ms
-1032 bytes from 193.99.144.85: icmp_seq=2 ttl=247 time=45.882 ms
-
---- www.heise.de ping statistics ---
-3 packets transmitted, 3 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 38.805/41.490/45.882/3.131 ms
-PING www.heise.de (193.99.144.85): 1452 data bytes
-1460 bytes from 193.99.144.85: icmp_seq=0 ttl=247 time=45.948 ms
-1460 bytes from 193.99.144.85: icmp_seq=1 ttl=247 time=45.355 ms
-1460 bytes from 193.99.144.85: icmp_seq=2 ttl=247 time=51.394 ms
-
---- www.heise.de ping statistics ---
-3 packets transmitted, 3 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 45.355/47.566/51.394/2.718 ms
-------------
-
-
-## Ping Tests IPv6
-ping6: nodename nor servname provided, or not known
-####################################################
-
-
-Starte Test www.google.de
-####################################################
-### Start 2020-05-05_210545
--- DNS-Test mit Kundeneinstellungen
-Server:		192.168.178.1
-Address:	192.168.178.1#53
-
-Non-authoritative answer:
-Name:	www.google.de
-Address: 172.217.18.163
-
--- DNS-Test ueber 8.8.8.8
-Server:		8.8.8.8
-Address:	8.8.8.8#53
-
-Non-authoritative answer:
-Name:	www.google.de
-Address: 172.217.17.67
-
--- DNS-Test ueber 208.67.222.222
-Server:		208.67.222.222
-Address:	208.67.222.222#53
-
-Non-authoritative answer:
-Name:	www.google.de
-Address: 172.217.168.227
-
- -- MTR/Tracert www.google.de mit IPv4
-Start: 2020-05-05T21:16:45+0200
-HOST: Volkers-MBP.fritz.box       Loss%   Snt   Last   Avg  Best  Wrst StDev
-  1.|-- fritz.box                  0.0%     2   18.0   9.9   1.7  18.0  11.5
-  2.|-- dslb-092-073-160-001.092.  0.0%     2   18.2  18.2  18.2  18.2   0.0
-  3.|-- ???                       100.0     2    0.0   0.0   0.0   0.0   0.0
-  4.|-- 92.79.214.238              0.0%     2   20.3  19.8  19.3  20.3   0.7
-  5.|-- 145.254.2.205              0.0%     2   30.8  29.8  28.8  30.8   1.4
-  6.|-- 145.254.2.205              0.0%     2   28.8  40.9  28.8  53.0  17.1
-  7.|-- 72.14.222.128              0.0%     2   28.0  28.0  28.0  28.1   0.1
-  8.|-- 108.170.241.237            0.0%     2   25.6  25.9  25.6  26.1   0.4
-  9.|-- 209.85.255.214             0.0%     2   29.3  29.1  28.9  29.3   0.2
- 10.|-- 209.85.142.97              0.0%     2   32.5  32.4  32.3  32.5   0.1
- 11.|-- 209.85.242.78              0.0%     2   40.1  36.4  32.7  40.1   5.2
- 12.|-- 108.170.251.129            0.0%     2   33.9  34.5  33.9  35.0   0.8
- 13.|-- 74.125.37.167              0.0%     2   34.7  35.0  34.7  35.2   0.3
- 14.|-- fra15s29-in-f3.1e100.net   0.0%     2   31.3  31.6  31.3  31.9   0.4
-------------
--- MTR/Tracert www.google.de mit IPv6
-mtr: Address not available
-Start: 2020-05-05T21:16:54+0200
-HOST: Volkers-MBP.fritz.box       Loss%   Snt   Last   Avg  Best  Wrst StDev
-------------
-
-
-### Ping Tests IPv4
-PING www.google.de (172.217.18.163): 56 data bytes
-64 bytes from 172.217.18.163: icmp_seq=0 ttl=52 time=31.824 ms
-64 bytes from 172.217.18.163: icmp_seq=1 ttl=52 time=30.914 ms
-64 bytes from 172.217.18.163: icmp_seq=2 ttl=52 time=33.482 ms
-
---- www.google.de ping statistics ---
-3 packets transmitted, 3 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 30.914/32.073/33.482/1.063 ms
-PING www.google.de (172.217.18.163): 512 data bytes
-76 bytes from 172.217.18.163: icmp_seq=0 ttl=52 time=38.642 ms
-wrong total length 96 instead of 540
-76 bytes from 172.217.18.163: icmp_seq=1 ttl=52 time=44.348 ms
-wrong total length 96 instead of 540
-76 bytes from 172.217.18.163: icmp_seq=2 ttl=52 time=44.127 ms
-wrong total length 96 instead of 540
-
---- www.google.de ping statistics ---
-3 packets transmitted, 3 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 38.642/42.372/44.348/2.639 ms
-PING www.google.de (172.217.18.163): 1024 data bytes
-76 bytes from 172.217.18.163: icmp_seq=0 ttl=52 time=45.723 ms
-wrong total length 96 instead of 1052
-76 bytes from 172.217.18.163: icmp_seq=1 ttl=52 time=50.645 ms
-wrong total length 96 instead of 1052
-76 bytes from 172.217.18.163: icmp_seq=2 ttl=52 time=50.506 ms
-wrong total length 96 instead of 1052
-
---- www.google.de ping statistics ---
-3 packets transmitted, 3 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 45.723/48.958/50.645/2.288 ms
-PING www.google.de (172.217.18.163): 1452 data bytes
-76 bytes from 172.217.18.163: icmp_seq=0 ttl=52 time=50.988 ms
-wrong total length 96 instead of 1480
-76 bytes from 172.217.18.163: icmp_seq=1 ttl=52 time=51.540 ms
-wrong total length 96 instead of 1480
-76 bytes from 172.217.18.163: icmp_seq=2 ttl=52 time=51.371 ms
-wrong total length 96 instead of 1480
-
---- www.google.de ping statistics ---
-3 packets transmitted, 3 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 50.988/51.300/51.540/0.231 ms
-------------
-
-
-## Ping Tests IPv6
-ping6: nodename nor servname provided, or not known
-####################################################
-
-
-Starte Test www.youtube.de
-####################################################
-### Start 2020-05-05_210502
--- DNS-Test mit Kundeneinstellungen
-Server:		192.168.178.1
-Address:	192.168.178.1#53
-
-Non-authoritative answer:
-www.youtube.de	canonical name = youtube-ui.l.google.com.
 Name:	youtube-ui.l.google.com
 Address: 172.217.16.174
 Name:	youtube-ui.l.google.com
 Address: 172.217.23.174
 Name:	youtube-ui.l.google.com
 Address: 172.217.23.142
-Name:	youtube-ui.l.google.com
-Address: 216.58.205.238
-Name:	youtube-ui.l.google.com
-Address: 172.217.22.14
-Name:	youtube-ui.l.google.com
-Address: 172.217.18.14
-Name:	youtube-ui.l.google.com
-Address: 172.217.18.174
-Name:	youtube-ui.l.google.com
-Address: 216.58.207.46
-Name:	youtube-ui.l.google.com
-Address: 216.58.207.78
-Name:	youtube-ui.l.google.com
-Address: 216.58.210.14
-Name:	youtube-ui.l.google.com
-Address: 172.217.16.142
-Name:	youtube-ui.l.google.com
-Address: 172.217.18.110
-Name:	youtube-ui.l.google.com
-Address: 172.217.23.110
-Name:	youtube-ui.l.google.com
-Address: 216.58.212.142
-Name:	youtube-ui.l.google.com
-Address: 172.217.22.78
-Name:	youtube-ui.l.google.com
-Address: 172.217.21.206
-
--- DNS-Test ueber 8.8.8.8
-Server:		8.8.8.8
-Address:	8.8.8.8#53
-
-Non-authoritative answer:
-www.youtube.de	canonical name = youtube-ui.l.google.com.
-Name:	youtube-ui.l.google.com
-Address: 172.217.168.238
-Name:	youtube-ui.l.google.com
-Address: 172.217.17.46
-Name:	youtube-ui.l.google.com
-Address: 172.217.17.78
-Name:	youtube-ui.l.google.com
-Address: 172.217.19.206
-Name:	youtube-ui.l.google.com
-Address: 172.217.168.206
-Name:	youtube-ui.l.google.com
-Address: 172.217.20.110
-Name:	youtube-ui.l.google.com
-Address: 216.58.208.110
-Name:	youtube-ui.l.google.com
-Address: 172.217.17.142
-
--- DNS-Test ueber 208.67.222.222
-Server:		208.67.222.222
-Address:	208.67.222.222#53
-
-Non-authoritative answer:
-www.youtube.de	canonical name = youtube-ui.l.google.com.
-Name:	youtube-ui.l.google.com
-Address: 172.217.20.110
-Name:	youtube-ui.l.google.com
-Address: 172.217.168.206
-Name:	youtube-ui.l.google.com
-Address: 172.217.168.238
-Name:	youtube-ui.l.google.com
-Address: 216.58.208.110
-Name:	youtube-ui.l.google.com
-Address: 216.58.211.110
-Name:	youtube-ui.l.google.com
-Address: 172.217.17.46
-Name:	youtube-ui.l.google.com
-Address: 172.217.17.110
-Name:	youtube-ui.l.google.com
-Address: 172.217.17.142
-Name:	youtube-ui.l.google.com
-Address: 172.217.19.206
-
- -- MTR/Tracert www.youtube.de mit IPv4
-Start: 2020-05-05T21:17:02+0200
-HOST: Volkers-MBP.fritz.box       Loss%   Snt   Last   Avg  Best  Wrst StDev
-  1.|-- fritz.box                  0.0%     2   17.8   9.8   1.8  17.8  11.3
-  2.|-- dslb-092-073-160-001.092.  0.0%     2   35.2  31.0  26.7  35.2   6.0
-  3.|-- ???                       100.0     2    0.0   0.0   0.0   0.0   0.0
-  4.|-- 92.79.214.98               0.0%     2   19.0  19.0  19.0  19.1   0.0
-  5.|-- 145.254.2.189              0.0%     2   23.5  23.6  23.5  23.6   0.1
-  6.|-- 145.254.2.189              0.0%     2   24.2  23.5  22.9  24.2   0.9
-  7.|-- 72.14.222.128              0.0%     2   25.4  25.5  25.4  25.6   0.1
-  8.|-- 108.170.241.173            0.0%     2   27.0  26.4  25.7  27.0   0.9
-  9.|-- 209.85.253.113             0.0%     2   24.2  23.4  22.6  24.2   1.1
- 10.|-- 108.170.234.11             0.0%     2   43.3  36.2  29.0  43.3  10.1
- 11.|-- 209.85.245.31              0.0%     2   31.1  31.4  31.1  31.7   0.4
- 12.|-- 108.170.251.193            0.0%     2   31.5  31.6  31.5  31.8   0.2
- 13.|-- 216.239.54.61              0.0%     2   28.7  28.5  28.4  28.7   0.2
- 14.|-- fra16s18-in-f142.1e100.ne  0.0%     2   28.7  28.9  28.7  29.1   0.3
-------------
--- MTR/Tracert www.youtube.de mit IPv6
-mtr: Address not available
-Start: 2020-05-05T21:17:11+0200
-HOST: Volkers-MBP.fritz.box       Loss%   Snt   Last   Avg  Best  Wrst StDev
-------------
-
-
-### Ping Tests IPv4
-PING youtube-ui.l.google.com (216.58.205.238): 56 data bytes
-64 bytes from 216.58.205.238: icmp_seq=0 ttl=52 time=31.679 ms
-64 bytes from 216.58.205.238: icmp_seq=1 ttl=52 time=31.640 ms
-64 bytes from 216.58.205.238: icmp_seq=2 ttl=52 time=31.728 ms
-
---- youtube-ui.l.google.com ping statistics ---
-3 packets transmitted, 3 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 31.640/31.682/31.728/0.036 ms
-PING youtube-ui.l.google.com (216.58.205.238): 512 data bytes
-76 bytes from 216.58.205.238: icmp_seq=0 ttl=52 time=38.850 ms
-wrong total length 96 instead of 540
-76 bytes from 216.58.205.238: icmp_seq=1 ttl=52 time=38.897 ms
-wrong total length 96 instead of 540
-76 bytes from 216.58.205.238: icmp_seq=2 ttl=52 time=38.534 ms
-wrong total length 96 instead of 540
-
---- youtube-ui.l.google.com ping statistics ---
-3 packets transmitted, 3 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 38.534/38.760/38.897/0.161 ms
-PING youtube-ui.l.google.com (216.58.205.238): 1024 data bytes
-76 bytes from 216.58.205.238: icmp_seq=0 ttl=52 time=45.661 ms
-wrong total length 96 instead of 1052
-76 bytes from 216.58.205.238: icmp_seq=1 ttl=52 time=50.769 ms
-wrong total length 96 instead of 1052
-76 bytes from 216.58.205.238: icmp_seq=2 ttl=52 time=52.112 ms
-wrong total length 96 instead of 1052
-
---- youtube-ui.l.google.com ping statistics ---
-3 packets transmitted, 3 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 45.661/49.514/52.112/2.779 ms
-PING youtube-ui.l.google.com (216.58.205.238): 1452 data bytes
-76 bytes from 216.58.205.238: icmp_seq=0 ttl=52 time=51.150 ms
-wrong total length 96 instead of 1480
-76 bytes from 216.58.205.238: icmp_seq=1 ttl=52 time=51.678 ms
-wrong total length 96 instead of 1480
-76 bytes from 216.58.205.238: icmp_seq=2 ttl=52 time=51.243 ms
-wrong total length 96 instead of 1480
-
---- youtube-ui.l.google.com ping statistics ---
-3 packets transmitted, 3 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 51.150/51.357/51.678/0.230 ms
-------------
-
-
-## Ping Tests IPv6
-ping6: nodename nor servname provided, or not known
-####################################################
-
-
-Starte Test www.1und1.de
-####################################################
-### Start 2020-05-05_210520
--- DNS-Test mit Kundeneinstellungen
-Server:		192.168.178.1
-Address:	192.168.178.1#53
-
-Non-authoritative answer:
-Name:	www.1und1.de
-Address: 217.160.72.6
-
--- DNS-Test ueber 8.8.8.8
-Server:		8.8.8.8
-Address:	8.8.8.8#53
-
-Non-authoritative answer:
-Name:	www.1und1.de
-Address: 217.160.72.6
-
--- DNS-Test ueber 208.67.222.222
-Server:		208.67.222.222
-Address:	208.67.222.222#53
-
-Non-authoritative answer:
-Name:	www.1und1.de
-Address: 217.160.72.6
-
- -- MTR/Tracert www.1und1.de mit IPv4
-Start: 2020-05-05T21:17:20+0200
-HOST: Volkers-MBP.fritz.box       Loss%   Snt   Last   Avg  Best  Wrst StDev
-  1.|-- fritz.box                  0.0%     2   18.0   9.8   1.6  18.0  11.6
-  2.|-- dslb-092-073-160-001.092.  0.0%     2   20.8  19.4  18.0  20.8   2.0
-  3.|-- 188.111.218.164            0.0%     2   17.8  17.6  17.4  17.8   0.3
-  4.|-- 92.79.214.98               0.0%     2   19.0  18.9  18.8  19.0   0.2
-  5.|-- ???                       100.0     2    0.0   0.0   0.0   0.0   0.0
-  6.|-- 145.254.2.207              0.0%     2   25.6  25.6  25.6  25.6   0.0
-  7.|-- vodafone-p.bb-a.fra3.fra.  0.0%     2   25.0  25.4  25.0  25.8   0.5
-  8.|-- www.1und1.de               0.0%     2   23.8  25.7  23.8  27.5   2.7
-------------
--- MTR/Tracert www.1und1.de mit IPv6
-mtr: Address not available
-Start: 2020-05-05T21:17:27+0200
-HOST: Volkers-MBP.fritz.box       Loss%   Snt   Last   Avg  Best  Wrst StDev
-------------
-
-
-### Ping Tests IPv4
-PING www.1und1.de (217.160.72.6): 56 data bytes
-64 bytes from 217.160.72.6: icmp_seq=0 ttl=59 time=24.832 ms
-Request timeout for icmp_seq 1
-
---- www.1und1.de ping statistics ---
-3 packets transmitted, 1 packets received, 66.7% packet loss
-round-trip min/avg/max/stddev = 24.832/24.832/24.832/0.000 ms
-PING www.1und1.de (217.160.72.6): 512 data bytes
-520 bytes from 217.160.72.6: icmp_seq=0 ttl=59 time=31.846 ms
-520 bytes from 217.160.72.6: icmp_seq=1 ttl=59 time=38.136 ms
-520 bytes from 217.160.72.6: icmp_seq=2 ttl=59 time=38.120 ms
-
---- www.1und1.de ping statistics ---
-3 packets transmitted, 3 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 31.846/36.034/38.136/2.961 ms
-PING www.1und1.de (217.160.72.6): 1024 data bytes
-1032 bytes from 217.160.72.6: icmp_seq=0 ttl=59 time=39.158 ms
-1032 bytes from 217.160.72.6: icmp_seq=1 ttl=59 time=45.291 ms
-1032 bytes from 217.160.72.6: icmp_seq=2 ttl=59 time=44.424 ms
-
---- www.1und1.de ping statistics ---
-3 packets transmitted, 3 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 39.158/42.958/45.291/2.710 ms
-PING www.1und1.de (217.160.72.6): 1452 data bytes
-1460 bytes from 217.160.72.6: icmp_seq=0 ttl=59 time=44.985 ms
-1460 bytes from 217.160.72.6: icmp_seq=1 ttl=59 time=51.630 ms
-1460 bytes from 217.160.72.6: icmp_seq=2 ttl=59 time=50.939 ms
-
---- www.1und1.de ping statistics ---
-3 packets transmitted, 3 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 44.985/49.185/51.630/2.983 ms
-------------
-
-
-## Ping Tests IPv6
-ping6: nodename nor servname provided, or not known
-####################################################
-
-
-Starte Test sip.1und1.de
-####################################################
-### Start 2020-05-05_210537
--- DNS-Test mit Kundeneinstellungen
-Server:		192.168.178.1
-Address:	192.168.178.1#53
-
-Non-authoritative answer:
-Name:	sip.1und1.de
-Address: 212.227.124.129
-Name:	sip.1und1.de
-Address: 212.227.124.130
-
--- DNS-Test ueber 8.8.8.8
-Server:		8.8.8.8
-Address:	8.8.8.8#53
-
-Non-authoritative answer:
-Name:	sip.1und1.de
-Address: 212.227.124.129
-Name:	sip.1und1.de
-Address: 212.227.124.130
-
--- DNS-Test ueber 208.67.222.222
-Server:		208.67.222.222
-Address:	208.67.222.222#53
-
-Non-authoritative answer:
-Name:	sip.1und1.de
-Address: 212.227.124.129
-Name:	sip.1und1.de
-Address: 212.227.124.130
-
- -- MTR/Tracert sip.1und1.de mit IPv4
-Start: 2020-05-05T21:17:37+0200
-HOST: Volkers-MBP.fritz.box       Loss%   Snt   Last   Avg  Best  Wrst StDev
-  1.|-- fritz.box                  0.0%     2   18.3  10.2   2.0  18.3  11.6
-  2.|-- dslb-092-073-160-001.092.  0.0%     2   17.7  30.5  17.7  43.2  18.0
-  3.|-- 188.111.218.164           50.0%     2   17.5  17.5  17.5  17.5   0.0
-  4.|-- 92.79.214.238              0.0%     2   19.7  19.5  19.3  19.7   0.3
-  5.|-- 145.254.2.209              0.0%     2   25.4  25.2  25.1  25.4   0.2
-  6.|-- 145.254.2.209              0.0%     2   25.0  25.2  25.0  25.3   0.2
-  7.|-- vodafone-p.bb-a.fra3.fra.  0.0%     2   24.7  24.5  24.3  24.7   0.3
-  8.|-- ae-10-0.bb-a.bap.rhr.de.o  0.0%     2   30.0  29.9  29.9  30.0   0.0
-  9.|-- ae-2-0.bb-a.tp.kae.de.one  0.0%     2   30.4  45.9  30.4  61.4  21.9
- 10.|-- ae-0-0.gw-diste2-a.bs.kae  0.0%     2   30.0  30.4  30.0  30.9   0.6
- 11.|-- sipbalance-c-bs.1und1.de   0.0%     2   28.6  28.8  28.6  29.0   0.3
-------------
--- MTR/Tracert sip.1und1.de mit IPv6
-### START MacOS IP Configuration ###
-lo0: flags=8049<UP,LOOPBACK,RUNNING,MULTICAST> mtu 16384
-	options=1203<RXCSUM,TXCSUM,TXSTATUS,SW_TIMESTAMP>
-	inet 127.0.0.1 netmask 0xff000000 
-	inet6 ::1 prefixlen 128 
-	inet6 fe80::1%lo0 prefixlen 64 scopeid 0x1 
-	nd6 options=201<PERFORMNUD,DAD>
-gif0: flags=8010<POINTOPOINT,MULTICAST> mtu 1280
-stf0: flags=0<> mtu 1280
-en5: flags=8863<UP,BROADCAST,SMART,RUNNING,SIMPLEX,MULTICAST> mtu 1500
-	ether ac:de:48:00:11:22 
-	inet6 fe80::aede:48ff:fe00:1122%en5 prefixlen 64 scopeid 0x4 
-	nd6 options=201<PERFORMNUD,DAD>
-	media: autoselect (100baseTX <full-duplex>)
-	status: active
-bridge0: flags=8863<UP,BROADCAST,SMART,RUNNING,SIMPLEX,MULTICAST> mtu 1500
-	options=63<RXCSUM,TXCSUM,TSO4,TSO6>
-	ether 82:22:7e:83:9c:01 
-	Configuration:
-		id 0:0:0:0:0:0 priority 0 hellotime 0 fwddelay 0
-		maxage 0 holdcnt 0 proto stp maxaddr 100 timeout 1200
-		root id 0:0:0:0:0:0 priority 0 ifcost 0 port 0
-		ipfilter disabled flags 0x2
-	member: en1 flags=3<LEARNING,DISCOVER>
-	        ifmaxaddr 0 port 8 priority 0 path cost 0
-	member: en2 flags=3<LEARNING,DISCOVER>
-	        ifmaxaddr 0 port 9 priority 0 path cost 0
-	member: en3 flags=3<LEARNING,DISCOVER>
-	        ifmaxaddr 0 port 10 priority 0 path cost 0
-	member: en4 flags=3<LEARNING,DISCOVER>
-	        ifmaxaddr 0 port 11 priority 0 path cost 0
-	nd6 options=201<PERFORMNUD,DAD>
-	media: <unknown type>
-	status: inactive
-ap1: flags=8802<BROADCAST,SIMPLEX,MULTICAST> mtu 1500
-	options=400<CHANNEL_IO>
-	ether f2:18:98:26:d2:71 
-	media: autoselect
-	status: inactive
-en0: flags=8863<UP,BROADCAST,SMART,RUNNING,SIMPLEX,MULTICAST> mtu 1500
-	options=400<CHANNEL_IO>
-	ether f0:18:98:26:d2:71 
-	inet 192.168.178.45 netmask 0xffffff00 broadcast 192.168.178.255
-	inet6 fe80::19:9f40:cdb0:800e%en0 prefixlen 64 secured scopeid 0x7 
-	nd6 options=201<PERFORMNUD,DAD>
-	media: autoselect
-	status: active
-en1: flags=8963<UP,BROADCAST,SMART,RUNNING,PROMISC,SIMPLEX,MULTICAST> mtu 1500
-	options=460<TSO4,TSO6,CHANNEL_IO>
-	ether 82:22:7e:83:9c:01 
-	media: autoselect <full-duplex>
-	status: inactive
-en2: flags=8963<UP,BROADCAST,SMART,RUNNING,PROMISC,SIMPLEX,MULTICAST> mtu 1500
-	options=460<TSO4,TSO6,CHANNEL_IO>
-	ether 82:22:7e:83:9c:00 
-	media: autoselect <full-duplex>
-	status: inactive
-en3: flags=8963<UP,BROADCAST,SMART,RUNNING,PROMISC,SIMPLEX,MULTICAST> mtu 1500
-	options=460<TSO4,TSO6,CHANNEL_IO>
-	ether 82:22:7e:83:9c:05 
-	media: autoselect <full-duplex>
-	status: inactive
-en4: flags=8963<UP,BROADCAST,SMART,RUNNING,PROMISC,SIMPLEX,MULTICAST> mtu 1500
-	options=460<TSO4,TSO6,CHANNEL_IO>
-	ether 82:22:7e:83:9c:04 
-	media: autoselect <full-duplex>
-	status: inactive
-p2p0: flags=8843<UP,BROADCAST,RUNNING,SIMPLEX,MULTICAST> mtu 2304
-	options=400<CHANNEL_IO>
-	ether 02:18:98:26:d2:71 
-	media: autoselect
-	status: inactive
-awdl0: flags=8943<UP,BROADCAST,RUNNING,PROMISC,SIMPLEX,MULTICAST> mtu 1484
-	options=400<CHANNEL_IO>
-	ether 3e:f8:44:e1:52:04 
-	inet6 fe80::3cf8:44ff:fee1:5204%awdl0 prefixlen 64 scopeid 0xd 
-	nd6 options=201<PERFORMNUD,DAD>
-	media: autoselect
-	status: active
-llw0: flags=8863<UP,BROADCAST,SMART,RUNNING,SIMPLEX,MULTICAST> mtu 1500
-	options=400<CHANNEL_IO>
-	ether 3e:f8:44:e1:52:04 
-	inet6 fe80::3cf8:44ff:fee1:5204%llw0 prefixlen 64 scopeid 0xe 
-	nd6 options=201<PERFORMNUD,DAD>
-	media: autoselect
-	status: active
-utun0: flags=8051<UP,POINTOPOINT,RUNNING,MULTICAST> mtu 1380
-	inet6 fe80::ddff:2736:5801:2cbf%utun0 prefixlen 64 scopeid 0xf 
-	nd6 options=201<PERFORMNUD,DAD>
-utun1: flags=8051<UP,POINTOPOINT,RUNNING,MULTICAST> mtu 2000
-	inet6 fe80::cd72:d050:587c:e97a%utun1 prefixlen 64 scopeid 0x10 
-	nd6 options=201<PERFORMNUD,DAD>
-gpd0: flags=8862<BROADCAST,SMART,RUNNING,SIMPLEX,MULTICAST> mtu 1400
-	ether 02:50:41:00:01:01 
-	inet 10.39.90.45 netmask 0xffffffff broadcast 10.39.90.45
-### END MACOs IP Configuration ###
-
-
-### START route ip4 ###
-Routing tables
-
-Internet:
-Destination        Gateway            Flags        Netif Expire
-default            192.168.178.1      UGSc           en0       
-127                127.0.0.1          UCS            lo0       
-127.0.0.1          127.0.0.1          UH             lo0       
-169.254            link#7             UCS            en0      !
-192.168.178        link#7             UCS            en0      !
-192.168.178.1/32   link#7             UCS            en0      !
-192.168.178.1      c8:e:14:3a:de:13   UHLWIir        en0   1176
-192.168.178.24     0:1d:ec:10:73:d4   UHLWI          en0    988
-192.168.178.27     3c:15:c2:cc:74:88  UHLWI          en0      !
-192.168.178.29     6c:ad:f8:b8:5e:12  UHLWIi         en0   1068
-192.168.178.30     54:60:9:fc:fc:2    UHLWIi         en0    866
-192.168.178.31     54:60:9:fd:35:42   UHLWIi         en0   1182
-192.168.178.34     30:d3:2d:79:d6:86  UHLWI          en0    875
-192.168.178.35     0:11:32:32:c4:5d   UHLWIi         en0   1152
-192.168.178.45/32  link#7             UCS            en0      !
-192.168.178.255    ff:ff:ff:ff:ff:ff  UHLWbI         en0      !
-224.0.0/4          link#7             UmCS           en0      !
-224.0.0.251        1:0:5e:0:0:fb      UHmLWI         en0       
-239.255.255.250    1:0:5e:7f:ff:fa    UHmLWI         en0       
-255.255.255.255/32 link#7             UCS            en0      !
-### END route ip4 ###
-
-
-### START route ip6 ###
-Routing tables
-
-Internet6:
-Destination                             Gateway                         Flags         Netif Expire
-default                                 fe80::%utun0                    UGcI          utun0       
-default                                 fe80::%utun1                    UGcI          utun1       
-::1                                     ::1                             UHL             lo0       
-fe80::%lo0/64                           fe80::1%lo0                     UcI             lo0       
-fe80::1%lo0                             link#1                          UHLI            lo0       
-fe80::%en5/64                           link#4                          UCI             en5       
-fe80::aede:48ff:fe00:1122%en5           ac:de:48:0:11:22                UHLI            lo0       
-fe80::aede:48ff:fe33:4455%en5           ac:de:48:33:44:55               UHLWIi          en5       
-fe80::%en0/64                           link#7                          UCI             en0       
-fe80::19:9f40:cdb0:800e%en0             f0:18:98:26:d2:71               UHLI            lo0       
-fe80::%awdl0/64                         link#13                         UCI           awdl0       
-fe80::3cf8:44ff:fee1:5204%awdl0         3e:f8:44:e1:52:4                UHLI            lo0       
-fe80::%llw0/64                          link#14                         UCI            llw0       
-fe80::3cf8:44ff:fee1:5204%llw0          3e:f8:44:e1:52:4                UHLI            lo0       
-fe80::%utun0/64                         fe80::ddff:2736:5801:2cbf%utun0 UcI           utun0       
-fe80::ddff:2736:5801:2cbf%utun0         link#15                         UHLI            lo0       
-fe80::%utun1/64                         fe80::cd72:d050:587c:e97a%utun1 UcI           utun1       
-fe80::cd72:d050:587c:e97a%utun1         link#16                         UHLI            lo0       
-ff01::%lo0/32                           ::1                             UmCI            lo0       
-ff01::%en5/32                           link#4                          UmCI            en5       
-ff01::%en0/32                           link#7                          UmCI            en0       
-ff01::%awdl0/32                         link#13                         UmCI          awdl0       
-ff01::%llw0/32                          link#14                         UmCI           llw0       
-ff01::%utun0/32                         fe80::ddff:2736:5801:2cbf%utun0 UmCI          utun0       
-ff01::%utun1/32                         fe80::cd72:d050:587c:e97a%utun1 UmCI          utun1       
-ff02::%lo0/32                           ::1                             UmCI            lo0       
-ff02::%en5/32                           link#4                          UmCI            en5       
-ff02::%en0/32                           link#7                          UmCI            en0       
-ff02::%awdl0/32                         link#13                         UmCI          awdl0       
-ff02::%llw0/32                          link#14                         UmCI           llw0       
-ff02::%utun0/32                         fe80::ddff:2736:5801:2cbf%utun0 UmCI          utun0       
-ff02::%utun1/32                         fe80::cd72:d050:587c:e97a%utun1 UmCI          utun1       
-### END route ip6###
-
-
-Starte Test www.heise.de
-####################################################
-### Start 2020-05-05_210546
--- DNS-Test mit Kundeneinstellungen
-Server:		192.168.178.1
-Address:	192.168.178.1#53
-
-Non-authoritative answer:
-Name:	www.heise.de
-Address: 193.99.144.85
-
--- DNS-Test ueber 8.8.8.8
-Server:		8.8.8.8
-Address:	8.8.8.8#53
-
-Non-authoritative answer:
-Name:	www.heise.de
-Address: 193.99.144.85
-
--- DNS-Test ueber 208.67.222.222
-Server:		208.67.222.222
-Address:	208.67.222.222#53
-
-Non-authoritative answer:
-Name:	www.heise.de
-Address: 193.99.144.85
-
- -- MTR/Tracert www.heise.de mit IPv4
-Start: 2020-05-05T21:17:46+0200
-HOST: Volkers-MBP.fritz.box       Loss%   Snt   Last   Avg  Best  Wrst StDev
-  1.|-- fritz.box                  0.0%     2   18.4  10.0   1.7  18.4  11.8
-  2.|-- dslb-092-073-160-001.092.  0.0%     2   71.8  45.4  18.9  71.8  37.4
-  3.|-- ???                       100.0     2    0.0   0.0   0.0   0.0   0.0
-  4.|-- 92.79.214.238              0.0%     2   19.5  19.6  19.5  19.7   0.1
-  5.|-- 145.254.2.195             50.0%     2   24.4  24.4  24.4  24.4   0.0
-  6.|-- 145.254.2.195              0.0%     2   26.1  25.8  25.6  26.1   0.4
-  7.|-- te0-0-2-3.c350.f.de.plusl  0.0%     2   25.7  25.1  24.5  25.7   0.8
-  8.|-- 82.98.102.1                0.0%     2   26.2  26.4  26.2  26.7   0.4
-  9.|-- 82.98.102.132              0.0%     2   25.1  25.6  25.1  26.1   0.7
- 10.|-- 82.98.102.23               0.0%     2   25.2  25.4  25.2  25.7   0.4
- 11.|-- 212.19.61.13               0.0%     2   25.4  25.2  25.0  25.4   0.3
- 12.|-- www.heise.de               0.0%     2   25.5  25.5  25.5  25.5   0.0
-------------
--- MTR/Tracert www.heise.de mit IPv6
-mtr: Address not available
-Start: 2020-05-05T21:17:53+0200
-HOST: Volkers-MBP.fritz.box       Loss%   Snt   Last   Avg  Best  Wrst StDev
-------------
-
-
-### Ping Tests IPv4
-PING www.heise.de (193.99.144.85): 56 data bytes
-64 bytes from 193.99.144.85: icmp_seq=0 ttl=247 time=30.119 ms
-64 bytes from 193.99.144.85: icmp_seq=1 ttl=247 time=25.289 ms
-64 bytes from 193.99.144.85: icmp_seq=2 ttl=247 time=24.976 ms
-
---- www.heise.de ping statistics ---
-3 packets transmitted, 3 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 24.976/26.795/30.119/2.354 ms
-PING www.heise.de (193.99.144.85): 512 data bytes
-520 bytes from 193.99.144.85: icmp_seq=0 ttl=247 time=31.845 ms
-520 bytes from 193.99.144.85: icmp_seq=1 ttl=247 time=38.899 ms
-520 bytes from 193.99.144.85: icmp_seq=2 ttl=247 time=34.201 ms
-
---- www.heise.de ping statistics ---
-3 packets transmitted, 3 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 31.845/34.982/38.899/2.932 ms
-PING www.heise.de (193.99.144.85): 1024 data bytes
-1032 bytes from 193.99.144.85: icmp_seq=0 ttl=247 time=40.009 ms
-1032 bytes from 193.99.144.85: icmp_seq=1 ttl=247 time=38.701 ms
-1032 bytes from 193.99.144.85: icmp_seq=2 ttl=247 time=39.800 ms
-
---- www.heise.de ping statistics ---
-3 packets transmitted, 3 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 38.701/39.503/40.009/0.574 ms
-PING www.heise.de (193.99.144.85): 1452 data bytes
-1460 bytes from 193.99.144.85: icmp_seq=0 ttl=247 time=46.281 ms
-1460 bytes from 193.99.144.85: icmp_seq=1 ttl=247 time=50.784 ms
-1460 bytes from 193.99.144.85: icmp_seq=2 ttl=247 time=52.110 ms
-
---- www.heise.de ping statistics ---
-3 packets transmitted, 3 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 46.281/49.725/52.110/2.495 ms
-------------
-
-
-## Ping Tests IPv6
-ping6: nodename nor servname provided, or not known
-ping6: nodename nor servname provided, or not known
-ping6: nodename nor servname provided, or not known
-ping6: nodename nor servname provided, or not known
-####################################################
-
-
-Starte Test www.google.de
-####################################################
-### Start 2020-05-05_210502
--- DNS-Test mit Kundeneinstellungen
-Server:		192.168.178.1
-Address:	192.168.178.1#53
-
-Non-authoritative answer:
-Name:	www.google.de
-Address: 172.217.18.163
-
--- DNS-Test ueber 8.8.8.8
-Server:		8.8.8.8
-Address:	8.8.8.8#53
-
-Non-authoritative answer:
-Name:	www.google.de
-Address: 172.217.168.227
-
--- DNS-Test ueber 208.67.222.222
-Server:		208.67.222.222
-Address:	208.67.222.222#53
-
-Non-authoritative answer:
-Name:	www.google.de
-Address: 172.217.168.227
-
- -- MTR/Tracert www.google.de mit IPv4
-Start: 2020-05-05T21:18:02+0200
-HOST: Volkers-MBP.fritz.box       Loss%   Snt   Last   Avg  Best  Wrst StDev
-  1.|-- fritz.box                  0.0%     2   60.2  31.0   1.7  60.2  41.4
-  2.|-- dslb-092-073-160-001.092.  0.0%     2   42.3  30.5  18.7  42.3  16.7
-  3.|-- 188.111.218.164           50.0%     2   18.6  18.6  18.6  18.6   0.0
-  4.|-- 92.79.214.238              0.0%     2   20.0  20.3  20.0  20.6   0.4
-  5.|-- 145.254.2.205             50.0%     2   30.1  30.1  30.1  30.1   0.0
-  6.|-- 145.254.2.205             50.0%     2   28.7  28.7  28.7  28.7   0.0
-  7.|-- 72.14.222.128              0.0%     2   28.3  28.3  28.3  28.4   0.1
-  8.|-- 108.170.241.237            0.0%     2   26.3  26.6  26.3  26.9   0.4
-  9.|-- 209.85.255.214             0.0%     2   29.7  29.8  29.7  29.9   0.1
- 10.|-- 209.85.142.97              0.0%     2   32.2  32.4  32.2  32.6   0.3
- 11.|-- 209.85.242.78              0.0%     2   32.4  32.3  32.3  32.4   0.0
- 12.|-- 108.170.251.129            0.0%     2   34.9  35.5  34.9  36.0   0.7
- 13.|-- 74.125.37.167              0.0%     2   35.4  35.0  34.6  35.4   0.5
- 14.|-- fra15s29-in-f3.1e100.net   0.0%     2   32.3  31.9  31.5  32.3   0.6
-------------
--- MTR/Tracert www.google.de mit IPv6
-mtr: Address not available
-Start: 2020-05-05T21:18:09+0200
-HOST: Volkers-MBP.fritz.box       Loss%   Snt   Last   Avg  Best  Wrst StDev
-------------
-
-
-### Ping Tests IPv4
-PING www.google.de (172.217.18.163): 56 data bytes
-64 bytes from 172.217.18.163: icmp_seq=0 ttl=52 time=31.628 ms
-64 bytes from 172.217.18.163: icmp_seq=1 ttl=52 time=37.342 ms
-64 bytes from 172.217.18.163: icmp_seq=2 ttl=52 time=34.468 ms
-
---- www.google.de ping statistics ---
-3 packets transmitted, 3 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 31.628/34.479/37.342/2.333 ms
-PING www.google.de (172.217.18.163): 512 data bytes
-76 bytes from 172.217.18.163: icmp_seq=0 ttl=52 time=38.255 ms
-wrong total length 96 instead of 540
-76 bytes from 172.217.18.163: icmp_seq=1 ttl=52 time=45.031 ms
-wrong total length 96 instead of 540
-76 bytes from 172.217.18.163: icmp_seq=2 ttl=52 time=38.863 ms
-wrong total length 96 instead of 540
-
---- www.google.de ping statistics ---
-3 packets transmitted, 3 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 38.255/40.716/45.031/3.061 ms
-PING www.google.de (172.217.18.163): 1024 data bytes
-76 bytes from 172.217.18.163: icmp_seq=0 ttl=52 time=44.914 ms
-wrong total length 96 instead of 1052
-76 bytes from 172.217.18.163: icmp_seq=1 ttl=52 time=50.797 ms
-wrong total length 96 instead of 1052
-76 bytes from 172.217.18.163: icmp_seq=2 ttl=52 time=45.237 ms
-wrong total length 96 instead of 1052
-
---- www.google.de ping statistics ---
-3 packets transmitted, 3 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 44.914/46.983/50.797/2.700 ms
-PING www.google.de (172.217.18.163): 1452 data bytes
-76 bytes from 172.217.18.163: icmp_seq=0 ttl=52 time=50.919 ms
-wrong total length 96 instead of 1480
-76 bytes from 172.217.18.163: icmp_seq=1 ttl=52 time=56.791 ms
-wrong total length 96 instead of 1480
-76 bytes from 172.217.18.163: icmp_seq=2 ttl=52 time=56.821 ms
-wrong total length 96 instead of 1480
-
---- www.google.de ping statistics ---
-3 packets transmitted, 3 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 50.919/54.844/56.821/2.775 ms
-------------
-
-
-## Ping Tests IPv6
-ping6: nodename nor servname provided, or not known
-ping6: nodename nor servname provided, or not known
-ping6: nodename nor servname provided, or not known
-ping6: nodename nor servname provided, or not known
-####################################################
-
-
-Starte Test www.youtube.de
-####################################################
-### Start 2020-05-05_210518
--- DNS-Test mit Kundeneinstellungen
-Server:		192.168.178.1
-Address:	192.168.178.1#53
-
-Non-authoritative answer:
-www.youtube.de	canonical name = youtube-ui.l.google.com.
-Name:	youtube-ui.l.google.com
-Address: 172.217.16.174
-Name:	youtube-ui.l.google.com
-Address: 172.217.23.174
-Name:	youtube-ui.l.google.com
-Address: 172.217.23.142
-Name:	youtube-ui.l.google.com
-Address: 216.58.205.238
-Name:	youtube-ui.l.google.com
-Address: 172.217.22.14
-Name:	youtube-ui.l.google.com
-Address: 172.217.18.14
-Name:	youtube-ui.l.google.com
-Address: 172.217.18.174
-Name:	youtube-ui.l.google.com
-Address: 216.58.207.46
-Name:	youtube-ui.l.google.com
-Address: 216.58.207.78
-Name:	youtube-ui.l.google.com
-Address: 216.58.210.14
-Name:	youtube-ui.l.google.com
-Address: 172.217.16.142
-Name:	youtube-ui.l.google.com
-Address: 172.217.18.110
-Name:	youtube-ui.l.google.com
-Address: 172.217.23.110
-Name:	youtube-ui.l.google.com
-Address: 216.58.212.142
-Name:	youtube-ui.l.google.com
-Address: 172.217.22.78
-Name:	youtube-ui.l.google.com
-Address: 172.217.21.206
-
--- DNS-Test ueber 8.8.8.8
-Server:		8.8.8.8
-Address:	8.8.8.8#53
-
-Non-authoritative answer:
-www.youtube.de	canonical name = youtube-ui.l.google.com.
-Name:	youtube-ui.l.google.com
-Address: 172.217.19.206
-Name:	youtube-ui.l.google.com
-Address: 216.58.208.110
-Name:	youtube-ui.l.google.com
-Address: 172.217.17.110
-Name:	youtube-ui.l.google.com
-Address: 172.217.17.142
-Name:	youtube-ui.l.google.com
-Address: 172.217.20.78
-Name:	youtube-ui.l.google.com
-Address: 172.217.168.238
-
--- DNS-Test ueber 208.67.222.222
-Server:		208.67.222.222
-Address:	208.67.222.222#53
-
-Non-authoritative answer:
-www.youtube.de	canonical name = youtube-ui.l.google.com.
-Name:	youtube-ui.l.google.com
-Address: 216.58.208.110
-Name:	youtube-ui.l.google.com
-Address: 172.217.17.46
-Name:	youtube-ui.l.google.com
-Address: 172.217.17.78
-Name:	youtube-ui.l.google.com
-Address: 172.217.17.110
-Name:	youtube-ui.l.google.com
-Address: 172.217.19.206
-Name:	youtube-ui.l.google.com
-Address: 172.217.20.78
-Name:	youtube-ui.l.google.com
-Address: 172.217.20.110
-Name:	youtube-ui.l.google.com
-Address: 172.217.168.206
-Name:	youtube-ui.l.google.com
-Address: 172.217.168.238
-
- -- MTR/Tracert www.youtube.de mit IPv4
-Start: 2020-05-05T21:18:18+0200
-HOST: Volkers-MBP.fritz.box       Loss%   Snt   Last   Avg  Best  Wrst StDev
-  1.|-- fritz.box                  0.0%     2   18.0   9.8   1.7  18.0  11.6
-  2.|-- dslb-092-073-160-001.092.  0.0%     2   18.7  18.7  18.7  18.7   0.0
-  3.|-- 188.111.218.164           50.0%     2   18.0  18.0  18.0  18.0   0.0
-  4.|-- 92.79.214.98               0.0%     2   19.4  18.8  18.3  19.4   0.8
-  5.|-- 145.254.2.189             50.0%     2   23.5  23.5  23.5  23.5   0.0
-  6.|-- 145.254.2.189              0.0%     2   23.3  23.1  22.9  23.3   0.3
-  7.|-- 72.14.222.128              0.0%     2   25.3  25.6  25.3  25.8   0.4
-  8.|-- 108.170.241.173            0.0%     2   25.9  26.1  25.9  26.3   0.3
-  9.|-- 209.85.253.113             0.0%     2   25.6  24.6  23.7  25.6   1.4
- 10.|-- 108.170.234.11             0.0%     2   28.8  29.0  28.8  29.2   0.2
- 11.|-- 209.85.245.31              0.0%     2   34.3  32.8  31.3  34.3   2.1
- 12.|-- 108.170.251.193            0.0%     2   31.8  31.6  31.4  31.8   0.3
- 13.|-- 216.239.54.61              0.0%     2   29.1  28.8  28.5  29.1   0.4
- 14.|-- fra16s18-in-f142.1e100.ne  0.0%     2   28.9  28.4  27.9  28.9   0.7
-------------
--- MTR/Tracert www.youtube.de mit IPv6
-mtr: Address not available
-Start: 2020-05-05T21:18:27+0200
-HOST: Volkers-MBP.fritz.box       Loss%   Snt   Last   Avg  Best  Wrst StDev
-------------
-
-
-### Ping Tests IPv4
-PING youtube-ui.l.google.com (216.58.205.238): 56 data bytes
-64 bytes from 216.58.205.238: icmp_seq=0 ttl=52 time=37.787 ms
-64 bytes from 216.58.205.238: icmp_seq=1 ttl=52 time=34.172 ms
-64 bytes from 216.58.205.238: icmp_seq=2 ttl=52 time=38.808 ms
-
---- youtube-ui.l.google.com ping statistics ---
-3 packets transmitted, 3 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 34.172/36.922/38.808/1.989 ms
-PING youtube-ui.l.google.com (216.58.205.238): 512 data bytes
-76 bytes from 216.58.205.238: icmp_seq=0 ttl=52 time=39.112 ms
-wrong total length 96 instead of 540
-76 bytes from 216.58.205.238: icmp_seq=1 ttl=52 time=45.199 ms
-wrong total length 96 instead of 540
-76 bytes from 216.58.205.238: icmp_seq=2 ttl=52 time=38.431 ms
-wrong total length 96 instead of 540
-
---- youtube-ui.l.google.com ping statistics ---
-3 packets transmitted, 3 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 38.431/40.914/45.199/3.043 ms
-PING youtube-ui.l.google.com (216.58.205.238): 1024 data bytes
-76 bytes from 216.58.205.238: icmp_seq=0 ttl=52 time=45.276 ms
-wrong total length 96 instead of 1052
-76 bytes from 216.58.205.238: icmp_seq=1 ttl=52 time=45.138 ms
-wrong total length 96 instead of 1052
-76 bytes from 216.58.205.238: icmp_seq=2 ttl=52 time=51.367 ms
-wrong total length 96 instead of 1052
-
---- youtube-ui.l.google.com ping statistics ---
-3 packets transmitted, 3 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 45.138/47.260/51.367/2.904 ms
-PING youtube-ui.l.google.com (216.58.205.238): 1452 data bytes
-76 bytes from 216.58.205.238: icmp_seq=0 ttl=52 time=51.393 ms
-wrong total length 96 instead of 1480
-76 bytes from 216.58.205.238: icmp_seq=1 ttl=52 time=57.423 ms
-wrong total length 96 instead of 1480
-76 bytes from 216.58.205.238: icmp_seq=2 ttl=52 time=51.814 ms
-wrong total length 96 instead of 1480
-
---- youtube-ui.l.google.com ping statistics ---
-3 packets transmitted, 3 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 51.393/53.543/57.423/2.749 ms
-------------
-
-
-## Ping Tests IPv6
-ping6: nodename nor servname provided, or not known
-ping6: nodename nor servname provided, or not known
-ping6: nodename nor servname provided, or not known
-ping6: nodename nor servname provided, or not known
-####################################################
-
-
-Starte Test www.1und1.de
-####################################################
-### Start 2020-05-05_210535
--- DNS-Test mit Kundeneinstellungen
-Server:		192.168.178.1
-Address:	192.168.178.1#53
-
-Non-authoritative answer:
-Name:	www.1und1.de
-Address: 217.160.72.6
-
--- DNS-Test ueber 8.8.8.8
-Server:		8.8.8.8
-Address:	8.8.8.8#53
-
-Non-authoritative answer:
-Name:	www.1und1.de
-Address: 217.160.72.6
-
--- DNS-Test ueber 208.67.222.222
-Server:		208.67.222.222
-Address:	208.67.222.222#53
-
-Non-authoritative answer:
-Name:	www.1und1.de
-Address: 217.160.72.6
-
- -- MTR/Tracert www.1und1.de mit IPv4
-Start: 2020-05-05T21:18:35+0200
-HOST: Volkers-MBP.fritz.box       Loss%   Snt   Last   Avg  Best  Wrst StDev
-  1.|-- fritz.box                  0.0%     2   18.5  10.5   2.6  18.5  11.3
-  2.|-- dslb-092-073-160-001.092.  0.0%     2   58.5  57.3  56.1  58.5   1.7
-  3.|-- ???                       100.0     2    0.0   0.0   0.0   0.0   0.0
-  4.|-- 92.79.214.98               0.0%     2   18.2  18.8  18.2  19.4   0.8
-  5.|-- 145.254.2.207             50.0%     2   25.2  25.2  25.2  25.2   0.0
-  6.|-- 145.254.2.207             50.0%     2   25.6  25.6  25.6  25.6   0.0
-  7.|-- vodafone-p.bb-a.fra3.fra.  0.0%     2   26.0  25.6  25.1  26.0   0.6
-  8.|-- www.1und1.de               0.0%     2   23.9  24.4  23.9  24.9   0.7
-------------
--- MTR/Tracert www.1und1.de mit IPv6
-mtr: Address not available
-Start: 2020-05-05T21:18:42+0200
-HOST: Volkers-MBP.fritz.box       Loss%   Snt   Last   Avg  Best  Wrst StDev
-------------
-
-
-### Ping Tests IPv4
-PING www.1und1.de (217.160.72.6): 56 data bytes
-64 bytes from 217.160.72.6: icmp_seq=0 ttl=59 time=24.759 ms
-64 bytes from 217.160.72.6: icmp_seq=1 ttl=59 time=25.219 ms
-64 bytes from 217.160.72.6: icmp_seq=2 ttl=59 time=24.909 ms
-
---- www.1und1.de ping statistics ---
-3 packets transmitted, 3 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 24.759/24.962/25.219/0.192 ms
-PING www.1und1.de (217.160.72.6): 512 data bytes
-520 bytes from 217.160.72.6: icmp_seq=0 ttl=59 time=31.819 ms
-520 bytes from 217.160.72.6: icmp_seq=1 ttl=59 time=31.460 ms
-520 bytes from 217.160.72.6: icmp_seq=2 ttl=59 time=37.742 ms
-
---- www.1und1.de ping statistics ---
-3 packets transmitted, 3 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 31.460/33.674/37.742/2.880 ms
-PING www.1und1.de (217.160.72.6): 1024 data bytes
-1032 bytes from 217.160.72.6: icmp_seq=0 ttl=59 time=39.477 ms
-1032 bytes from 217.160.72.6: icmp_seq=1 ttl=59 time=39.345 ms
-1032 bytes from 217.160.72.6: icmp_seq=2 ttl=59 time=44.994 ms
-
---- www.1und1.de ping statistics ---
-3 packets transmitted, 3 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 39.345/41.272/44.994/2.632 ms
-PING www.1und1.de (217.160.72.6): 1452 data bytes
-1460 bytes from 217.160.72.6: icmp_seq=0 ttl=59 time=44.939 ms
-1460 bytes from 217.160.72.6: icmp_seq=1 ttl=59 time=44.575 ms
-1460 bytes from 217.160.72.6: icmp_seq=2 ttl=59 time=51.447 ms
-
---- www.1und1.de ping statistics ---
-3 packets transmitted, 3 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 44.575/46.987/51.447/3.157 ms
-------------
-
-
-## Ping Tests IPv6
-ping6: nodename nor servname provided, or not known
-ping6: nodename nor servname provided, or not known
-ping6: nodename nor servname provided, or not known
-ping6: nodename nor servname provided, or not known
-####################################################
-
-
-Starte Test sip.1und1.de
-####################################################
-### Start 2020-05-05_210551
--- DNS-Test mit Kundeneinstellungen
-Server:		192.168.178.1
-Address:	192.168.178.1#53
-
-Non-authoritative answer:
-Name:	sip.1und1.de
-Address: 212.227.124.129
-Name:	sip.1und1.de
-Address: 212.227.124.130
-
--- DNS-Test ueber 8.8.8.8
-Server:		8.8.8.8
-Address:	8.8.8.8#53
-
-Non-authoritative answer:
-Name:	sip.1und1.de
-Address: 212.227.124.130
-Name:	sip.1und1.de
-Address: 212.227.124.129
-
--- DNS-Test ueber 208.67.222.222
-Server:		208.67.222.222
-Address:	208.67.222.222#53
-
-Non-authoritative answer:
-Name:	sip.1und1.de
-Address: 212.227.124.129
-Name:	sip.1und1.de
-Address: 212.227.124.130
-
- -- MTR/Tracert sip.1und1.de mit IPv4
-Start: 2020-05-05T21:18:56+0200
-HOST: Volkers-MBP.fritz.box       Loss%   Snt   Last   Avg  Best  Wrst StDev
-  1.|-- fritz.box                  0.0%     2   21.4  11.6   1.7  21.4  14.0
-  2.|-- dslb-092-073-160-001.092.  0.0%     2   52.3  39.4  26.5  52.3  18.2
-  3.|-- ???                       100.0     2    0.0   0.0   0.0   0.0   0.0
-  4.|-- 92.79.214.238              0.0%     2   29.1  33.3  29.1  37.5   5.9
-  5.|-- ???                       100.0     2    0.0   0.0   0.0   0.0   0.0
-  6.|-- 145.254.2.209              0.0%     2   57.4  89.5  57.4 121.6  45.4
-  7.|-- vodafone-p.bb-a.fra3.fra.  0.0%     2   41.7  34.3  26.9  41.7  10.4
-  8.|-- ae-10-0.bb-a.bap.rhr.de.o  0.0%     2   34.5  33.4  32.2  34.5   1.7
-  9.|-- ae-2-0.bb-a.tp.kae.de.one  0.0%     2   36.3  44.2  36.3  52.1  11.2
- 10.|-- ae-0-0.gw-diste2-a.bs.kae  0.0%     2   30.6  30.6  30.6  30.6   0.0
- 11.|-- sipbalance-c-bs.1und1.de   0.0%     2   31.6  30.8  30.1  31.6   1.1
-------------
--- MTR/Tracert sip.1und1.de mit IPv6
-mtr: Address not available
-Start: 2020-05-05T21:19:03+0200
-HOST: Volkers-MBP.fritz.box       Loss%   Snt   Last   Avg  Best  Wrst StDev
-------------
-
-
-### Ping Tests IPv4
-PING sip.1und1.de (212.227.124.129): 56 data bytes
-64 bytes from 212.227.124.129: icmp_seq=0 ttl=56 time=28.597 ms
-64 bytes from 212.227.124.129: icmp_seq=1 ttl=56 time=34.864 ms
-64 bytes from 212.227.124.129: icmp_seq=2 ttl=56 time=28.033 ms
-
---- sip.1und1.de ping statistics ---
-3 packets transmitted, 3 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 28.033/30.498/34.864/3.096 ms
-PING sip.1und1.de (212.227.124.129): 512 data bytes
-520 bytes from 212.227.124.129: icmp_seq=0 ttl=56 time=35.725 ms
-520 bytes from 212.227.124.129: icmp_seq=1 ttl=56 time=42.082 ms
-520 bytes from 212.227.124.129: icmp_seq=2 ttl=56 time=35.567 ms
-
---- sip.1und1.de ping statistics ---
-3 packets transmitted, 3 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 35.567/37.791/42.082/3.035 ms
-PING sip.1und1.de (212.227.124.129): 1024 data bytes
-1032 bytes from 212.227.124.129: icmp_seq=0 ttl=56 time=43.465 ms
-1032 bytes from 212.227.124.129: icmp_seq=1 ttl=56 time=43.351 ms
-1032 bytes from 212.227.124.129: icmp_seq=2 ttl=56 time=42.817 ms
-
---- sip.1und1.de ping statistics ---
-3 packets transmitted, 3 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 42.817/43.211/43.465/0.282 ms
-PING sip.1und1.de (212.227.124.129): 1452 data bytes
-1460 bytes from 212.227.124.129: icmp_seq=0 ttl=56 time=49.589 ms
-1460 bytes from 212.227.124.129: icmp_seq=1 ttl=56 time=55.789 ms
-1460 bytes from 212.227.124.129: icmp_seq=2 ttl=56 time=55.044 ms
-
---- sip.1und1.de ping statistics ---
-3 packets transmitted, 3 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 49.589/53.474/55.789/2.764 ms
-------------
-
-
-## Ping Tests IPv6
-ping6: nodename nor servname provided, or not known
-ping6: nodename nor servname provided, or not known
-ping6: nodename nor servname provided, or not known
-ping6: nodename nor servname provided, or not known
-####################################################
-
-
-Starte Test www.gmx.de
-####################################################
-### Start 2020-05-05_210512
--- DNS-Test mit Kundeneinstellungen
-Server:		192.168.178.1
-Address:	192.168.178.1#53
-
-Non-authoritative answer:
-www.gmx.de	canonical name = redir.g-ha-web.de.
-Name:	redir.g-ha-web.de
-Address: 82.165.229.87
-
--- DNS-Test ueber 8.8.8.8
-Server:		8.8.8.8
-Address:	8.8.8.8#53
-
-Non-authoritative answer:
-www.gmx.de	canonical name = redir.g-ha-web.de.
-Name:	redir.g-ha-web.de
-Address: 82.165.229.87
-
--- DNS-Test ueber 208.67.222.222
-Server:		208.67.222.222
-Address:	208.67.222.222#53
-
-Non-authoritative answer:
-www.gmx.de	canonical name = redir.g-ha-web.de.
-Name:	redir.g-ha-web.de
-Address: 82.165.230.36
-
- -- MTR/Tracert www.gmx.de mit IPv4
-Start: 2020-05-05T21:19:12+0200
-HOST: Volkers-MBP.fritz.box       Loss%   Snt   Last   Avg  Best  Wrst StDev
-  1.|-- fritz.box                  0.0%     2   18.0   9.9   1.9  18.0  11.3
-  2.|-- dslb-092-073-160-001.092.  0.0%     2   17.5  18.1  17.5  18.7   0.9
-  3.|-- ???                       100.0     2    0.0   0.0   0.0   0.0   0.0
-  4.|-- 92.79.214.238              0.0%     2   19.2  19.3  19.2  19.3   0.0
-  5.|-- 145.254.2.209             50.0%     2   26.1  26.1  26.1  26.1   0.0
-  6.|-- ???                       100.0     2    0.0   0.0   0.0   0.0   0.0
-  7.|-- vodafone-p.bb-a.fra3.fra.  0.0%     2   24.6  24.9  24.6  25.2   0.4
-  8.|-- ae-14.bb-b.fr7.fra.de.one  0.0%     2   28.7  28.0  27.3  28.7   1.0
-  9.|-- ae-9.bb-b.bs.kae.de.onean  0.0%     2   27.7  27.2  26.7  27.7   0.7
- 10.|-- ae-0-0.gw-diste2-a.bs.kae  0.0%     2   27.6  27.1  26.5  27.6   0.8
- 11.|-- redir-bs.web.de            0.0%     2   27.1  26.9  26.7  27.1   0.3
-------------
--- MTR/Tracert www.gmx.de mit IPv6
-mtr: Address not available
-Start: 2020-05-05T21:19:19+0200
-HOST: Volkers-MBP.fritz.box       Loss%   Snt   Last   Avg  Best  Wrst StDev
-------------
-
-
-### Ping Tests IPv4
-PING redir.g-ha-web.de (82.165.229.87): 56 data bytes
-64 bytes from 82.165.229.87: icmp_seq=0 ttl=247 time=26.939 ms
-64 bytes from 82.165.229.87: icmp_seq=1 ttl=247 time=27.319 ms
-64 bytes from 82.165.229.87: icmp_seq=2 ttl=247 time=32.721 ms
-
---- redir.g-ha-web.de ping statistics ---
-3 packets transmitted, 3 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 26.939/28.993/32.721/2.641 ms
-PING redir.g-ha-web.de (82.165.229.87): 512 data bytes
-520 bytes from 82.165.229.87: icmp_seq=0 ttl=247 time=34.340 ms
-520 bytes from 82.165.229.87: icmp_seq=1 ttl=247 time=39.817 ms
-520 bytes from 82.165.229.87: icmp_seq=2 ttl=247 time=33.183 ms
-
---- redir.g-ha-web.de ping statistics ---
-3 packets transmitted, 3 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 33.183/35.780/39.817/2.893 ms
-PING redir.g-ha-web.de (82.165.229.87): 1024 data bytes
-1032 bytes from 82.165.229.87: icmp_seq=0 ttl=247 time=41.173 ms
-1032 bytes from 82.165.229.87: icmp_seq=1 ttl=247 time=47.059 ms
-1032 bytes from 82.165.229.87: icmp_seq=2 ttl=247 time=47.019 ms
-
---- redir.g-ha-web.de ping statistics ---
-3 packets transmitted, 3 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 41.173/45.084/47.059/2.765 ms
-PING redir.g-ha-web.de (82.165.229.87): 1452 data bytes
-1460 bytes from 82.165.229.87: icmp_seq=0 ttl=247 time=47.133 ms
-1460 bytes from 82.165.229.87: icmp_seq=1 ttl=247 time=53.370 ms
-1460 bytes from 82.165.229.87: icmp_seq=2 ttl=247 time=47.504 ms
-
---- redir.g-ha-web.de ping statistics ---
-3 packets transmitted, 3 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 47.133/49.336/53.370/2.857 ms
-------------
-
-
-## Ping Tests IPv6
-ping6: getaddrinfo -- nodename nor servname provided, or not known
-ping6: getaddrinfo -- nodename nor servname provided, or not known
-ping6: getaddrinfo -- nodename nor servname provided, or not known
-ping6: getaddrinfo -- nodename nor servname provided, or not known
-####################################################
-
-
-### End script 2020-05-05_210528 ###
-### START MacOS IP Configuration ###
-lo0: flags=8049<UP,LOOPBACK,RUNNING,MULTICAST> mtu 16384
-	options=1203<RXCSUM,TXCSUM,TXSTATUS,SW_TIMESTAMP>
-	inet 127.0.0.1 netmask 0xff000000 
-	inet6 ::1 prefixlen 128 
-	inet6 fe80::1%lo0 prefixlen 64 scopeid 0x1 
-	nd6 options=201<PERFORMNUD,DAD>
-gif0: flags=8010<POINTOPOINT,MULTICAST> mtu 1280
-stf0: flags=0<> mtu 1280
-en5: flags=8863<UP,BROADCAST,SMART,RUNNING,SIMPLEX,MULTICAST> mtu 1500
-	ether ac:de:48:00:11:22 
-	inet6 fe80::aede:48ff:fe00:1122%en5 prefixlen 64 scopeid 0x4 
-	nd6 options=201<PERFORMNUD,DAD>
-	media: autoselect (100baseTX <full-duplex>)
-	status: active
-bridge0: flags=8863<UP,BROADCAST,SMART,RUNNING,SIMPLEX,MULTICAST> mtu 1500
-	options=63<RXCSUM,TXCSUM,TSO4,TSO6>
-	ether 82:22:7e:83:9c:01 
-	Configuration:
-		id 0:0:0:0:0:0 priority 0 hellotime 0 fwddelay 0
-		maxage 0 holdcnt 0 proto stp maxaddr 100 timeout 1200
-		root id 0:0:0:0:0:0 priority 0 ifcost 0 port 0
-		ipfilter disabled flags 0x2
-	member: en1 flags=3<LEARNING,DISCOVER>
-	        ifmaxaddr 0 port 8 priority 0 path cost 0
-	member: en2 flags=3<LEARNING,DISCOVER>
-	        ifmaxaddr 0 port 9 priority 0 path cost 0
-	member: en3 flags=3<LEARNING,DISCOVER>
-	        ifmaxaddr 0 port 10 priority 0 path cost 0
-	member: en4 flags=3<LEARNING,DISCOVER>
-	        ifmaxaddr 0 port 11 priority 0 path cost 0
-	nd6 options=201<PERFORMNUD,DAD>
-	media: <unknown type>
-	status: inactive
-ap1: flags=8802<BROADCAST,SIMPLEX,MULTICAST> mtu 1500
-	options=400<CHANNEL_IO>
-	ether f2:18:98:26:d2:71 
-	media: autoselect
-	status: inactive
-en0: flags=8863<UP,BROADCAST,SMART,RUNNING,SIMPLEX,MULTICAST> mtu 1500
-	options=400<CHANNEL_IO>
-	ether f0:18:98:26:d2:71 
-	inet 192.168.178.45 netmask 0xffffff00 broadcast 192.168.178.255
-	inet6 fe80::19:9f40:cdb0:800e%en0 prefixlen 64 secured scopeid 0x7 
-	nd6 options=201<PERFORMNUD,DAD>
-	media: autoselect
-	status: active
-en1: flags=8963<UP,BROADCAST,SMART,RUNNING,PROMISC,SIMPLEX,MULTICAST> mtu 1500
-	options=460<TSO4,TSO6,CHANNEL_IO>
-	ether 82:22:7e:83:9c:01 
-	media: autoselect <full-duplex>
-	status: inactive
-en2: flags=8963<UP,BROADCAST,SMART,RUNNING,PROMISC,SIMPLEX,MULTICAST> mtu 1500
-	options=460<TSO4,TSO6,CHANNEL_IO>
-	ether 82:22:7e:83:9c:00 
-	media: autoselect <full-duplex>
-	status: inactive
-en3: flags=8963<UP,BROADCAST,SMART,RUNNING,PROMISC,SIMPLEX,MULTICAST> mtu 1500
-	options=460<TSO4,TSO6,CHANNEL_IO>
-	ether 82:22:7e:83:9c:05 
-	media: autoselect <full-duplex>
-	status: inactive
-en4: flags=8963<UP,BROADCAST,SMART,RUNNING,PROMISC,SIMPLEX,MULTICAST> mtu 1500
-	options=460<TSO4,TSO6,CHANNEL_IO>
-	ether 82:22:7e:83:9c:04 
-	media: autoselect <full-duplex>
-	status: inactive
-p2p0: flags=8843<UP,BROADCAST,RUNNING,SIMPLEX,MULTICAST> mtu 2304
-	options=400<CHANNEL_IO>
-	ether 02:18:98:26:d2:71 
-	media: autoselect
-	status: inactive
-awdl0: flags=8943<UP,BROADCAST,RUNNING,PROMISC,SIMPLEX,MULTICAST> mtu 1484
-	options=400<CHANNEL_IO>
-	ether 3e:f8:44:e1:52:04 
-	inet6 fe80::3cf8:44ff:fee1:5204%awdl0 prefixlen 64 scopeid 0xd 
-	nd6 options=201<PERFORMNUD,DAD>
-	media: autoselect
-	status: active
-llw0: flags=8863<UP,BROADCAST,SMART,RUNNING,SIMPLEX,MULTICAST> mtu 1500
-	options=400<CHANNEL_IO>
-	ether 3e:f8:44:e1:52:04 
-	inet6 fe80::3cf8:44ff:fee1:5204%llw0 prefixlen 64 scopeid 0xe 
-	nd6 options=201<PERFORMNUD,DAD>
-	media: autoselect
-	status: active
-utun0: flags=8051<UP,POINTOPOINT,RUNNING,MULTICAST> mtu 1380
-	inet6 fe80::ddff:2736:5801:2cbf%utun0 prefixlen 64 scopeid 0xf 
-	nd6 options=201<PERFORMNUD,DAD>
-utun1: flags=8051<UP,POINTOPOINT,RUNNING,MULTICAST> mtu 2000
-	inet6 fe80::cd72:d050:587c:e97a%utun1 prefixlen 64 scopeid 0x10 
-	nd6 options=201<PERFORMNUD,DAD>
-gpd0: flags=8862<BROADCAST,SMART,RUNNING,SIMPLEX,MULTICAST> mtu 1400
-	ether 02:50:41:00:01:01 
-	inet 10.39.90.45 netmask 0xffffffff broadcast 10.39.90.45
-### END MACOs IP Configuration ###
-
-
-### START route ip4 ###
-Routing tables
-
-Internet:
-Destination        Gateway            Flags        Netif Expire
-default            192.168.178.1      UGSc           en0       
-127                127.0.0.1          UCS            lo0       
-127.0.0.1          127.0.0.1          UH             lo0       
-169.254            link#7             UCS            en0      !
-192.168.178        link#7             UCS            en0      !
-192.168.178.1/32   link#7             UCS            en0      !
-192.168.178.1      c8:e:14:3a:de:13   UHLWIir        en0   1176
-192.168.178.23     f0:79:60:95:4c:47  UHLWIi         en0   1192
-192.168.178.24     0:1d:ec:10:73:d4   UHLWI          en0    729
-192.168.178.29     6c:ad:f8:b8:5e:12  UHLWIi         en0    809
-192.168.178.30     54:60:9:fc:fc:2    UHLWIi         en0   1188
-192.168.178.31     54:60:9:fd:35:42   UHLWIi         en0   1169
-192.168.178.34     30:d3:2d:79:d6:86  UHLWI          en0    616
-192.168.178.35     0:11:32:32:c4:5d   UHLWIi         en0   1083
-192.168.178.45/32  link#7             UCS            en0      !
-224.0.0/4          link#7             UmCS           en0      !
-224.0.0.251        1:0:5e:0:0:fb      UHmLWI         en0       
-239.255.255.250    1:0:5e:7f:ff:fa    UHmLWI         en0       
-255.255.255.255/32 link#7             UCS            en0      !
-### END route ip4 ###
-
-
-### START route ip6 ###
-Routing tables
-
-Internet6:
-Destination                             Gateway                         Flags         Netif Expire
-default                                 fe80::%utun0                    UGcI          utun0       
-default                                 fe80::%utun1                    UGcI          utun1       
-::1                                     ::1                             UHL             lo0       
-fe80::%lo0/64                           fe80::1%lo0                     UcI             lo0       
-fe80::1%lo0                             link#1                          UHLI            lo0       
-fe80::%en5/64                           link#4                          UCI             en5       
-fe80::aede:48ff:fe00:1122%en5           ac:de:48:0:11:22                UHLI            lo0       
-fe80::aede:48ff:fe33:4455%en5           ac:de:48:33:44:55               UHLWIi          en5       
-fe80::%en0/64                           link#7                          UCI             en0       
-fe80::19:9f40:cdb0:800e%en0             f0:18:98:26:d2:71               UHLI            lo0       
-fe80::%awdl0/64                         link#13                         UCI           awdl0       
-fe80::3cf8:44ff:fee1:5204%awdl0         3e:f8:44:e1:52:4                UHLI            lo0       
-fe80::%llw0/64                          link#14                         UCI            llw0       
-fe80::3cf8:44ff:fee1:5204%llw0          3e:f8:44:e1:52:4                UHLI            lo0       
-fe80::%utun0/64                         fe80::ddff:2736:5801:2cbf%utun0 UcI           utun0       
-fe80::ddff:2736:5801:2cbf%utun0         link#15                         UHLI            lo0       
-fe80::%utun1/64                         fe80::cd72:d050:587c:e97a%utun1 UcI           utun1       
-fe80::cd72:d050:587c:e97a%utun1         link#16                         UHLI            lo0       
-ff01::%lo0/32                           ::1                             UmCI            lo0       
-ff01::%en5/32                           link#4                          UmCI            en5       
-ff01::%en0/32                           link#7                          UmCI            en0       
-ff01::%awdl0/32                         link#13                         UmCI          awdl0       
-ff01::%llw0/32                          link#14                         UmCI           llw0       
-ff01::%utun0/32                         fe80::ddff:2736:5801:2cbf%utun0 UmCI          utun0       
-ff01::%utun1/32                         fe80::cd72:d050:587c:e97a%utun1 UmCI          utun1       
-ff02::%lo0/32                           ::1                             UmCI            lo0       
-ff02::%en5/32                           link#4                          UmCI            en5       
-ff02::%en0/32                           link#7                          UmCI            en0       
-ff02::%awdl0/32                         link#13                         UmCI          awdl0       
-ff02::%llw0/32                          link#14                         UmCI           llw0       
-ff02::%utun0/32                         fe80::ddff:2736:5801:2cbf%utun0 UmCI          utun0       
-ff02::%utun1/32                         fe80::cd72:d050:587c:e97a%utun1 UmCI          utun1       
-### END route ip6###
-
-
-Starte Test www.heise.de
-####################################################
-### Start 2020-05-05_210505
--- DNS-Test mit Kundeneinstellungen
-Server:		192.168.178.1
-Address:	192.168.178.1#53
-
-Non-authoritative answer:
-Name:	www.heise.de
-Address: 193.99.144.85
-
--- DNS-Test ueber 8.8.8.8
-Server:		8.8.8.8
-Address:	8.8.8.8#53
-
-Non-authoritative answer:
-Name:	www.heise.de
-Address: 193.99.144.85
-
--- DNS-Test ueber 208.67.222.222
-Server:		208.67.222.222
-Address:	208.67.222.222#53
-
-Non-authoritative answer:
-Name:	www.heise.de
-Address: 193.99.144.85
-
- -- MTR/Tracert www.heise.de mit IPv4
-Start: 2020-05-05T21:22:06+0200
-HOST: Volkers-MBP.fritz.box       Loss%   Snt   Last   Avg  Best  Wrst StDev
-  1.|-- fritz.box                  0.0%     2   18.3  10.2   2.0  18.3  11.5
-  2.|-- dslb-092-073-160-001.092.  0.0%     2   18.9  21.8  18.9  24.7   4.1
-  3.|-- ???                       100.0     2    0.0   0.0   0.0   0.0   0.0
-  4.|-- 92.79.214.238              0.0%     2   19.7  19.8  19.7  19.8   0.0
-  5.|-- 145.254.2.195              0.0%     2   25.4  25.0  24.6  25.4   0.6
-  6.|-- 145.254.2.195             50.0%     2   25.2  25.2  25.2  25.2   0.0
-  7.|-- te0-0-2-3.c350.f.de.plusl  0.0%     2   25.7  26.5  25.7  27.2   1.0
-  8.|-- 82.98.102.1                0.0%     2   25.0  25.5  25.0  26.1   0.8
-  9.|-- 82.98.102.132              0.0%     2   25.0  25.2  25.0  25.5   0.3
- 10.|-- 82.98.102.23               0.0%     2   25.1  25.4  25.1  25.7   0.4
- 11.|-- 212.19.61.13               0.0%     2   25.0  24.8  24.5  25.0   0.4
- 12.|-- www.heise.de               0.0%     2   25.0  26.3  25.0  27.6   1.9
-------------
--- MTR/Tracert www.heise.de mit IPv6
-mtr: Address not available
-Start: 2020-05-05T21:22:13+0200
-HOST: Volkers-MBP.fritz.box       Loss%   Snt   Last   Avg  Best  Wrst StDev
-------------
-
-
-### Ping Tests IPv4
-PING www.heise.de (193.99.144.85): 56 data bytes
-64 bytes from 193.99.144.85: icmp_seq=0 ttl=247 time=26.027 ms
-64 bytes from 193.99.144.85: icmp_seq=1 ttl=247 time=28.789 ms
-64 bytes from 193.99.144.85: icmp_seq=2 ttl=247 time=31.140 ms
-
---- www.heise.de ping statistics ---
-3 packets transmitted, 3 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 26.027/28.652/31.140/2.090 ms
-PING www.heise.de (193.99.144.85): 512 data bytes
-520 bytes from 193.99.144.85: icmp_seq=0 ttl=247 time=32.556 ms
-520 bytes from 193.99.144.85: icmp_seq=1 ttl=247 time=32.221 ms
-520 bytes from 193.99.144.85: icmp_seq=2 ttl=247 time=38.887 ms
-
---- www.heise.de ping statistics ---
-3 packets transmitted, 3 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 32.221/34.555/38.887/3.066 ms
-PING www.heise.de (193.99.144.85): 1024 data bytes
-1032 bytes from 193.99.144.85: icmp_seq=0 ttl=247 time=39.494 ms
-1032 bytes from 193.99.144.85: icmp_seq=1 ttl=247 time=45.719 ms
-1032 bytes from 193.99.144.85: icmp_seq=2 ttl=247 time=48.784 ms
-
---- www.heise.de ping statistics ---
-3 packets transmitted, 3 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 39.494/44.666/48.784/3.865 ms
-PING www.heise.de (193.99.144.85): 1452 data bytes
-1460 bytes from 193.99.144.85: icmp_seq=0 ttl=247 time=45.629 ms
-1460 bytes from 193.99.144.85: icmp_seq=1 ttl=247 time=51.398 ms
-1460 bytes from 193.99.144.85: icmp_seq=2 ttl=247 time=46.471 ms
-
---- www.heise.de ping statistics ---
-3 packets transmitted, 3 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 45.629/47.833/51.398/2.544 ms
-------------
-
-
-## Ping Tests IPv6
-ping6: nodename nor servname provided, or not known
-ping6: nodename nor servname provided, or not known
-ping6: nodename nor servname provided, or not known
-ping6: nodename nor servname provided, or not known
-####################################################
-
-
-Starte Test www.google.de
-####################################################
-### Start 2020-05-05_210521
--- DNS-Test mit Kundeneinstellungen
-Server:		192.168.178.1
-Address:	192.168.178.1#53
-
-Non-authoritative answer:
-Name:	www.google.de
-Address: 172.217.22.35
-
--- DNS-Test ueber 8.8.8.8
-Server:		8.8.8.8
-Address:	8.8.8.8#53
-
-Non-authoritative answer:
-Name:	www.google.de
-Address: 172.217.20.67
-
--- DNS-Test ueber 208.67.222.222
-Server:		208.67.222.222
-Address:	208.67.222.222#53
-
-Non-authoritative answer:
-Name:	www.google.de
-Address: 172.217.168.227
-
- -- MTR/Tracert www.google.de mit IPv4
-Start: 2020-05-05T21:22:22+0200
-HOST: Volkers-MBP.fritz.box       Loss%   Snt   Last   Avg  Best  Wrst StDev
-  1.|-- fritz.box                  0.0%     2   18.9  10.2   1.5  18.9  12.3
-  2.|-- dslb-092-073-160-001.092.  0.0%     2   38.2  28.3  18.4  38.2  14.0
-  3.|-- 188.111.218.164           50.0%     2   17.7  17.7  17.7  17.7   0.0
-  4.|-- 92.79.214.238              0.0%     2   21.3  20.6  19.9  21.3   1.0
-  5.|-- 145.254.2.205              0.0%     2   29.1  29.1  29.1  29.1   0.0
-  6.|-- 145.254.2.205              0.0%     2   29.5  29.1  28.7  29.5   0.6
-  7.|-- 72.14.222.128              0.0%     2   28.3  80.1  28.3 132.0  73.3
-  8.|-- 108.170.241.236            0.0%     2   26.3  26.5  26.3  26.7   0.3
-  9.|-- 216.239.43.36              0.0%     2   26.4  26.6  26.4  26.8   0.3
- 10.|-- 209.85.142.97              0.0%     2   32.5  32.5  32.5  32.5   0.0
- 11.|-- 209.85.242.78              0.0%     2   32.5  32.2  31.9  32.5   0.4
- 12.|-- 108.170.251.129            0.0%     2   34.5  34.8  34.5  35.0   0.3
- 13.|-- 66.249.95.29               0.0%     2   34.7  34.3  33.9  34.7   0.6
- 14.|-- fra15s16-in-f3.1e100.net   0.0%     2   35.2  35.2  35.2  35.2   0.0
-------------
--- MTR/Tracert www.google.de mit IPv6
-mtr: Address not available
-Start: 2020-05-05T21:22:30+0200
-HOST: Volkers-MBP.fritz.box       Loss%   Snt   Last   Avg  Best  Wrst StDev
-------------
-
-
-### Ping Tests IPv4
-PING www.google.de (172.217.22.35): 56 data bytes
-64 bytes from 172.217.22.35: icmp_seq=0 ttl=52 time=34.128 ms
-64 bytes from 172.217.22.35: icmp_seq=1 ttl=52 time=34.197 ms
-64 bytes from 172.217.22.35: icmp_seq=2 ttl=52 time=37.928 ms
-
---- www.google.de ping statistics ---
-3 packets transmitted, 3 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 34.128/35.418/37.928/1.775 ms
-PING www.google.de (172.217.22.35): 512 data bytes
-76 bytes from 172.217.22.35: icmp_seq=0 ttl=52 time=41.281 ms
-wrong total length 96 instead of 540
-76 bytes from 172.217.22.35: icmp_seq=1 ttl=52 time=46.516 ms
-wrong total length 96 instead of 540
-76 bytes from 172.217.22.35: icmp_seq=2 ttl=52 time=42.093 ms
-wrong total length 96 instead of 540
-
---- www.google.de ping statistics ---
-3 packets transmitted, 3 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 41.281/43.297/46.516/2.300 ms
-PING www.google.de (172.217.22.35): 1024 data bytes
-76 bytes from 172.217.22.35: icmp_seq=0 ttl=52 time=47.609 ms
-wrong total length 96 instead of 1052
-76 bytes from 172.217.22.35: icmp_seq=1 ttl=52 time=48.952 ms
-wrong total length 96 instead of 1052
-76 bytes from 172.217.22.35: icmp_seq=2 ttl=52 time=54.314 ms
-wrong total length 96 instead of 1052
-
---- www.google.de ping statistics ---
-3 packets transmitted, 3 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 47.609/50.292/54.314/2.897 ms
-PING www.google.de (172.217.22.35): 1452 data bytes
-76 bytes from 172.217.22.35: icmp_seq=0 ttl=52 time=54.363 ms
-wrong total length 96 instead of 1480
-76 bytes from 172.217.22.35: icmp_seq=1 ttl=52 time=60.257 ms
-wrong total length 96 instead of 1480
-76 bytes from 172.217.22.35: icmp_seq=2 ttl=52 time=59.837 ms
-wrong total length 96 instead of 1480
-
---- www.google.de ping statistics ---
-3 packets transmitted, 3 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 54.363/58.152/60.257/2.685 ms
-------------
-
-
-## Ping Tests IPv6
-ping6: nodename nor servname provided, or not known
-ping6: nodename nor servname provided, or not known
-ping6: nodename nor servname provided, or not known
-ping6: nodename nor servname provided, or not known
-####################################################
-
-
-Starte Test www.youtube.de
-####################################################
-### Start 2020-05-05_210538
--- DNS-Test mit Kundeneinstellungen
-Server:		192.168.178.1
-Address:	192.168.178.1#53
-
-Non-authoritative answer:
-www.youtube.de	canonical name = youtube-ui.l.google.com.
-Name:	youtube-ui.l.google.com
-Address: 216.58.212.142
-Name:	youtube-ui.l.google.com
-Address: 172.217.22.78
-Name:	youtube-ui.l.google.com
-Address: 172.217.21.238
-Name:	youtube-ui.l.google.com
-Address: 172.217.21.206
-Name:	youtube-ui.l.google.com
-Address: 172.217.23.174
-Name:	youtube-ui.l.google.com
-Address: 216.58.205.238
-Name:	youtube-ui.l.google.com
-Address: 172.217.22.14
-Name:	youtube-ui.l.google.com
-Address: 216.58.206.14
-Name:	youtube-ui.l.google.com
-Address: 216.58.207.78
-Name:	youtube-ui.l.google.com
-Address: 172.217.16.142
-Name:	youtube-ui.l.google.com
-Address: 172.217.18.110
-Name:	youtube-ui.l.google.com
-Address: 172.217.23.110
-
--- DNS-Test ueber 8.8.8.8
-Server:		8.8.8.8
-Address:	8.8.8.8#53
-
-Non-authoritative answer:
-www.youtube.de	canonical name = youtube-ui.l.google.com.
-Name:	youtube-ui.l.google.com
-Address: 172.217.168.206
-Name:	youtube-ui.l.google.com
-Address: 172.217.20.110
-Name:	youtube-ui.l.google.com
-Address: 216.58.208.110
-Name:	youtube-ui.l.google.com
-Address: 172.217.17.110
-Name:	youtube-ui.l.google.com
-Address: 172.217.17.142
-Name:	youtube-ui.l.google.com
-Address: 172.217.20.78
-Name:	youtube-ui.l.google.com
-Address: 172.217.168.238
-Name:	youtube-ui.l.google.com
-Address: 172.217.17.78
-Name:	youtube-ui.l.google.com
-Address: 172.217.19.206
-
--- DNS-Test ueber 208.67.222.222
-Server:		208.67.222.222
-Address:	208.67.222.222#53
-
-Non-authoritative answer:
-www.youtube.de	canonical name = youtube-ui.l.google.com.
-Name:	youtube-ui.l.google.com
-Address: 172.217.168.238
-Name:	youtube-ui.l.google.com
-Address: 216.58.208.110
-Name:	youtube-ui.l.google.com
-Address: 172.217.17.46
-Name:	youtube-ui.l.google.com
-Address: 172.217.17.78
-Name:	youtube-ui.l.google.com
-Address: 172.217.17.110
-Name:	youtube-ui.l.google.com
-Address: 172.217.17.142
-Name:	youtube-ui.l.google.com
-Address: 172.217.168.206
-
- -- MTR/Tracert www.youtube.de mit IPv4
-Start: 2020-05-05T21:22:38+0200
-HOST: Volkers-MBP.fritz.box       Loss%   Snt   Last   Avg  Best  Wrst StDev
-  1.|-- fritz.box                  0.0%     2   18.1  10.0   1.8  18.1  11.5
-  2.|-- dslb-092-073-160-001.092.  0.0%     2   17.6  18.1  17.6  18.5   0.6
-  3.|-- 188.111.218.164           50.0%     2   17.3  17.3  17.3  17.3   0.0
-  4.|-- 92.79.214.98               0.0%     2   20.9  19.7  18.4  20.9   1.8
-  5.|-- 145.254.2.189              0.0%     2   23.9  23.8  23.8  23.9   0.1
-  6.|-- 145.254.2.189              0.0%     2   23.3  23.2  23.1  23.3   0.2
-  7.|-- 72.14.222.128              0.0%     2   24.3  24.9  24.3  25.6   0.9
-  8.|-- 108.170.241.205            0.0%     2   25.9  26.3  25.9  26.7   0.5
-  9.|-- 216.239.43.27              0.0%     2   27.0  27.0  26.9  27.0   0.1
- 10.|-- 108.170.236.121            0.0%     2   29.2  35.7  29.2  42.1   9.1
- 11.|-- 72.14.239.244              0.0%     2   29.3  29.2  29.1  29.3   0.1
- 12.|-- 108.170.251.193            0.0%     2   31.6  31.5  31.3  31.6   0.2
- 13.|-- 72.14.234.227              0.0%     2   28.7  28.9  28.7  29.2   0.3
- 14.|-- fra16s25-in-f14.1e100.net  0.0%     2   31.7  31.5  31.4  31.7   0.2
-------------
--- MTR/Tracert www.youtube.de mit IPv6
-mtr: Address not available
-Start: 2020-05-05T21:22:47+0200
-HOST: Volkers-MBP.fritz.box       Loss%   Snt   Last   Avg  Best  Wrst StDev
-------------
-
-
-### Ping Tests IPv4
-PING youtube-ui.l.google.com (172.217.16.142): 56 data bytes
-64 bytes from 172.217.16.142: icmp_seq=0 ttl=52 time=32.142 ms
-64 bytes from 172.217.16.142: icmp_seq=1 ttl=52 time=37.125 ms
-64 bytes from 172.217.16.142: icmp_seq=2 ttl=52 time=30.983 ms
-
---- youtube-ui.l.google.com ping statistics ---
-3 packets transmitted, 3 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 30.983/33.417/37.125/2.665 ms
-PING youtube-ui.l.google.com (172.217.16.142): 512 data bytes
-76 bytes from 172.217.16.142: icmp_seq=0 ttl=52 time=39.392 ms
-wrong total length 96 instead of 540
-76 bytes from 172.217.16.142: icmp_seq=1 ttl=52 time=38.073 ms
-wrong total length 96 instead of 540
-76 bytes from 172.217.16.142: icmp_seq=2 ttl=52 time=38.919 ms
-wrong total length 96 instead of 540
-
---- youtube-ui.l.google.com ping statistics ---
-3 packets transmitted, 3 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 38.073/38.795/39.392/0.546 ms
-PING youtube-ui.l.google.com (172.217.16.142): 1024 data bytes
-76 bytes from 172.217.16.142: icmp_seq=0 ttl=52 time=45.786 ms
-wrong total length 96 instead of 1052
-76 bytes from 172.217.16.142: icmp_seq=1 ttl=52 time=44.746 ms
-wrong total length 96 instead of 1052
-76 bytes from 172.217.16.142: icmp_seq=2 ttl=52 time=44.855 ms
-wrong total length 96 instead of 1052
-
---- youtube-ui.l.google.com ping statistics ---
-3 packets transmitted, 3 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 44.746/45.129/45.786/0.467 ms
-PING youtube-ui.l.google.com (172.217.16.142): 1452 data bytes
-76 bytes from 172.217.16.142: icmp_seq=0 ttl=52 time=51.097 ms
-wrong total length 96 instead of 1480
-76 bytes from 172.217.16.142: icmp_seq=1 ttl=52 time=56.832 ms
-wrong total length 96 instead of 1480
-76 bytes from 172.217.16.142: icmp_seq=2 ttl=52 time=51.057 ms
-wrong total length 96 instead of 1480
-
---- youtube-ui.l.google.com ping statistics ---
-3 packets transmitted, 3 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 51.057/52.995/56.832/2.713 ms
-------------
-
-
-## Ping Tests IPv6
-ping6: nodename nor servname provided, or not known
-ping6: nodename nor servname provided, or not known
-ping6: nodename nor servname provided, or not known
-ping6: nodename nor servname provided, or not known
-####################################################
-
-
-Starte Test www.1und1.de
-####################################################
-### Start 2020-05-05_210556
--- DNS-Test mit Kundeneinstellungen
-Server:		192.168.178.1
-Address:	192.168.178.1#53
-
-Non-authoritative answer:
-Name:	www.1und1.de
-Address: 217.160.72.6
-
--- DNS-Test ueber 8.8.8.8
-Server:		8.8.8.8
-Address:	8.8.8.8#53
-
-Non-authoritative answer:
-Name:	www.1und1.de
-Address: 217.160.72.6
-
--- DNS-Test ueber 208.67.222.222
-Server:		208.67.222.222
-Address:	208.67.222.222#53
-
-Non-authoritative answer:
-Name:	www.1und1.de
-Address: 217.160.72.6
-
- -- MTR/Tracert www.1und1.de mit IPv4
-Start: 2020-05-05T21:22:56+0200
-HOST: Volkers-MBP.fritz.box       Loss%   Snt   Last   Avg  Best  Wrst StDev
-  1.|-- fritz.box                  0.0%     2   18.8  10.3   1.9  18.8  11.9
-  2.|-- dslb-092-073-160-001.092.  0.0%     2   33.4  25.9  18.5  33.4  10.5
-  3.|-- ???                       100.0     2    0.0   0.0   0.0   0.0   0.0
-  4.|-- 92.79.214.98               0.0%     2   18.4  18.5  18.4  18.6   0.2
-  5.|-- 145.254.2.207              0.0%     2   25.9  25.8  25.7  25.9   0.1
-  6.|-- 145.254.2.207              0.0%     2   25.7  25.9  25.7  26.1   0.2
-  7.|-- vodafone-p.bb-a.fra3.fra.  0.0%     2   25.2  25.3  25.2  25.4   0.1
-  8.|-- www.1und1.de               0.0%     2   24.6  24.3  24.1  24.6   0.3
-------------
--- MTR/Tracert www.1und1.de mit IPv6
-mtr: Address not available
-Start: 2020-05-05T21:23:03+0200
-HOST: Volkers-MBP.fritz.box       Loss%   Snt   Last   Avg  Best  Wrst StDev
-------------
-
-
-### Ping Tests IPv4
-PING www.1und1.de (217.160.72.6): 56 data bytes
-64 bytes from 217.160.72.6: icmp_seq=0 ttl=59 time=24.994 ms
-64 bytes from 217.160.72.6: icmp_seq=1 ttl=59 time=25.328 ms
-64 bytes from 217.160.72.6: icmp_seq=2 ttl=59 time=30.357 ms
-
---- www.1und1.de ping statistics ---
-3 packets transmitted, 3 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 24.994/26.893/30.357/2.453 ms
-PING www.1und1.de (217.160.72.6): 512 data bytes
-520 bytes from 217.160.72.6: icmp_seq=0 ttl=59 time=31.580 ms
-520 bytes from 217.160.72.6: icmp_seq=1 ttl=59 time=38.133 ms
-520 bytes from 217.160.72.6: icmp_seq=2 ttl=59 time=31.802 ms
-
---- www.1und1.de ping statistics ---
-3 packets transmitted, 3 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 31.580/33.838/38.133/3.038 ms
-PING www.1und1.de (217.160.72.6): 1024 data bytes
-1032 bytes from 217.160.72.6: icmp_seq=0 ttl=59 time=39.996 ms
-1032 bytes from 217.160.72.6: icmp_seq=1 ttl=59 time=46.944 ms
-1032 bytes from 217.160.72.6: icmp_seq=2 ttl=59 time=44.711 ms
-
---- www.1und1.de ping statistics ---
-3 packets transmitted, 3 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 39.996/43.884/46.944/2.896 ms
-PING www.1und1.de (217.160.72.6): 1452 data bytes
-Request timeout for icmp_seq 0
-1460 bytes from 217.160.72.6: icmp_seq=1 ttl=59 time=51.480 ms
-1460 bytes from 217.160.72.6: icmp_seq=2 ttl=59 time=54.502 ms
-
---- www.1und1.de ping statistics ---
-3 packets transmitted, 2 packets received, 33.3% packet loss
-round-trip min/avg/max/stddev = 51.480/52.991/54.502/1.511 ms
-------------
-
-
-## Ping Tests IPv6
-ping6: nodename nor servname provided, or not known
-ping6: nodename nor servname provided, or not known
-ping6: nodename nor servname provided, or not known
-ping6: nodename nor servname provided, or not known
-####################################################
-
-
-Starte Test sip.1und1.de
-####################################################
-### Start 2020-05-05_210513
--- DNS-Test mit Kundeneinstellungen
-Server:		192.168.178.1
-Address:	192.168.178.1#53
-
-Non-authoritative answer:
-Name:	sip.1und1.de
-Address: 212.227.124.129
-Name:	sip.1und1.de
-Address: 212.227.124.130
-
--- DNS-Test ueber 8.8.8.8
-Server:		8.8.8.8
-Address:	8.8.8.8#53
-
-Non-authoritative answer:
-Name:	sip.1und1.de
-Address: 212.227.124.130
-Name:	sip.1und1.de
-Address: 212.227.124.129
-
--- DNS-Test ueber 208.67.222.222
-Server:		208.67.222.222
-Address:	208.67.222.222#53
-
-Non-authoritative answer:
-Name:	sip.1und1.de
-Address: 212.227.124.129
-Name:	sip.1und1.de
-Address: 212.227.124.130
-
- -- MTR/Tracert sip.1und1.de mit IPv4
-Start: 2020-05-05T21:23:14+0200
-HOST: Volkers-MBP.fritz.box       Loss%   Snt   Last   Avg  Best  Wrst StDev
-  1.|-- fritz.box                  0.0%     2   18.2  10.0   1.8  18.2  11.6
-  2.|-- dslb-092-073-160-001.092.  0.0%     2   18.2  18.5  18.2  18.8   0.4
-  3.|-- ???                       100.0     2    0.0   0.0   0.0   0.0   0.0
-  4.|-- 92.79.214.238              0.0%     2   20.1  20.3  20.1  20.5   0.3
-  5.|-- 145.254.2.209              0.0%     2   25.7  25.4  25.1  25.7   0.4
-  6.|-- 145.254.2.209              0.0%     2   25.2  25.3  25.2  25.3   0.1
-  7.|-- vodafone-p.bb-a.fra3.fra.  0.0%     2   24.9  24.9  24.9  24.9   0.0
-  8.|-- ae-10-0.bb-a.bap.rhr.de.o  0.0%     2   30.1  30.0  30.0  30.1   0.1
-  9.|-- ae-2-0.bb-a.tp.kae.de.one  0.0%     2   31.0  30.9  30.8  31.0   0.1
- 10.|-- ae-0-0.gw-diste2-a.bs.kae  0.0%     2   28.9  28.9  28.9  28.9   0.0
- 11.|-- sipbalance-c-bs.1und1.de   0.0%     2   29.1  29.2  29.1  29.4   0.2
-------------
--- MTR/Tracert sip.1und1.de mit IPv6
-mtr: Address not available
-Start: 2020-05-05T21:23:21+0200
-HOST: Volkers-MBP.fritz.box       Loss%   Snt   Last   Avg  Best  Wrst StDev
-------------
-
-
-### Ping Tests IPv4
-PING sip.1und1.de (212.227.124.129): 56 data bytes
-64 bytes from 212.227.124.129: icmp_seq=0 ttl=56 time=28.271 ms
-64 bytes from 212.227.124.129: icmp_seq=1 ttl=56 time=34.893 ms
-64 bytes from 212.227.124.129: icmp_seq=2 ttl=56 time=34.781 ms
-
---- sip.1und1.de ping statistics ---
-3 packets transmitted, 3 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 28.271/32.648/34.893/3.096 ms
-PING sip.1und1.de (212.227.124.129): 512 data bytes
-520 bytes from 212.227.124.129: icmp_seq=0 ttl=56 time=35.743 ms
-520 bytes from 212.227.124.129: icmp_seq=1 ttl=56 time=35.998 ms
-520 bytes from 212.227.124.129: icmp_seq=2 ttl=56 time=53.367 ms
-
---- sip.1und1.de ping statistics ---
-3 packets transmitted, 3 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 35.743/41.703/53.367/8.249 ms
-PING sip.1und1.de (212.227.124.129): 1024 data bytes
-1032 bytes from 212.227.124.129: icmp_seq=0 ttl=56 time=73.242 ms
-1032 bytes from 212.227.124.129: icmp_seq=1 ttl=56 time=48.851 ms
-1032 bytes from 212.227.124.129: icmp_seq=2 ttl=56 time=49.227 ms
-
---- sip.1und1.de ping statistics ---
-3 packets transmitted, 3 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 48.851/57.107/73.242/11.410 ms
-PING sip.1und1.de (212.227.124.129): 1452 data bytes
-1460 bytes from 212.227.124.129: icmp_seq=0 ttl=56 time=49.301 ms
-1460 bytes from 212.227.124.129: icmp_seq=1 ttl=56 time=55.993 ms
-1460 bytes from 212.227.124.129: icmp_seq=2 ttl=56 time=49.048 ms
-
---- sip.1und1.de ping statistics ---
-3 packets transmitted, 3 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 49.048/51.447/55.993/3.216 ms
-------------
-
-
-## Ping Tests IPv6
-ping6: nodename nor servname provided, or not known
-ping6: nodename nor servname provided, or not known
-ping6: nodename nor servname provided, or not known
-ping6: nodename nor servname provided, or not known
-####################################################
-
-
-Starte Test www.gmx.de
-####################################################
-### Start 2020-05-05_210529
--- DNS-Test mit Kundeneinstellungen
-Server:		192.168.178.1
-Address:	192.168.178.1#53
-
-Non-authoritative answer:
-www.gmx.de	canonical name = redir.g-ha-web.de.
-Name:	redir.g-ha-web.de
-Address: 82.165.230.36
-
--- DNS-Test ueber 8.8.8.8
-Server:		8.8.8.8
-Address:	8.8.8.8#53
-
-Non-authoritative answer:
-www.gmx.de	canonical name = redir.g-ha-web.de.
-Name:	redir.g-ha-web.de
-Address: 82.165.229.87
-
--- DNS-Test ueber 208.67.222.222
-Server:		208.67.222.222
-Address:	208.67.222.222#53
-
-Non-authoritative answer:
-www.gmx.de	canonical name = redir.g-ha-web.de.
-Name:	redir.g-ha-web.de
-Address: 82.165.229.87
-
- -- MTR/Tracert www.gmx.de mit IPv4
-Start: 2020-05-05T21:23:30+0200
-HOST: Volkers-MBP.fritz.box       Loss%   Snt   Last   Avg  Best  Wrst StDev
-  1.|-- fritz.box                  0.0%     2   20.7  11.2   1.6  20.7  13.5
-  2.|-- dslb-092-073-160-001.092.  0.0%     2   17.8  18.3  17.8  18.8   0.7
-  3.|-- 188.111.218.164            0.0%     2   17.6  17.6  17.6  17.7   0.1
-  4.|-- 92.79.214.238              0.0%     2   20.0  20.9  20.0  21.7   1.2
-  5.|-- 145.254.2.209              0.0%     2   26.1  25.7  25.3  26.1   0.6
-  6.|-- 145.254.2.209              0.0%     2   25.1  24.9  24.8  25.1   0.2
-  7.|-- vodafone-p.bb-a.fra3.fra.  0.0%     2   25.1  24.9  24.7  25.1   0.3
-  8.|-- ae-14.bb-b.fr7.fra.de.one  0.0%     2   27.3  27.1  27.0  27.3   0.2
-  9.|-- ae-9.bb-b.bs.kae.de.onean  0.0%     2   27.5  27.1  26.8  27.5   0.5
- 10.|-- ae-3.bb-b.bap.rhr.de.onea  0.0%     2   27.4  27.4  27.3  27.4   0.1
- 11.|-- ae-0-0.gw-diste2-b.bap.rh  0.0%     2   29.4  29.0  28.6  29.4   0.5
- 12.|-- redir-ba.web.de            0.0%     2   27.7  27.5  27.3  27.7   0.2
-------------
--- MTR/Tracert www.gmx.de mit IPv6
-mtr: Address not available
-Start: 2020-05-05T21:23:37+0200
-HOST: Volkers-MBP.fritz.box       Loss%   Snt   Last   Avg  Best  Wrst StDev
-------------
-
-
-### Ping Tests IPv4
-PING redir.g-ha-web.de (82.165.230.36): 56 data bytes
-64 bytes from 82.165.230.36: icmp_seq=0 ttl=246 time=27.972 ms
-64 bytes from 82.165.230.36: icmp_seq=1 ttl=246 time=28.635 ms
-64 bytes from 82.165.230.36: icmp_seq=2 ttl=246 time=28.130 ms
-
---- redir.g-ha-web.de ping statistics ---
-3 packets transmitted, 3 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 27.972/28.246/28.635/0.283 ms
-PING redir.g-ha-web.de (82.165.230.36): 512 data bytes
-520 bytes from 82.165.230.36: icmp_seq=0 ttl=246 time=35.242 ms
-520 bytes from 82.165.230.36: icmp_seq=1 ttl=246 time=35.636 ms
-520 bytes from 82.165.230.36: icmp_seq=2 ttl=246 time=41.576 ms
-
---- redir.g-ha-web.de ping statistics ---
-3 packets transmitted, 3 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 35.242/37.485/41.576/2.897 ms
-PING redir.g-ha-web.de (82.165.230.36): 1024 data bytes
-1032 bytes from 82.165.230.36: icmp_seq=0 ttl=246 time=42.486 ms
-1032 bytes from 82.165.230.36: icmp_seq=1 ttl=246 time=47.795 ms
-1032 bytes from 82.165.230.36: icmp_seq=2 ttl=246 time=48.390 ms
-
---- redir.g-ha-web.de ping statistics ---
-3 packets transmitted, 3 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 42.486/46.224/48.390/2.654 ms
-PING redir.g-ha-web.de (82.165.230.36): 1452 data bytes
-1460 bytes from 82.165.230.36: icmp_seq=0 ttl=246 time=49.170 ms
-1460 bytes from 82.165.230.36: icmp_seq=1 ttl=246 time=48.322 ms
-1460 bytes from 82.165.230.36: icmp_seq=2 ttl=246 time=48.048 ms
-
---- redir.g-ha-web.de ping statistics ---
-3 packets transmitted, 3 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 48.048/48.513/49.170/0.478 ms
-------------
-
-
-## Ping Tests IPv6
-ping6: getaddrinfo -- nodename nor servname provided, or not known
-ping6: getaddrinfo -- nodename nor servname provided, or not known
-ping6: getaddrinfo -- nodename nor servname provided, or not known
-ping6: getaddrinfo -- nodename nor servname provided, or not known
-####################################################
-
-
-### End script 2020-05-05_21:05:45 ###
-### START MacOS IP Configuration ###
-lo0: flags=8049<UP,LOOPBACK,RUNNING,MULTICAST> mtu 16384
-	options=1203<RXCSUM,TXCSUM,TXSTATUS,SW_TIMESTAMP>
-	inet 127.0.0.1 netmask 0xff000000 
-	inet6 ::1 prefixlen 128 
-	inet6 fe80::1%lo0 prefixlen 64 scopeid 0x1 
-	nd6 options=201<PERFORMNUD,DAD>
-gif0: flags=8010<POINTOPOINT,MULTICAST> mtu 1280
-stf0: flags=0<> mtu 1280
-en5: flags=8863<UP,BROADCAST,SMART,RUNNING,SIMPLEX,MULTICAST> mtu 1500
-	ether ac:de:48:00:11:22 
-	inet6 fe80::aede:48ff:fe00:1122%en5 prefixlen 64 scopeid 0x4 
-	nd6 options=201<PERFORMNUD,DAD>
-	media: autoselect (100baseTX <full-duplex>)
-	status: active
-bridge0: flags=8863<UP,BROADCAST,SMART,RUNNING,SIMPLEX,MULTICAST> mtu 1500
-	options=63<RXCSUM,TXCSUM,TSO4,TSO6>
-	ether 82:22:7e:83:9c:01 
-	Configuration:
-		id 0:0:0:0:0:0 priority 0 hellotime 0 fwddelay 0
-		maxage 0 holdcnt 0 proto stp maxaddr 100 timeout 1200
-		root id 0:0:0:0:0:0 priority 0 ifcost 0 port 0
-		ipfilter disabled flags 0x2
-	member: en1 flags=3<LEARNING,DISCOVER>
-	        ifmaxaddr 0 port 8 priority 0 path cost 0
-	member: en2 flags=3<LEARNING,DISCOVER>
-	        ifmaxaddr 0 port 9 priority 0 path cost 0
-	member: en3 flags=3<LEARNING,DISCOVER>
-	        ifmaxaddr 0 port 10 priority 0 path cost 0
-	member: en4 flags=3<LEARNING,DISCOVER>
-	        ifmaxaddr 0 port 11 priority 0 path cost 0
-	nd6 options=201<PERFORMNUD,DAD>
-	media: <unknown type>
-	status: inactive
-ap1: flags=8802<BROADCAST,SIMPLEX,MULTICAST> mtu 1500
-	options=400<CHANNEL_IO>
-	ether f2:18:98:26:d2:71 
-	media: autoselect
-	status: inactive
-en0: flags=8863<UP,BROADCAST,SMART,RUNNING,SIMPLEX,MULTICAST> mtu 1500
-	options=400<CHANNEL_IO>
-	ether f0:18:98:26:d2:71 
-	inet 192.168.178.45 netmask 0xffffff00 broadcast 192.168.178.255
-	inet6 fe80::19:9f40:cdb0:800e%en0 prefixlen 64 secured scopeid 0x7 
-	nd6 options=201<PERFORMNUD,DAD>
-	media: autoselect
-	status: active
-en1: flags=8963<UP,BROADCAST,SMART,RUNNING,PROMISC,SIMPLEX,MULTICAST> mtu 1500
-	options=460<TSO4,TSO6,CHANNEL_IO>
-	ether 82:22:7e:83:9c:01 
-	media: autoselect <full-duplex>
-	status: inactive
-en2: flags=8963<UP,BROADCAST,SMART,RUNNING,PROMISC,SIMPLEX,MULTICAST> mtu 1500
-	options=460<TSO4,TSO6,CHANNEL_IO>
-	ether 82:22:7e:83:9c:00 
-	media: autoselect <full-duplex>
-	status: inactive
-en3: flags=8963<UP,BROADCAST,SMART,RUNNING,PROMISC,SIMPLEX,MULTICAST> mtu 1500
-	options=460<TSO4,TSO6,CHANNEL_IO>
-	ether 82:22:7e:83:9c:05 
-	media: autoselect <full-duplex>
-	status: inactive
-en4: flags=8963<UP,BROADCAST,SMART,RUNNING,PROMISC,SIMPLEX,MULTICAST> mtu 1500
-	options=460<TSO4,TSO6,CHANNEL_IO>
-	ether 82:22:7e:83:9c:04 
-	media: autoselect <full-duplex>
-	status: inactive
-p2p0: flags=8843<UP,BROADCAST,RUNNING,SIMPLEX,MULTICAST> mtu 2304
-	options=400<CHANNEL_IO>
-	ether 02:18:98:26:d2:71 
-	media: autoselect
-	status: inactive
-awdl0: flags=8943<UP,BROADCAST,RUNNING,PROMISC,SIMPLEX,MULTICAST> mtu 1484
-	options=400<CHANNEL_IO>
-	ether 3e:f8:44:e1:52:04 
-	inet6 fe80::3cf8:44ff:fee1:5204%awdl0 prefixlen 64 scopeid 0xd 
-	nd6 options=201<PERFORMNUD,DAD>
-	media: autoselect
-	status: active
-llw0: flags=8863<UP,BROADCAST,SMART,RUNNING,SIMPLEX,MULTICAST> mtu 1500
-	options=400<CHANNEL_IO>
-	ether 3e:f8:44:e1:52:04 
-	inet6 fe80::3cf8:44ff:fee1:5204%llw0 prefixlen 64 scopeid 0xe 
-	nd6 options=201<PERFORMNUD,DAD>
-	media: autoselect
-	status: active
-utun0: flags=8051<UP,POINTOPOINT,RUNNING,MULTICAST> mtu 1380
-	inet6 fe80::ddff:2736:5801:2cbf%utun0 prefixlen 64 scopeid 0xf 
-	nd6 options=201<PERFORMNUD,DAD>
-utun1: flags=8051<UP,POINTOPOINT,RUNNING,MULTICAST> mtu 2000
-	inet6 fe80::cd72:d050:587c:e97a%utun1 prefixlen 64 scopeid 0x10 
-	nd6 options=201<PERFORMNUD,DAD>
-gpd0: flags=8862<BROADCAST,SMART,RUNNING,SIMPLEX,MULTICAST> mtu 1400
-	ether 02:50:41:00:01:01 
-	inet 10.39.90.45 netmask 0xffffffff broadcast 10.39.90.45
-### END MACOs IP Configuration ###
-
-
-### START route ip4 ###
-Routing tables
-
-Internet:
-Destination        Gateway            Flags        Netif Expire
-default            192.168.178.1      UGSc           en0       
-127                127.0.0.1          UCS            lo0       
-127.0.0.1          127.0.0.1          UH             lo0       
-169.254            link#7             UCS            en0      !
-192.168.178        link#7             UCS            en0      !
-192.168.178.1/32   link#7             UCS            en0      !
-192.168.178.1      c8:e:14:3a:de:13   UHLWIir        en0   1170
-192.168.178.23     f0:79:60:95:4c:47  UHLWI          en0    461
-192.168.178.24     0:1d:ec:10:73:d4   UHLWIi         en0   1156
-192.168.178.29     6c:ad:f8:b8:5e:12  UHLWIi         en0     78
-192.168.178.30     54:60:9:fc:fc:2    UHLWIi         en0    988
-192.168.178.31     54:60:9:fd:35:42   UHLWIi         en0    794
-192.168.178.34     30:d3:2d:79:d6:86  UHLWI          en0    471
-192.168.178.35     0:11:32:32:c4:5d   UHLWIi         en0    949
-192.168.178.45/32  link#7             UCS            en0      !
-192.168.178.255    ff:ff:ff:ff:ff:ff  UHLWbI         en0      !
-224.0.0/4          link#7             UmCS           en0      !
-224.0.0.251        1:0:5e:0:0:fb      UHmLWI         en0       
-239.255.255.250    1:0:5e:7f:ff:fa    UHmLWI         en0       
-255.255.255.255/32 link#7             UCS            en0      !
-### END route ip4 ###
-
-
-### START route ip6 ###
-Routing tables
-
-Internet6:
-Destination                             Gateway                         Flags         Netif Expire
-default                                 fe80::%utun0                    UGcI          utun0       
-default                                 fe80::%utun1                    UGcI          utun1       
-::1                                     ::1                             UHL             lo0       
-fe80::%lo0/64                           fe80::1%lo0                     UcI             lo0       
-fe80::1%lo0                             link#1                          UHLI            lo0       
-fe80::%en5/64                           link#4                          UCI             en5       
-fe80::aede:48ff:fe00:1122%en5           ac:de:48:0:11:22                UHLI            lo0       
-fe80::aede:48ff:fe33:4455%en5           ac:de:48:33:44:55               UHLWIi          en5       
-fe80::%en0/64                           link#7                          UCI             en0       
-fe80::19:9f40:cdb0:800e%en0             f0:18:98:26:d2:71               UHLI            lo0       
-fe80::%awdl0/64                         link#13                         UCI           awdl0       
-fe80::3cf8:44ff:fee1:5204%awdl0         3e:f8:44:e1:52:4                UHLI            lo0       
-fe80::%llw0/64                          link#14                         UCI            llw0       
-fe80::3cf8:44ff:fee1:5204%llw0          3e:f8:44:e1:52:4                UHLI            lo0       
-fe80::%utun0/64                         fe80::ddff:2736:5801:2cbf%utun0 UcI           utun0       
-fe80::ddff:2736:5801:2cbf%utun0         link#15                         UHLI            lo0       
-fe80::%utun1/64                         fe80::cd72:d050:587c:e97a%utun1 UcI           utun1       
-fe80::cd72:d050:587c:e97a%utun1         link#16                         UHLI            lo0       
-ff01::%lo0/32                           ::1                             UmCI            lo0       
-ff01::%en5/32                           link#4                          UmCI            en5       
-ff01::%en0/32                           link#7                          UmCI            en0       
-ff01::%awdl0/32                         link#13                         UmCI          awdl0       
-ff01::%llw0/32                          link#14                         UmCI           llw0       
-ff01::%utun0/32                         fe80::ddff:2736:5801:2cbf%utun0 UmCI          utun0       
-ff01::%utun1/32                         fe80::cd72:d050:587c:e97a%utun1 UmCI          utun1       
-ff02::%lo0/32                           ::1                             UmCI            lo0       
-ff02::%en5/32                           link#4                          UmCI            en5       
-ff02::%en0/32                           link#7                          UmCI            en0       
-ff02::%awdl0/32                         link#13                         UmCI          awdl0       
-ff02::%llw0/32                          link#14                         UmCI           llw0       
-ff02::%utun0/32                         fe80::ddff:2736:5801:2cbf%utun0 UmCI          utun0       
-ff02::%utun1/32                         fe80::cd72:d050:587c:e97a%utun1 UmCI          utun1       
-### END route ip6###
-
-
-Starte Test www.heise.de
-####################################################
-### Start 2020-05-05_210516
--- DNS-Test mit Kundeneinstellungen
-Server:		192.168.178.1
-Address:	192.168.178.1#53
-
-Non-authoritative answer:
-Name:	www.heise.de
-Address: 193.99.144.85
-
--- DNS-Test ueber 8.8.8.8
-Server:		8.8.8.8
-Address:	8.8.8.8#53
-
-Non-authoritative answer:
-Name:	www.heise.de
-Address: 193.99.144.85
-
--- DNS-Test ueber 208.67.222.222
-Server:		208.67.222.222
-Address:	208.67.222.222#53
-
-Non-authoritative answer:
-Name:	www.heise.de
-Address: 193.99.144.85
-
- -- MTR/Tracert www.heise.de mit IPv4
-Start: 2020-05-05T21:34:16+0200
-HOST: Volkers-MBP.fritz.box       Loss%   Snt   Last   Avg  Best  Wrst StDev
-  1.|-- fritz.box                  0.0%     2   45.5  23.7   1.9  45.5  30.8
-  2.|-- dslb-092-073-160-001.092.  0.0%     2   17.5  17.9  17.5  18.3   0.6
-  3.|-- ???                       100.0     2    0.0   0.0   0.0   0.0   0.0
-  4.|-- 92.79.214.238              0.0%     2   19.6  19.6  19.6  19.6   0.0
-  5.|-- 145.254.2.195              0.0%     2   25.2  25.3  25.2  25.4   0.1
-  6.|-- 145.254.2.195             50.0%     2   24.5  24.5  24.5  24.5   0.0
-  7.|-- te0-0-2-3.c350.f.de.plusl  0.0%     2   27.0  26.0  25.0  27.0   1.4
-  8.|-- 82.98.102.1                0.0%     2   27.0  26.2  25.5  27.0   1.1
-  9.|-- 82.98.102.132              0.0%     2   25.3  25.3  25.2  25.3   0.0
- 10.|-- 82.98.102.23               0.0%     2   24.8  25.2  24.8  25.6   0.6
- 11.|-- 212.19.61.13               0.0%     2   24.3  24.4  24.3  24.6   0.2
- 12.|-- www.heise.de               0.0%     2   24.7  24.7  24.7  24.8   0.0
-------------
--- MTR/Tracert www.heise.de mit IPv6
-mtr: Address not available
-Start: 2020-05-05T21:34:24+0200
-HOST: Volkers-MBP.fritz.box       Loss%   Snt   Last   Avg  Best  Wrst StDev
-------------
-
-
-### Ping Tests IPv4
-PING www.heise.de (193.99.144.85): 56 data bytes
-64 bytes from 193.99.144.85: icmp_seq=0 ttl=247 time=24.947 ms
-64 bytes from 193.99.144.85: icmp_seq=1 ttl=247 time=31.335 ms
-64 bytes from 193.99.144.85: icmp_seq=2 ttl=247 time=24.881 ms
-
---- www.heise.de ping statistics ---
-3 packets transmitted, 3 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 24.881/27.054/31.335/3.027 ms
-PING www.heise.de (193.99.144.85): 512 data bytes
-520 bytes from 193.99.144.85: icmp_seq=0 ttl=247 time=32.970 ms
-520 bytes from 193.99.144.85: icmp_seq=1 ttl=247 time=32.204 ms
-520 bytes from 193.99.144.85: icmp_seq=2 ttl=247 time=34.508 ms
-
---- www.heise.de ping statistics ---
-3 packets transmitted, 3 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 32.204/33.227/34.508/0.958 ms
-PING www.heise.de (193.99.144.85): 1024 data bytes
-1032 bytes from 193.99.144.85: icmp_seq=0 ttl=247 time=39.211 ms
-1032 bytes from 193.99.144.85: icmp_seq=1 ttl=247 time=45.559 ms
-1032 bytes from 193.99.144.85: icmp_seq=2 ttl=247 time=39.405 ms
-
---- www.heise.de ping statistics ---
-3 packets transmitted, 3 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 39.211/41.392/45.559/2.948 ms
-PING www.heise.de (193.99.144.85): 1452 data bytes
-1460 bytes from 193.99.144.85: icmp_seq=0 ttl=247 time=46.837 ms
-1460 bytes from 193.99.144.85: icmp_seq=1 ttl=247 time=47.030 ms
-1460 bytes from 193.99.144.85: icmp_seq=2 ttl=247 time=45.728 ms
-
---- www.heise.de ping statistics ---
-3 packets transmitted, 3 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 45.728/46.532/47.030/0.574 ms
-------------
-
-
-## Ping Tests IPv6
-ping6: nodename nor servname provided, or not known
-ping6: nodename nor servname provided, or not known
-ping6: nodename nor servname provided, or not known
-ping6: nodename nor servname provided, or not known
-####################################################
-
-
-Starte Test www.google.de
-####################################################
-### Start 2020-05-05_210532
--- DNS-Test mit Kundeneinstellungen
-Server:		192.168.178.1
-Address:	192.168.178.1#53
-
-Non-authoritative answer:
-Name:	www.google.de
-Address: 172.217.22.35
-
--- DNS-Test ueber 8.8.8.8
-Server:		8.8.8.8
-Address:	8.8.8.8#53
-
-Non-authoritative answer:
-Name:	www.google.de
-Address: 172.217.168.227
-
--- DNS-Test ueber 208.67.222.222
-Server:		208.67.222.222
-Address:	208.67.222.222#53
-
-Non-authoritative answer:
-Name:	www.google.de
-Address: 172.217.20.67
-
- -- MTR/Tracert www.google.de mit IPv4
-Start: 2020-05-05T21:34:32+0200
-HOST: Volkers-MBP.fritz.box       Loss%   Snt   Last   Avg  Best  Wrst StDev
-  1.|-- fritz.box                  0.0%     2   18.3  10.2   2.0  18.3  11.6
-  2.|-- dslb-092-073-160-001.092.  0.0%     2   17.9  18.1  17.9  18.2   0.2
-  3.|-- 188.111.218.164            0.0%     2   17.9  17.9  17.9  17.9   0.0
-  4.|-- 92.79.214.238              0.0%     2   19.4  19.6  19.4  19.9   0.4
-  5.|-- 145.254.2.205              0.0%     2   29.9  38.9  29.9  47.9  12.7
-  6.|-- 145.254.2.205              0.0%     2   29.7  29.5  29.4  29.7   0.2
-  7.|-- 72.14.222.128              0.0%     2   28.4  29.5  28.4  30.6   1.6
-  8.|-- 108.170.241.236            0.0%     2   26.6  26.3  26.0  26.6   0.4
-  9.|-- 216.239.43.36              0.0%     2   27.1  26.7  26.3  27.1   0.6
- 10.|-- 209.85.142.97              0.0%     2   33.3  33.1  32.9  33.3   0.2
- 11.|-- 209.85.242.78              0.0%     2   32.2  32.0  31.7  32.2   0.3
- 12.|-- 108.170.251.129            0.0%     2   34.7  34.3  34.0  34.7   0.5
- 13.|-- 66.249.95.29               0.0%     2   34.5  34.6  34.5  34.7   0.1
- 14.|-- fra15s16-in-f3.1e100.net   0.0%     2   34.9  35.2  34.9  35.5   0.5
-------------
--- MTR/Tracert www.google.de mit IPv6
-mtr: Address not available
-Start: 2020-05-05T21:34:40+0200
-HOST: Volkers-MBP.fritz.box       Loss%   Snt   Last   Avg  Best  Wrst StDev
-------------
-
-
-### Ping Tests IPv4
-PING www.google.de (172.217.22.35): 56 data bytes
-64 bytes from 172.217.22.35: icmp_seq=0 ttl=52 time=34.693 ms
-64 bytes from 172.217.22.35: icmp_seq=1 ttl=52 time=40.766 ms
-64 bytes from 172.217.22.35: icmp_seq=2 ttl=52 time=137.213 ms
-
---- www.google.de ping statistics ---
-3 packets transmitted, 3 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 34.693/70.891/137.213/46.962 ms
-PING www.google.de (172.217.22.35): 512 data bytes
-76 bytes from 172.217.22.35: icmp_seq=0 ttl=52 time=40.761 ms
-wrong total length 96 instead of 540
-76 bytes from 172.217.22.35: icmp_seq=1 ttl=52 time=47.279 ms
-wrong total length 96 instead of 540
-76 bytes from 172.217.22.35: icmp_seq=2 ttl=52 time=47.957 ms
-wrong total length 96 instead of 540
-
---- www.google.de ping statistics ---
-3 packets transmitted, 3 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 40.761/45.332/47.957/3.244 ms
-PING www.google.de (172.217.22.35): 1024 data bytes
-76 bytes from 172.217.22.35: icmp_seq=0 ttl=52 time=47.892 ms
-wrong total length 96 instead of 1052
-76 bytes from 172.217.22.35: icmp_seq=1 ttl=52 time=52.781 ms
-wrong total length 96 instead of 1052
-76 bytes from 172.217.22.35: icmp_seq=2 ttl=52 time=53.973 ms
-wrong total length 96 instead of 1052
-
---- www.google.de ping statistics ---
-3 packets transmitted, 3 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 47.892/51.549/53.973/2.631 ms
-PING www.google.de (172.217.22.35): 1452 data bytes
-76 bytes from 172.217.22.35: icmp_seq=0 ttl=52 time=54.974 ms
-wrong total length 96 instead of 1480
-76 bytes from 172.217.22.35: icmp_seq=1 ttl=52 time=54.068 ms
-wrong total length 96 instead of 1480
-76 bytes from 172.217.22.35: icmp_seq=2 ttl=52 time=53.617 ms
-wrong total length 96 instead of 1480
-
---- www.google.de ping statistics ---
-3 packets transmitted, 3 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 53.617/54.220/54.974/0.564 ms
-------------
-
-
-## Ping Tests IPv6
-ping6: nodename nor servname provided, or not known
-ping6: nodename nor servname provided, or not known
-ping6: nodename nor servname provided, or not known
-ping6: nodename nor servname provided, or not known
-####################################################
-
-
-Starte Test www.youtube.de
-####################################################
-### Start 2020-05-05_210549
--- DNS-Test mit Kundeneinstellungen
-Server:		192.168.178.1
-Address:	192.168.178.1#53
-
-Non-authoritative answer:
-www.youtube.de	canonical name = youtube-ui.l.google.com.
-Name:	youtube-ui.l.google.com
-Address: 172.217.21.206
 Name:	youtube-ui.l.google.com
 Address: 216.58.205.238
 Name:	youtube-ui.l.google.com
@@ -3441,9 +394,13 @@ Address: 216.58.206.14
 Name:	youtube-ui.l.google.com
 Address: 216.58.208.46
 Name:	youtube-ui.l.google.com
-Address: 172.217.18.174
+Address: 172.217.18.14
 Name:	youtube-ui.l.google.com
-Address: 172.217.16.142
+Address: 216.58.207.46
+Name:	youtube-ui.l.google.com
+Address: 216.58.207.78
+Name:	youtube-ui.l.google.com
+Address: 216.58.210.14
 Name:	youtube-ui.l.google.com
 Address: 172.217.18.110
 Name:	youtube-ui.l.google.com
@@ -3452,8 +409,6 @@ Name:	youtube-ui.l.google.com
 Address: 172.217.23.110
 Name:	youtube-ui.l.google.com
 Address: 216.58.212.142
-Name:	youtube-ui.l.google.com
-Address: 172.217.22.110
 
 -- DNS-Test ueber 8.8.8.8
 Server:		8.8.8.8
@@ -3462,19 +417,23 @@ Address:	8.8.8.8#53
 Non-authoritative answer:
 www.youtube.de	canonical name = youtube-ui.l.google.com.
 Name:	youtube-ui.l.google.com
+Address: 216.58.208.110
+Name:	youtube-ui.l.google.com
+Address: 172.217.17.110
+Name:	youtube-ui.l.google.com
 Address: 216.58.211.110
+Name:	youtube-ui.l.google.com
+Address: 172.217.20.78
 Name:	youtube-ui.l.google.com
 Address: 172.217.168.238
 Name:	youtube-ui.l.google.com
 Address: 172.217.17.46
 Name:	youtube-ui.l.google.com
+Address: 172.217.17.78
+Name:	youtube-ui.l.google.com
 Address: 172.217.19.206
 Name:	youtube-ui.l.google.com
-Address: 172.217.20.110
-Name:	youtube-ui.l.google.com
-Address: 172.217.17.110
-Name:	youtube-ui.l.google.com
-Address: 172.217.17.142
+Address: 172.217.168.206
 
 -- DNS-Test ueber 208.67.222.222
 Server:		208.67.222.222
@@ -3483,85 +442,93 @@ Address:	208.67.222.222#53
 Non-authoritative answer:
 www.youtube.de	canonical name = youtube-ui.l.google.com.
 Name:	youtube-ui.l.google.com
-Address: 172.217.168.206
-Name:	youtube-ui.l.google.com
-Address: 172.217.168.238
-Name:	youtube-ui.l.google.com
-Address: 216.58.211.110
+Address: 172.217.17.46
 Name:	youtube-ui.l.google.com
 Address: 172.217.17.78
 Name:	youtube-ui.l.google.com
 Address: 172.217.17.110
 Name:	youtube-ui.l.google.com
+Address: 172.217.17.142
+Name:	youtube-ui.l.google.com
 Address: 172.217.19.206
+Name:	youtube-ui.l.google.com
+Address: 172.217.20.110
+Name:	youtube-ui.l.google.com
+Address: 172.217.168.238
+Name:	youtube-ui.l.google.com
+Address: 216.58.208.110
+Name:	youtube-ui.l.google.com
+Address: 216.58.211.110
 
  -- MTR/Tracert www.youtube.de mit IPv4
-Start: 2020-05-05T21:34:49+0200
+mtr -n -4 -r -c5 www.youtube.de
+Start: 2020-05-05T22:01:13+0200
 HOST: Volkers-MBP.fritz.box       Loss%   Snt   Last   Avg  Best  Wrst StDev
-  1.|-- fritz.box                  0.0%     2   18.5  10.1   1.8  18.5  11.8
-  2.|-- dslb-092-073-160-001.092.  0.0%     2   20.3  19.4  18.5  20.3   1.3
-  3.|-- ???                       100.0     2    0.0   0.0   0.0   0.0   0.0
-  4.|-- 92.79.214.238              0.0%     2   20.1  19.9  19.7  20.1   0.3
-  5.|-- 145.254.2.205              0.0%     2   29.9  29.4  28.9  29.9   0.7
-  6.|-- 145.254.2.205              0.0%     2   29.1  29.1  29.0  29.1   0.1
-  7.|-- 72.14.222.128              0.0%     2   29.0  28.8  28.7  29.0   0.2
-  8.|-- 108.170.241.140            0.0%     2   28.8  28.8  28.8  28.8   0.0
-  9.|-- 216.239.42.213             0.0%     2   26.4  26.6  26.4  26.7   0.2
- 10.|-- 209.85.244.159             0.0%     2   31.8  32.2  31.8  32.5   0.5
- 11.|-- 108.170.226.2              0.0%     2   33.9  34.3  33.9  34.7   0.5
- 12.|-- 108.170.251.193            0.0%     2   34.2  34.5  34.2  34.7   0.3
- 13.|-- 172.253.64.119             0.0%     2   32.2  32.6  32.2  33.0   0.6
- 14.|-- zrh04s05-in-f110.1e100.ne  0.0%     2   36.2  35.5  34.8  36.2   1.0
+  1.|-- 192.168.178.1              0.0%     5   17.9  23.5   2.0  61.9  22.5
+  2.|-- 92.73.160.1                0.0%     5   72.8  48.4  20.5  72.8  20.9
+  3.|-- 188.111.218.164           20.0%     5   18.0  17.9  17.7  18.1   0.2
+  4.|-- 92.79.214.98               0.0%     5   19.0  18.9  18.3  19.7   0.5
+  5.|-- 145.254.2.189              0.0%     5   23.7  23.5  23.0  23.9   0.3
+  6.|-- 145.254.2.189              0.0%     5   22.8  23.4  22.8  24.2   0.5
+  7.|-- 72.14.222.128              0.0%     5   25.5  25.4  24.8  26.0   0.4
+  8.|-- 108.170.241.173            0.0%     5   24.8  25.3  24.8  26.3   0.6
+  9.|-- 216.239.41.209             0.0%     5   24.0  23.4  22.8  24.0   0.4
+ 10.|-- 108.170.236.121            0.0%     5   29.2  30.6  28.8  36.8   3.5
+ 11.|-- 209.85.241.230             0.0%     5   31.9  32.6  31.6  33.4   0.8
+ 12.|-- 108.170.251.193            0.0%     5   31.9  31.8  31.5  32.1   0.3
+ 13.|-- 216.239.54.61              0.0%     5   29.1  28.9  28.1  29.4   0.5
+ 14.|-- 172.217.23.142             0.0%     5   28.7  28.5  28.1  28.8   0.3
 ------------
 -- MTR/Tracert www.youtube.de mit IPv6
+mtr -6 -r -c2 www.youtube.de
 mtr: Address not available
-Start: 2020-05-05T21:34:59+0200
+Start: 2020-05-05T22:01:23+0200
 HOST: Volkers-MBP.fritz.box       Loss%   Snt   Last   Avg  Best  Wrst StDev
 ------------
 
 
 ### Ping Tests IPv4
-PING youtube-ui.l.google.com (172.217.16.206): 56 data bytes
-64 bytes from 172.217.16.206: icmp_seq=0 ttl=52 time=31.390 ms
-64 bytes from 172.217.16.206: icmp_seq=1 ttl=52 time=31.924 ms
-64 bytes from 172.217.16.206: icmp_seq=2 ttl=52 time=32.222 ms
+PING youtube-ui.l.google.com (216.58.205.238): 56 data bytes
+64 bytes from 216.58.205.238: icmp_seq=0 ttl=52 time=52.069 ms
+64 bytes from 216.58.205.238: icmp_seq=1 ttl=52 time=38.083 ms
+64 bytes from 216.58.205.238: icmp_seq=2 ttl=52 time=45.719 ms
 
 --- youtube-ui.l.google.com ping statistics ---
 3 packets transmitted, 3 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 31.390/31.845/32.222/0.344 ms
-PING youtube-ui.l.google.com (172.217.16.206): 512 data bytes
-76 bytes from 172.217.16.206: icmp_seq=0 ttl=52 time=38.400 ms
+round-trip min/avg/max/stddev = 38.083/45.290/52.069/5.718 ms
+PING youtube-ui.l.google.com (216.58.205.238): 512 data bytes
+76 bytes from 216.58.205.238: icmp_seq=0 ttl=52 time=56.098 ms
 wrong total length 96 instead of 540
-76 bytes from 172.217.16.206: icmp_seq=1 ttl=52 time=44.949 ms
+76 bytes from 216.58.205.238: icmp_seq=1 ttl=52 time=56.327 ms
 wrong total length 96 instead of 540
-76 bytes from 172.217.16.206: icmp_seq=2 ttl=52 time=44.821 ms
+76 bytes from 216.58.205.238: icmp_seq=2 ttl=52 time=53.283 ms
 wrong total length 96 instead of 540
 
 --- youtube-ui.l.google.com ping statistics ---
 3 packets transmitted, 3 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 38.400/42.723/44.949/3.058 ms
-PING youtube-ui.l.google.com (172.217.16.206): 1024 data bytes
-76 bytes from 172.217.16.206: icmp_seq=0 ttl=52 time=45.461 ms
+round-trip min/avg/max/stddev = 53.283/55.236/56.327/1.384 ms
+PING youtube-ui.l.google.com (216.58.205.238): 1024 data bytes
+76 bytes from 216.58.205.238: icmp_seq=0 ttl=52 time=70.467 ms
 wrong total length 96 instead of 1052
-76 bytes from 172.217.16.206: icmp_seq=1 ttl=52 time=45.754 ms
+76 bytes from 216.58.205.238: icmp_seq=1 ttl=52 time=60.814 ms
 wrong total length 96 instead of 1052
-76 bytes from 172.217.16.206: icmp_seq=2 ttl=52 time=45.332 ms
+76 bytes from 216.58.205.238: icmp_seq=2 ttl=52 time=63.264 ms
 wrong total length 96 instead of 1052
 
 --- youtube-ui.l.google.com ping statistics ---
 3 packets transmitted, 3 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 45.332/45.516/45.754/0.177 ms
-PING youtube-ui.l.google.com (172.217.16.206): 1452 data bytes
-76 bytes from 172.217.16.206: icmp_seq=0 ttl=52 time=51.801 ms
+round-trip min/avg/max/stddev = 60.814/64.848/70.467/4.097 ms
+PING youtube-ui.l.google.com (216.58.205.238): 1452 data bytes
+76 bytes from 216.58.205.238: icmp_seq=0 ttl=52 time=56.790 ms
 wrong total length 96 instead of 1480
-76 bytes from 172.217.16.206: icmp_seq=1 ttl=52 time=51.139 ms
+76 bytes from 216.58.205.238: icmp_seq=1 ttl=52 time=53.319 ms
 wrong total length 96 instead of 1480
-76 bytes from 172.217.16.206: icmp_seq=2 ttl=52 time=51.410 ms
+76 bytes from 216.58.205.238: icmp_seq=2 ttl=52 time=51.946 ms
 wrong total length 96 instead of 1480
 
 --- youtube-ui.l.google.com ping statistics ---
 3 packets transmitted, 3 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 51.139/51.450/51.801/0.272 ms
+round-trip min/avg/max/stddev = 51.946/54.018/56.790/2.038 ms
 ------------
 
 
@@ -3575,7 +542,7 @@ ping6: nodename nor servname provided, or not known
 
 Starte Test www.1und1.de
 ####################################################
-### Start 2020-05-05_210507
+### Start 2020-05-05_220532
 -- DNS-Test mit Kundeneinstellungen
 Server:		192.168.178.1
 Address:	192.168.178.1#53
@@ -3601,57 +568,59 @@ Name:	www.1und1.de
 Address: 217.160.72.6
 
  -- MTR/Tracert www.1und1.de mit IPv4
-Start: 2020-05-05T21:35:07+0200
+mtr -n -4 -r -c5 www.1und1.de
+Start: 2020-05-05T22:01:32+0200
 HOST: Volkers-MBP.fritz.box       Loss%   Snt   Last   Avg  Best  Wrst StDev
-  1.|-- fritz.box                  0.0%     2   41.8  21.9   2.0  41.8  28.1
-  2.|-- dslb-092-073-160-001.092.  0.0%     2   35.5  49.7  35.5  63.9  20.0
-  3.|-- ???                       100.0     2    0.0   0.0   0.0   0.0   0.0
-  4.|-- 92.79.214.98               0.0%     2   18.6  18.8  18.6  19.1   0.3
-  5.|-- ???                       100.0     2    0.0   0.0   0.0   0.0   0.0
-  6.|-- ???                       100.0     2    0.0   0.0   0.0   0.0   0.0
-  7.|-- vodafone-p.bb-a.fra3.fra.  0.0%     2   26.0  25.6  25.1  26.0   0.6
-  8.|-- www.1und1.de               0.0%     2   24.9  24.8  24.7  24.9   0.1
+  1.|-- 192.168.178.1              0.0%     5   25.5  16.4   1.6  25.5   8.8
+  2.|-- 92.73.160.1                0.0%     5   17.8  18.8  17.8  22.2   1.9
+  3.|-- 188.111.218.164           60.0%     5   23.5  20.6  17.7  23.5   4.1
+  4.|-- 92.79.214.98               0.0%     5   27.7  20.2  18.0  27.7   4.2
+  5.|-- 145.254.2.207              0.0%     5   26.4  25.9  25.5  26.4   0.4
+  6.|-- 145.254.2.207              0.0%     5   28.1  32.2  24.4  57.7  14.4
+  7.|-- 92.79.239.90               0.0%     5   26.0  25.7  24.7  27.3   1.0
+  8.|-- 217.160.72.6              20.0%     5   33.8  29.8  23.8  36.6   6.4
 ------------
 -- MTR/Tracert www.1und1.de mit IPv6
+mtr -6 -r -c2 www.1und1.de
 mtr: Address not available
-Start: 2020-05-05T21:35:14+0200
+Start: 2020-05-05T22:01:42+0200
 HOST: Volkers-MBP.fritz.box       Loss%   Snt   Last   Avg  Best  Wrst StDev
 ------------
 
 
 ### Ping Tests IPv4
 PING www.1und1.de (217.160.72.6): 56 data bytes
-64 bytes from 217.160.72.6: icmp_seq=0 ttl=59 time=24.714 ms
-64 bytes from 217.160.72.6: icmp_seq=1 ttl=59 time=30.347 ms
-64 bytes from 217.160.72.6: icmp_seq=2 ttl=59 time=31.350 ms
+64 bytes from 217.160.72.6: icmp_seq=0 ttl=59 time=26.695 ms
+64 bytes from 217.160.72.6: icmp_seq=1 ttl=59 time=24.581 ms
+64 bytes from 217.160.72.6: icmp_seq=2 ttl=59 time=37.943 ms
 
 --- www.1und1.de ping statistics ---
 3 packets transmitted, 3 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 24.714/28.804/31.350/2.921 ms
+round-trip min/avg/max/stddev = 24.581/29.740/37.943/5.864 ms
 PING www.1und1.de (217.160.72.6): 512 data bytes
-520 bytes from 217.160.72.6: icmp_seq=0 ttl=59 time=31.841 ms
-520 bytes from 217.160.72.6: icmp_seq=1 ttl=59 time=40.557 ms
-520 bytes from 217.160.72.6: icmp_seq=2 ttl=59 time=38.238 ms
+Request timeout for icmp_seq 0
+520 bytes from 217.160.72.6: icmp_seq=1 ttl=59 time=38.254 ms
+520 bytes from 217.160.72.6: icmp_seq=2 ttl=59 time=34.497 ms
 
 --- www.1und1.de ping statistics ---
-3 packets transmitted, 3 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 31.841/36.879/40.557/3.686 ms
+3 packets transmitted, 2 packets received, 33.3% packet loss
+round-trip min/avg/max/stddev = 34.497/36.376/38.254/1.878 ms
 PING www.1und1.de (217.160.72.6): 1024 data bytes
-1032 bytes from 217.160.72.6: icmp_seq=0 ttl=59 time=39.207 ms
-1032 bytes from 217.160.72.6: icmp_seq=1 ttl=59 time=45.061 ms
-1032 bytes from 217.160.72.6: icmp_seq=2 ttl=59 time=45.311 ms
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+1032 bytes from 217.160.72.6: icmp_seq=2 ttl=59 time=39.178 ms
 
 --- www.1und1.de ping statistics ---
-3 packets transmitted, 3 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 39.207/43.193/45.311/2.820 ms
+3 packets transmitted, 1 packets received, 66.7% packet loss
+round-trip min/avg/max/stddev = 39.178/39.178/39.178/0.000 ms
 PING www.1und1.de (217.160.72.6): 1452 data bytes
-1460 bytes from 217.160.72.6: icmp_seq=0 ttl=59 time=45.941 ms
-1460 bytes from 217.160.72.6: icmp_seq=1 ttl=59 time=50.860 ms
-1460 bytes from 217.160.72.6: icmp_seq=2 ttl=59 time=45.150 ms
+1460 bytes from 217.160.72.6: icmp_seq=0 ttl=59 time=45.932 ms
+1460 bytes from 217.160.72.6: icmp_seq=1 ttl=59 time=51.078 ms
+1460 bytes from 217.160.72.6: icmp_seq=2 ttl=59 time=44.726 ms
 
 --- www.1und1.de ping statistics ---
 3 packets transmitted, 3 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 45.150/47.317/50.860/2.526 ms
+round-trip min/avg/max/stddev = 44.726/47.245/51.078/2.754 ms
 ------------
 
 
@@ -3665,7 +634,7 @@ ping6: nodename nor servname provided, or not known
 
 Starte Test sip.1und1.de
 ####################################################
-### Start 2020-05-05_210523
+### Start 2020-05-05_220555
 -- DNS-Test mit Kundeneinstellungen
 Server:		192.168.178.1
 Address:	192.168.178.1#53
@@ -3682,9 +651,9 @@ Address:	8.8.8.8#53
 
 Non-authoritative answer:
 Name:	sip.1und1.de
-Address: 212.227.124.129
-Name:	sip.1und1.de
 Address: 212.227.124.130
+Name:	sip.1und1.de
+Address: 212.227.124.129
 
 -- DNS-Test ueber 208.67.222.222
 Server:		208.67.222.222
@@ -3697,60 +666,62 @@ Name:	sip.1und1.de
 Address: 212.227.124.129
 
  -- MTR/Tracert sip.1und1.de mit IPv4
-Start: 2020-05-05T21:35:23+0200
+mtr -n -4 -r -c5 sip.1und1.de
+Start: 2020-05-05T22:01:55+0200
 HOST: Volkers-MBP.fritz.box       Loss%   Snt   Last   Avg  Best  Wrst StDev
-  1.|-- fritz.box                  0.0%     2   67.2  34.6   1.9  67.2  46.2
-  2.|-- dslb-092-073-160-001.092.  0.0%     2   25.1  22.2  19.3  25.1   4.1
-  3.|-- 188.111.218.164            0.0%     2   18.0  17.9  17.7  18.0   0.2
-  4.|-- 92.79.214.238              0.0%     2   19.9  20.1  19.9  20.4   0.3
-  5.|-- 145.254.2.209             50.0%     2   26.0  26.0  26.0  26.0   0.0
-  6.|-- 145.254.2.209             50.0%     2   25.7  25.7  25.7  25.7   0.0
-  7.|-- vodafone-p.bb-a.fra3.fra.  0.0%     2   25.1  25.1  25.1  25.2   0.1
-  8.|-- ae-10-0.bb-a.bap.rhr.de.o  0.0%     2   30.5  30.4  30.3  30.5   0.1
-  9.|-- ae-2-0.bb-a.tp.kae.de.one  0.0%     2   32.2  31.9  31.7  32.2   0.4
- 10.|-- ae-0-0.gw-diste2-a.bs.kae  0.0%     2   28.9  28.8  28.8  28.9   0.1
- 11.|-- sipbalance-c-bs.1und1.de   0.0%     2   29.0  29.1  29.0  29.1   0.0
+  1.|-- 192.168.178.1              0.0%     5   18.1  15.0   1.7  19.0   7.4
+  2.|-- 92.73.160.1                0.0%     5   18.1  20.6  18.1  25.5   3.2
+  3.|-- 188.111.218.164           40.0%     5   17.7  17.9  17.7  18.3   0.3
+  4.|-- 92.79.214.238              0.0%     5   19.7  19.7  19.3  20.3   0.4
+  5.|-- 145.254.2.209             20.0%     5   86.9  92.6  74.0 105.6  15.0
+  6.|-- 145.254.2.209              0.0%     5   25.5  38.8  24.3  93.3  30.4
+  7.|-- 92.79.239.90               0.0%     5   25.5  25.0  24.3  25.7   0.6
+  8.|-- 212.227.120.147            0.0%     5   30.9  30.2  29.9  30.9   0.4
+  9.|-- 212.227.120.44             0.0%     5   31.8  37.7  30.8  48.8   7.7
+ 10.|-- 212.227.116.212            0.0%     5   28.4  28.6  28.4  29.0   0.3
+ 11.|-- 212.227.124.129            0.0%     5   33.0  30.7  28.0  34.8   3.0
 ------------
 -- MTR/Tracert sip.1und1.de mit IPv6
+mtr -6 -r -c2 sip.1und1.de
 mtr: Address not available
-Start: 2020-05-05T21:35:30+0200
+Start: 2020-05-05T22:02:05+0200
 HOST: Volkers-MBP.fritz.box       Loss%   Snt   Last   Avg  Best  Wrst StDev
 ------------
 
 
 ### Ping Tests IPv4
 PING sip.1und1.de (212.227.124.129): 56 data bytes
-64 bytes from 212.227.124.129: icmp_seq=0 ttl=56 time=28.929 ms
-64 bytes from 212.227.124.129: icmp_seq=1 ttl=56 time=28.674 ms
-64 bytes from 212.227.124.129: icmp_seq=2 ttl=56 time=28.146 ms
+64 bytes from 212.227.124.129: icmp_seq=0 ttl=56 time=34.559 ms
+64 bytes from 212.227.124.129: icmp_seq=1 ttl=56 time=28.118 ms
+64 bytes from 212.227.124.129: icmp_seq=2 ttl=56 time=34.630 ms
 
 --- sip.1und1.de ping statistics ---
 3 packets transmitted, 3 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 28.146/28.583/28.929/0.326 ms
+round-trip min/avg/max/stddev = 28.118/32.436/34.630/3.053 ms
 PING sip.1und1.de (212.227.124.129): 512 data bytes
-520 bytes from 212.227.124.129: icmp_seq=0 ttl=56 time=36.891 ms
-520 bytes from 212.227.124.129: icmp_seq=1 ttl=56 time=39.912 ms
-520 bytes from 212.227.124.129: icmp_seq=2 ttl=56 time=36.690 ms
+520 bytes from 212.227.124.129: icmp_seq=0 ttl=56 time=39.708 ms
+520 bytes from 212.227.124.129: icmp_seq=1 ttl=56 time=35.784 ms
+520 bytes from 212.227.124.129: icmp_seq=2 ttl=56 time=36.483 ms
 
 --- sip.1und1.de ping statistics ---
 3 packets transmitted, 3 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 36.690/37.831/39.912/1.474 ms
+round-trip min/avg/max/stddev = 35.784/37.325/39.708/1.709 ms
 PING sip.1und1.de (212.227.124.129): 1024 data bytes
-1032 bytes from 212.227.124.129: icmp_seq=0 ttl=56 time=43.292 ms
-1032 bytes from 212.227.124.129: icmp_seq=1 ttl=56 time=48.783 ms
-1032 bytes from 212.227.124.129: icmp_seq=2 ttl=56 time=49.426 ms
+1032 bytes from 212.227.124.129: icmp_seq=0 ttl=56 time=45.037 ms
+1032 bytes from 212.227.124.129: icmp_seq=1 ttl=56 time=64.928 ms
+1032 bytes from 212.227.124.129: icmp_seq=2 ttl=56 time=44.417 ms
 
 --- sip.1und1.de ping statistics ---
 3 packets transmitted, 3 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 43.292/47.167/49.426/2.753 ms
+round-trip min/avg/max/stddev = 44.417/51.461/64.928/9.526 ms
 PING sip.1und1.de (212.227.124.129): 1452 data bytes
-1460 bytes from 212.227.124.129: icmp_seq=0 ttl=56 time=49.769 ms
-1460 bytes from 212.227.124.129: icmp_seq=1 ttl=56 time=48.242 ms
-1460 bytes from 212.227.124.129: icmp_seq=2 ttl=56 time=50.252 ms
+1460 bytes from 212.227.124.129: icmp_seq=0 ttl=56 time=52.972 ms
+1460 bytes from 212.227.124.129: icmp_seq=1 ttl=56 time=49.409 ms
+1460 bytes from 212.227.124.129: icmp_seq=2 ttl=56 time=50.152 ms
 
 --- sip.1und1.de ping statistics ---
 3 packets transmitted, 3 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 48.242/49.421/50.252/0.857 ms
+round-trip min/avg/max/stddev = 49.409/50.844/52.972/1.535 ms
 ------------
 
 
@@ -3764,7 +735,7 @@ ping6: nodename nor servname provided, or not known
 
 Starte Test www.gmx.de
 ####################################################
-### Start 2020-05-05_210539
+### Start 2020-05-05_220514
 -- DNS-Test mit Kundeneinstellungen
 Server:		192.168.178.1
 Address:	192.168.178.1#53
@@ -3772,7 +743,7 @@ Address:	192.168.178.1#53
 Non-authoritative answer:
 www.gmx.de	canonical name = redir.g-ha-web.de.
 Name:	redir.g-ha-web.de
-Address: 82.165.229.87
+Address: 82.165.230.36
 
 -- DNS-Test ueber 8.8.8.8
 Server:		8.8.8.8
@@ -3781,7 +752,7 @@ Address:	8.8.8.8#53
 Non-authoritative answer:
 www.gmx.de	canonical name = redir.g-ha-web.de.
 Name:	redir.g-ha-web.de
-Address: 82.165.229.87
+Address: 82.165.230.36
 
 -- DNS-Test ueber 208.67.222.222
 Server:		208.67.222.222
@@ -3793,60 +764,63 @@ Name:	redir.g-ha-web.de
 Address: 82.165.230.36
 
  -- MTR/Tracert www.gmx.de mit IPv4
-Start: 2020-05-05T21:35:39+0200
+mtr -n -4 -r -c5 www.gmx.de
+Start: 2020-05-05T22:02:14+0200
 HOST: Volkers-MBP.fritz.box       Loss%   Snt   Last   Avg  Best  Wrst StDev
-  1.|-- fritz.box                  0.0%     2   68.9  35.3   1.6  68.9  47.6
-  2.|-- dslb-092-073-160-001.092.  0.0%     2   41.3  51.6  41.3  61.9  14.6
-  3.|-- ???                       100.0     2    0.0   0.0   0.0   0.0   0.0
-  4.|-- 92.79.214.238              0.0%     2   19.6  19.9  19.6  20.2   0.4
-  5.|-- 145.254.2.209              0.0%     2   25.0  25.6  25.0  26.3   0.9
-  6.|-- 145.254.2.209              0.0%     2   25.2  25.6  25.2  26.0   0.6
-  7.|-- vodafone-p.bb-a.fra3.fra.  0.0%     2   24.5  24.6  24.5  24.6   0.1
-  8.|-- ae-14.bb-b.fr7.fra.de.one  0.0%     2   27.3  27.4  27.3  27.6   0.2
-  9.|-- ae-9.bb-b.bs.kae.de.onean  0.0%     2   27.0  26.9  26.7  27.0   0.3
- 10.|-- ae-0-0.gw-diste2-a.bs.kae  0.0%     2   27.0  26.9  26.9  27.0   0.1
- 11.|-- redir-bs.web.de            0.0%     2   26.9  27.0  26.9  27.0   0.1
+  1.|-- 192.168.178.1              0.0%     5   34.4  18.6   1.5  34.4  11.7
+  2.|-- 92.73.160.1                0.0%     5   39.4  22.6  17.8  39.4   9.4
+  3.|-- 188.111.218.164           60.0%     5   18.3  18.4  18.3  18.4   0.1
+  4.|-- 92.79.214.238              0.0%     5   72.6  30.7  19.2  72.6  23.4
+  5.|-- 145.254.2.209             80.0%     5   25.2  25.2  25.2  25.2   0.0
+  6.|-- ???                       100.0     5    0.0   0.0   0.0   0.0   0.0
+  7.|-- 92.79.239.90               0.0%     5   84.2  43.4  24.4  84.2  25.6
+  8.|-- 212.227.120.149            0.0%     5   38.4  31.1  27.2  38.4   4.7
+  9.|-- 212.227.120.168            0.0%     5   46.5  31.0  26.7  46.5   8.7
+ 10.|-- 212.227.120.71             0.0%     5   30.5  28.2  27.2  30.5   1.3
+ 11.|-- 212.227.121.177            0.0%     5   28.5  30.2  28.5  31.9   1.4
+ 12.|-- 82.165.230.36              0.0%     5   38.7  33.1  26.8  44.6   8.1
 ------------
 -- MTR/Tracert www.gmx.de mit IPv6
+mtr -6 -r -c2 www.gmx.de
 mtr: Address not available
-Start: 2020-05-05T21:35:46+0200
+Start: 2020-05-05T22:02:24+0200
 HOST: Volkers-MBP.fritz.box       Loss%   Snt   Last   Avg  Best  Wrst StDev
 ------------
 
 
 ### Ping Tests IPv4
-PING redir.g-ha-web.de (82.165.229.87): 56 data bytes
-64 bytes from 82.165.229.87: icmp_seq=0 ttl=247 time=26.435 ms
-64 bytes from 82.165.229.87: icmp_seq=1 ttl=247 time=26.649 ms
-64 bytes from 82.165.229.87: icmp_seq=2 ttl=247 time=26.394 ms
+PING redir.g-ha-web.de (82.165.230.36): 56 data bytes
+64 bytes from 82.165.230.36: icmp_seq=0 ttl=246 time=87.027 ms
+64 bytes from 82.165.230.36: icmp_seq=1 ttl=246 time=29.207 ms
+64 bytes from 82.165.230.36: icmp_seq=2 ttl=246 time=33.442 ms
 
 --- redir.g-ha-web.de ping statistics ---
 3 packets transmitted, 3 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 26.394/26.493/26.649/0.112 ms
-PING redir.g-ha-web.de (82.165.229.87): 512 data bytes
-520 bytes from 82.165.229.87: icmp_seq=0 ttl=247 time=34.285 ms
-520 bytes from 82.165.229.87: icmp_seq=1 ttl=247 time=33.390 ms
-520 bytes from 82.165.229.87: icmp_seq=2 ttl=247 time=33.517 ms
+round-trip min/avg/max/stddev = 29.207/49.892/87.027/26.315 ms
+PING redir.g-ha-web.de (82.165.230.36): 512 data bytes
+520 bytes from 82.165.230.36: icmp_seq=0 ttl=246 time=34.603 ms
+520 bytes from 82.165.230.36: icmp_seq=1 ttl=246 time=35.160 ms
+520 bytes from 82.165.230.36: icmp_seq=2 ttl=246 time=34.829 ms
 
 --- redir.g-ha-web.de ping statistics ---
 3 packets transmitted, 3 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 33.390/33.731/34.285/0.395 ms
-PING redir.g-ha-web.de (82.165.229.87): 1024 data bytes
-1032 bytes from 82.165.229.87: icmp_seq=0 ttl=247 time=41.291 ms
-1032 bytes from 82.165.229.87: icmp_seq=1 ttl=247 time=40.641 ms
-1032 bytes from 82.165.229.87: icmp_seq=2 ttl=247 time=40.403 ms
+round-trip min/avg/max/stddev = 34.603/34.864/35.160/0.229 ms
+PING redir.g-ha-web.de (82.165.230.36): 1024 data bytes
+1032 bytes from 82.165.230.36: icmp_seq=0 ttl=246 time=42.556 ms
+1032 bytes from 82.165.230.36: icmp_seq=1 ttl=246 time=42.344 ms
+1032 bytes from 82.165.230.36: icmp_seq=2 ttl=246 time=41.910 ms
 
 --- redir.g-ha-web.de ping statistics ---
 3 packets transmitted, 3 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 40.403/40.778/41.291/0.375 ms
+round-trip min/avg/max/stddev = 41.910/42.270/42.556/0.269 ms
 PING redir.g-ha-web.de (82.165.229.87): 1452 data bytes
-1460 bytes from 82.165.229.87: icmp_seq=0 ttl=247 time=48.063 ms
-1460 bytes from 82.165.229.87: icmp_seq=1 ttl=247 time=47.356 ms
-1460 bytes from 82.165.229.87: icmp_seq=2 ttl=247 time=46.910 ms
+1460 bytes from 82.165.229.87: icmp_seq=0 ttl=247 time=47.150 ms
+1460 bytes from 82.165.229.87: icmp_seq=1 ttl=247 time=53.622 ms
+1460 bytes from 82.165.229.87: icmp_seq=2 ttl=247 time=47.160 ms
 
 --- redir.g-ha-web.de ping statistics ---
 3 packets transmitted, 3 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 46.910/47.443/48.063/0.475 ms
+round-trip min/avg/max/stddev = 47.150/49.311/53.622/3.049 ms
 ------------
 
 
@@ -3858,4 +832,4 @@ ping6: getaddrinfo -- nodename nor servname provided, or not known
 ####################################################
 
 
-### End script 2020-05-05_21:05:55 ###
+### End script 2020-05-05_22:05:33 ###
